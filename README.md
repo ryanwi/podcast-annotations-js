@@ -66,11 +66,10 @@ const transcript = await TranscriptSync.fromURL(audio, '/episode.vtt', {
 //   segmentSelector: '[data-start-time]'
 // })
 
-// Timeline with colored markers
+// Timeline with markers (style via CSS using data-type attributes)
 const timeline = new AnnotationTimeline(audio, {
   container: document.querySelector('#timeline'),
   annotations: overlay.annotations,
-  typeColors: { car: '#60a5fa', part: '#2dd4bf', term: '#c084fc' },
   onSeek(time) { audio.currentTime = time }
 })
 ```

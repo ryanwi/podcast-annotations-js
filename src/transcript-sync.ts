@@ -172,6 +172,7 @@ export class TranscriptSync {
   refresh(): void {
     this._cacheSegments()
     this.activeSegmentIndex = -1
+    this._update()
   }
 
   get isAutoScrolling(): boolean {
@@ -205,6 +206,7 @@ export class TranscriptSync {
   private static _renderCues(cues: VTTCue[], options: TranscriptSyncOptions): void {
     if (!options.container) return
 
+    options.container.innerHTML = ''
     const attr = options.startTimeAttribute ?? 'data-start-time'
     const doc = options.container.ownerDocument ?? document
 

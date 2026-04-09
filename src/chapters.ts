@@ -25,6 +25,8 @@ export async function fetchChapters(url: string): Promise<Chapter[]> {
 export interface ChapterSyncOptions {
   container?: HTMLElement
   activeClass?: string
+  /** Whether clicking a chapter should start playback if paused. @default false */
+  autoplay?: boolean
   onChapterChange?: (chapter: Chapter | null, index: number) => void
   onSeek?: (time: number) => void
   renderChapter?: (chapter: Chapter, element: HTMLElement) => void
@@ -61,6 +63,7 @@ export class ChapterSync {
     this.container = options.container
     this.options = {
       activeClass: 'active',
+      autoplay: false,
       chapterClass: 'pa-chapter',
       playheadClass: 'pa-chapter-playhead',
       ...options
@@ -148,7 +151,7 @@ export class ChapterSync {
     const el = (e.currentTarget as HTMLElement)
     const time = parseFloat(el.dataset.startTime ?? '0')
     this.audio.currentTime = time
-    if (this.audio.paused) {
+    if (this.options.autoplay && this.audio.paused) {
       this.audio.play()
     }
     this.options.onSeek?.(time)
