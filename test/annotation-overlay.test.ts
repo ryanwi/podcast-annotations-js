@@ -167,4 +167,32 @@ describe('AnnotationOverlay', () => {
     expect(overlay.annotations[0].id).toBe('_pa_0')
     expect(overlay.annotations[1].id).toBe('_pa_1')
   })
+
+  it('queryAtTime returns current and upcoming at an arbitrary time', () => {
+    const overlay = new AnnotationOverlay(audio, {
+      annotations: [
+        { id: 'a', startTime: 10, endTime: 30, data: { title: 'First' } },
+        { id: 'b', startTime: 50, endTime: 70, data: { title: 'Second' } },
+        { id: 'c', startTime: 90, endTime: 110, data: { title: 'Third' } }
+      ]
+    })
+
+    // Query at a time independent of audio.currentTime
+    audio.currentTime = 0
+    const result = overlay.queryAtTime(55)
+
+    expect(result.current?.id).toBe('b')
+    expect(result.upcoming).toHaveLength(1)
+    expect(result.upcoming[0].id).toBe('c')
+  })
+
+  it('queryAtTime returns null current when no annotation active', () => {
+    const overlay = new AnnotationOverlay(audio, {
+      annotations: [{ id: 'a', startTime: 50, endTime: 70 }]
+    })
+
+    const result = overlay.queryAtTime(5)
+    expect(result.current).toBeNull()
+    expect(result.upcoming).toHaveLength(1)
+  })
 })

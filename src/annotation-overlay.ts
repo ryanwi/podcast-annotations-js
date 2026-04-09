@@ -94,6 +94,17 @@ export class AnnotationOverlay {
     return upcomingAnnotations(this.annotations, this.audio.currentTime, this.options.upcomingLimit)
   }
 
+  /**
+   * Query annotation state at an arbitrary time (e.g. from an external time source via postMessage).
+   * Unlike the getters, this doesn't read from audio.currentTime.
+   */
+  queryAtTime(time: number): { current: EnrichedAnnotation | null, upcoming: EnrichedAnnotation[] } {
+    return {
+      current: selectCurrentAnnotation(this.annotations, time),
+      upcoming: upcomingAnnotations(this.annotations, time, this.options.upcomingLimit)
+    }
+  }
+
   setAnnotations(annotations: Annotation[]): void {
     this.annotations = this._assignIds(
       enrichAnnotationsWithTiming(annotations, this._timingOpts)
