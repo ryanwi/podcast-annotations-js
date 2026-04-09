@@ -35,9 +35,7 @@ export class AnnotationOverlay {
     if (options.transitionBuffer !== undefined) this._timingOpts.transitionBuffer = options.transitionBuffer
     if (options.maxExtension !== undefined) this._timingOpts.maxExtension = options.maxExtension
 
-    this.annotations = this._assignIds(
-      enrichAnnotationsWithTiming(options.annotations ?? [], this._timingOpts)
-    )
+    this.annotations = enrichAnnotationsWithTiming(options.annotations ?? [], this._timingOpts)
 
     this._boundUpdate = this._update.bind(this)
     this.audio.addEventListener('timeupdate', this._boundUpdate)
@@ -79,13 +77,6 @@ export class AnnotationOverlay {
     this.options.onUpcomingChange?.(upcoming)
   }
 
-  private _assignIds(annotations: EnrichedAnnotation[]): EnrichedAnnotation[] {
-    return annotations.map((a, i) => ({
-      ...a,
-      id: a.id ?? (a.data?.id as string | number) ?? `_pa_${i}`
-    }))
-  }
-
   get currentAnnotation(): EnrichedAnnotation | null {
     return selectCurrentAnnotation(this.annotations, this.audio.currentTime)
   }
@@ -106,9 +97,7 @@ export class AnnotationOverlay {
   }
 
   setAnnotations(annotations: Annotation[]): void {
-    this.annotations = this._assignIds(
-      enrichAnnotationsWithTiming(annotations, this._timingOpts)
-    )
+    this.annotations = enrichAnnotationsWithTiming(annotations, this._timingOpts)
     this._displayedId = null
     this._lastUpcomingKey = null
     this._update()

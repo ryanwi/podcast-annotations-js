@@ -1,3 +1,4 @@
+import { formatTime } from './utils.js'
 import type { Chapter, ChaptersJSON } from './types.js'
 
 /**
@@ -95,7 +96,7 @@ export class ChapterSync {
       } else {
         const time = doc.createElement('span')
         time.className = 'pa-chapter-time'
-        time.textContent = this._formatTime(chapter.startTime)
+        time.textContent = formatTime(chapter.startTime)
         el.appendChild(time)
 
         const title = doc.createElement('span')
@@ -123,10 +124,16 @@ export class ChapterSync {
     const time = this.audio.currentTime
     let idx = -1
 
-    for (let i = this.chapters.length - 1; i >= 0; i--) {
-      if (time >= this.chapters[i].startTime) {
-        idx = i
-        break
+    // Binary search for active chapter
+    let lo = 0
+    let hi = this.chapters.length - 1
+    while (lo <= hi) {
+      const mid = (lo + hi) >>> 1
+      if (this.chapters[mid].startTime <= time) {
+        idx = mid
+        lo = mid + 1
+      } else {
+        hi = mid - 1
       }
     }
 
@@ -189,9 +196,4 @@ export class ChapterSync {
     return new ChapterSync(audio, chapters, options)
   }
 
-  private _formatTime(seconds: number): string {
-    const mins = Math.floor(seconds / 60)
-    const secs = Math.floor(seconds % 60)
-    return `${mins}:${secs.toString().padStart(2, '0')}`
-  }
 }

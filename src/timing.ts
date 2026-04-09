@@ -29,7 +29,7 @@ export function enrichAnnotationsWithTiming(
 
     return {
       ...annotation,
-      id: annotation.id ?? `_pa_${index}`,
+      id: annotation.id ?? (annotation.data?.id as string | number | undefined) ?? `_pa_${index}`,
       triggerStartTime: annotation.startTime - leadTime,
       displayEndTime
     }
@@ -51,12 +51,22 @@ export function selectCurrentAnnotation(
 /**
  * Get annotations coming up after the current time.
  */
+/**
+ * Get annotations coming up after the current time.
+ * Assumes annotations are sorted by startTime (as returned by enrichAnnotationsWithTiming).
+ */
 export function upcomingAnnotations(
   annotations: EnrichedAnnotation[],
   currentTime: number,
   limit: number = 3
 ): EnrichedAnnotation[] {
-  return annotations
-    .filter((a) => a.startTime > currentTime)
-    .slice(0, limit)
+  // Binary search for first annotation with startTime > currentTime
+  let lo = 0
+  let hi = annotations.length
+  while (lo < hi) {
+    const mid = (lo + hi) >>> 1
+    if (annotations[mid].startTime <= currentTime) lo = mid + 1
+    else hi = mid
+  }
+  return annotations.slice(lo, lo + limit)
 }

@@ -107,32 +107,27 @@ export class TranscriptSync {
   private _updateSegmentClasses(prevIndex: number, newIndex: number): void {
     const { activeClass, pastClass, futureClass } = this.options
 
-    if (prevIndex === -1 && newIndex >= 0) {
+    // For first activation, large seeks, or backward seeks — full reclassify
+    if (prevIndex === -1 || Math.abs(newIndex - prevIndex) > 1) {
       this._segments.forEach((el, i) => {
         el.classList.toggle(activeClass, i === newIndex)
-        el.classList.toggle(pastClass, i < newIndex)
-        el.classList.toggle(futureClass, i > newIndex)
+        el.classList.toggle(pastClass, i < newIndex && newIndex >= 0)
+        el.classList.toggle(futureClass, i > newIndex && newIndex >= 0)
       })
       return
     }
 
-    if (prevIndex >= 0 && this._segments[prevIndex]) {
+    // Adjacent move (normal forward playback) — only update prev and new
+    if (this._segments[prevIndex]) {
       this._segments[prevIndex].classList.remove(activeClass)
+      this._segments[prevIndex].classList.add(pastClass)
+      this._segments[prevIndex].classList.remove(futureClass)
     }
 
     if (newIndex >= 0 && this._segments[newIndex]) {
       this._segments[newIndex].classList.add(activeClass)
       this._segments[newIndex].classList.remove(pastClass)
       this._segments[newIndex].classList.remove(futureClass)
-    }
-
-    const lo = Math.min(prevIndex, newIndex)
-    const hi = Math.max(prevIndex, newIndex)
-    for (let i = lo; i <= hi; i++) {
-      if (i === newIndex || i < 0 || !this._segments[i]) continue
-      this._segments[i].classList.remove(activeClass)
-      this._segments[i].classList.toggle(pastClass, i < newIndex)
-      this._segments[i].classList.toggle(futureClass, i > newIndex)
     }
   }
 
