@@ -1,5 +1,20 @@
 # Changelog
 
+## 0.3.1 (2026-04-09)
+
+### Fixed
+- `ChapterSync` rendered wrong timestamps for podcasts over 1 hour (e.g. `63:00` instead of `1:03:00`). Now uses shared `formatTime` utility.
+- Seeking backward in `TranscriptSync` left segments with stale CSS classes. Non-adjacent index changes now trigger a full reclassify.
+- `upcomingAnnotations` scanned the entire array on every `timeupdate` tick. Replaced with binary search + slice.
+- `ChapterSync` active chapter lookup used linear scan. Replaced with binary search.
+
+### Changed
+- `enrichAnnotationsWithTiming` now checks `data.id` as a fallback when assigning IDs, matching the previously documented but unreachable behavior.
+
+### Removed
+- Dead `_assignIds` method from `AnnotationOverlay` — ID assignment is now fully handled by `enrichAnnotationsWithTiming`.
+- Duplicate `_formatTime` from `ChapterSync`.
+
 ## 0.3.0 (2026-04-09)
 
 ### Added
