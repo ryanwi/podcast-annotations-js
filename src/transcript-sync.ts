@@ -1,5 +1,5 @@
 import { parseVTT, fetchVTT } from './vtt-parser.js'
-import type { VTTCue } from './types.js'
+import type { VTTCue, AlignmentGap } from './types.js'
 
 export interface TranscriptSyncOptions {
   container?: HTMLElement
@@ -8,13 +8,21 @@ export interface TranscriptSyncOptions {
   activeClass?: string
   pastClass?: string
   futureClass?: string
+  /** Class applied to gap elements. @default 'gap' */
+  gapClass?: string
   autoScroll?: boolean
   scrollBehavior?: ScrollBehavior
   scrollBlock?: ScrollLogicalPosition
   onSegmentChange?: (element: Element, index: number) => void
   onAutoScrollPause?: () => void
   onAutoScrollResume?: () => void
+  /** Called when playback enters a gap (unmapped DAI region). */
+  onGapEnter?: (gap: AlignmentGap) => void
+  /** Called when playback exits a gap. */
+  onGapExit?: () => void
   renderSegment?: (cue: VTTCue, element: HTMLElement) => void
+  /** Gaps in the alignment where highlighting should pause. */
+  gaps?: AlignmentGap[]
 }
 
 export class TranscriptSync {
@@ -25,11 +33,13 @@ export class TranscriptSync {
 
   private options: Required<Pick<TranscriptSyncOptions,
     'segmentSelector' | 'startTimeAttribute' | 'activeClass' | 'pastClass' | 'futureClass' |
-    'autoScroll' | 'scrollBehavior' | 'scrollBlock'
+    'gapClass' | 'autoScroll' | 'scrollBehavior' | 'scrollBlock'
   >> & TranscriptSyncOptions
 
   private _segments: Element[] = []
   private _startTimes: number[] = []
+  private _gaps: AlignmentGap[] = []
+  private _inGap = false
   private _programmaticScroll = false
   private _scrollResetTimeout: ReturnType<typeof setTimeout> | null = null
   private _boundUpdate: () => void
@@ -43,6 +53,7 @@ export class TranscriptSync {
       activeClass: 'active',
       pastClass: 'past',
       futureClass: 'future',
+      gapClass: 'gap',
       autoScroll: true,
       scrollBehavior: 'smooth',
       scrollBlock: 'center',
@@ -51,6 +62,7 @@ export class TranscriptSync {
 
     this.container = options.container
     this.autoScrollEnabled = this.options.autoScroll
+    this._gaps = (options.gaps ?? []).sort((a, b) => a.variantStart - b.variantStart)
 
     this._cacheSegments()
 
@@ -74,6 +86,20 @@ export class TranscriptSync {
 
   private _update(): void {
     const time = this.audio.currentTime
+
+    // Check if we're inside a gap
+    const gap = this._findGap(time)
+    if (gap) {
+      if (!this._inGap) {
+        this._inGap = true
+        this.options.onGapEnter?.(gap)
+      }
+      return // Don't update highlighting while in a gap
+    } else if (this._inGap) {
+      this._inGap = false
+      this.options.onGapExit?.()
+    }
+
     let activeIndex = -1
 
     let lo = 0
@@ -102,6 +128,14 @@ export class TranscriptSync {
     if (activeIndex >= 0 && this.autoScrollEnabled && !this.audio.paused) {
       this._scrollToSegment(this._segments[activeIndex])
     }
+  }
+
+  private _findGap(time: number): AlignmentGap | null {
+    for (const gap of this._gaps) {
+      if (time >= gap.variantStart && time < gap.variantEnd) return gap
+      if (gap.variantStart > time) break // gaps are sorted, no need to check further
+    }
+    return null
   }
 
   private _updateSegmentClasses(prevIndex: number, newIndex: number): void {
@@ -168,6 +202,17 @@ export class TranscriptSync {
     this._cacheSegments()
     this.activeSegmentIndex = -1
     this._update()
+  }
+
+  /** Update the gap ranges (e.g. after receiving an alignment mapping). */
+  setGaps(gaps: AlignmentGap[]): void {
+    this._gaps = [...gaps].sort((a, b) => a.variantStart - b.variantStart)
+    this._inGap = false
+  }
+
+  /** Whether the current playback position is inside a gap. */
+  get isInGap(): boolean {
+    return this._inGap
   }
 
   get isAutoScrolling(): boolean {

@@ -45,3 +45,37 @@ export interface ChaptersJSON {
   version: string
   chapters: Chapter[]
 }
+
+/** A matched range in a DAI alignment mapping. */
+export interface AlignmentRange {
+  /** Start time in the canonical transcript. */
+  canonicalStart: number
+  /** End time in the canonical transcript. */
+  canonicalEnd: number
+  /** Start time in the variant (downloaded) audio. */
+  variantStart: number
+  /** End time in the variant (downloaded) audio. */
+  variantEnd: number
+}
+
+/** A gap in the alignment where no canonical content maps. */
+export interface AlignmentGap {
+  /** Start time in the variant audio where the gap begins. */
+  variantStart: number
+  /** End time in the variant audio where the gap ends. */
+  variantEnd: number
+  /** Optional label (e.g. "ad", "promo"). */
+  label?: string
+}
+
+/** Full alignment mapping between canonical transcript and a variant audio file. */
+export interface AlignmentMapping {
+  /** Hash of the variant audio file. */
+  variantHash?: string
+  /** Confidence score 0-1. */
+  confidence: number
+  /** Matched content ranges. */
+  ranges: AlignmentRange[]
+  /** Unmapped gap ranges (ads, promos, etc). */
+  gaps: AlignmentGap[]
+}

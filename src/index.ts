@@ -14,4 +14,11 @@ export { enrichAnnotationsWithTiming, selectCurrentAnnotation, upcomingAnnotatio
 export { parseVTT, fetchVTT } from './vtt-parser.js'
 export { formatTime } from './utils.js'
 
-export type { Annotation, EnrichedAnnotation, TimingOptions, VTTCue, Chapter, ChaptersJSON } from './types.js'
+export { AlignedTranscript } from './aligned-transcript.js'
+export type { AlignedSegment } from './aligned-transcript.js'
+
+export type {
+  Annotation, EnrichedAnnotation, TimingOptions, VTTCue,
+  Chapter, ChaptersJSON,
+  AlignmentRange, AlignmentGap, AlignmentMapping
+} from './types.js'

@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.4.0 (2026-04-09)
+
+### Added
+- **Gap-aware `TranscriptSync`** — `gaps` option accepts `AlignmentGap[]` to define unmapped DAI regions. Highlighting pauses inside gaps and resumes at the next matched segment.
+  - `onGapEnter(gap)` / `onGapExit()` callbacks
+  - `isInGap` getter
+  - `setGaps(gaps)` method for runtime updates
+- **`AlignedTranscript`** — takes canonical VTT cues + `AlignmentMapping`, produces a timeline of interleaved content and gap segments with remapped variant timestamps.
+  - `remappedCues` getter for feeding into `TranscriptSync`
+  - `isInGap(variantTime)` to check if a time falls in a gap
+  - `isSyncReliable` getter (confidence >= 0.7)
+- New types: `AlignmentRange`, `AlignmentGap`, `AlignmentMapping`, `AlignedSegment`
+
 ## 0.3.1 (2026-04-09)
 
 ### Fixed
