@@ -9,7 +9,8 @@
     "./timing": "./src/timing.js",
     "./overlay": "./src/annotation-overlay.js",
     "./transcript": "./src/transcript-sync.js",
-    "./timeline": "./src/annotation-timeline.js"
+    "./timeline": "./src/annotation-timeline.js",
+    "./vtt": "./src/vtt-parser.js"
   },
   "scripts": {
     "test": "vitest run",

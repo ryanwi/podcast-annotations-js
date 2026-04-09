@@ -1,3 +1,5 @@
+import { parseVTT, fetchVTT } from './vtt-parser.js'
+
 /**
  * Live transcript synchronization with audio playback.
  *
@@ -208,5 +210,70 @@ export class TranscriptSync {
     clearTimeout(this._scrollResetTimeout)
     this._segments = []
     this._startTimes = []
+  }
+
+  /**
+   * Create a TranscriptSync from a VTT/SRT string.
+   * Renders transcript segments into the container automatically.
+   *
+   * @param {HTMLAudioElement} audio
+   * @param {string} vttString - Raw VTT or SRT content
+   * @param {Object} options - Same as constructor options, plus:
+   * @param {Function} [options.renderSegment] - Custom renderer: (cue, element) => void
+   * @returns {TranscriptSync}
+   */
+  static fromVTT(audio, vttString, options = {}) {
+    const cues = parseVTT(vttString)
+    TranscriptSync._renderCues(cues, options)
+    return new TranscriptSync(audio, options)
+  }
+
+  /**
+   * Create a TranscriptSync by fetching a VTT/SRT file from a URL.
+   *
+   * @param {HTMLAudioElement} audio
+   * @param {string} url - URL to the VTT or SRT file
+   * @param {Object} options - Same as constructor options, plus:
+   * @param {Function} [options.renderSegment] - Custom renderer: (cue, element) => void
+   * @returns {Promise<TranscriptSync>}
+   */
+  static async fromURL(audio, url, options = {}) {
+    const cues = await fetchVTT(url)
+    TranscriptSync._renderCues(cues, options)
+    return new TranscriptSync(audio, options)
+  }
+
+  static _renderCues(cues, options) {
+    if (!options.container) return
+
+    const attr = options.startTimeAttribute || 'data-start-time'
+    const doc = options.container.ownerDocument || document
+
+    cues.forEach(cue => {
+      const el = doc.createElement('div')
+      el.setAttribute(attr, String(cue.startTime))
+      el.setAttribute('data-end-time', String(cue.endTime))
+
+      if (options.renderSegment) {
+        options.renderSegment(cue, el)
+      } else {
+        // Default rendering
+        if (cue.speaker) {
+          const speakerEl = doc.createElement('span')
+          speakerEl.className = 'pa-transcript-speaker'
+          speakerEl.textContent = cue.speaker
+          el.appendChild(speakerEl)
+
+          const textEl = doc.createElement('span')
+          textEl.className = 'pa-transcript-text'
+          textEl.textContent = ' ' + cue.text
+          el.appendChild(textEl)
+        } else {
+          el.textContent = cue.text
+        }
+      }
+
+      options.container.appendChild(el)
+    })
   }
 }

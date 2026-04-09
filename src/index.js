@@ -7,3 +7,4 @@ export {
   upcomingAnnotations
 } from './timing.js'
 export { formatTime } from './utils.js'
+export { parseVTT, fetchVTT } from './vtt-parser.js'

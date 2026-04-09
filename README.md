@@ -51,15 +51,20 @@ const overlay = new AnnotationOverlay(audio, {
   }
 })
 
-// Transcript highlights and auto-scrolls
-const transcript = new TranscriptSync(audio, {
+// Transcript from a VTT file — renders and syncs automatically
+const transcript = await TranscriptSync.fromURL(audio, '/episode.vtt', {
   container: document.querySelector('#transcript'),
-  segmentSelector: '[data-start-time]',
   activeClass: 'highlight',
   onAutoScrollPause() {
     document.querySelector('#resume-btn').hidden = false
   }
 })
+
+// Or from existing DOM elements (data-start-time attributes)
+// const transcript = new TranscriptSync(audio, {
+//   container: document.querySelector('#transcript'),
+//   segmentSelector: '[data-start-time]'
+// })
 
 // Timeline with colored markers
 const timeline = new AnnotationTimeline(audio, {
@@ -106,8 +111,13 @@ const timeline = new AnnotationTimeline(audio, {
 | `onAutoScrollPause` | `Function` | — | Called when user scrolls away |
 | `onAutoScrollResume` | `Function` | — | Called when auto-scroll resumes |
 
-**Methods:** `resumeAutoScroll()`, `destroy()`
+**Methods:** `resumeAutoScroll()`, `refresh()`, `destroy()`
 **Getters:** `isAutoScrolling`
+
+**Static factories:**
+- `TranscriptSync.fromVTT(audio, vttString, options)` — Parse a VTT/SRT string, render segments into container, return a synced instance.
+- `TranscriptSync.fromURL(audio, url, options)` — Fetch a VTT/SRT file, render, and return a synced instance (async).
+- `options.renderSegment(cue, element)` — Custom renderer for VTT cues. Default renders speaker name + text.
 
 ### `AnnotationTimeline(audio, options)`
 
@@ -116,10 +126,16 @@ const timeline = new AnnotationTimeline(audio, {
 | `container` | `HTMLElement` | — | Timeline container element |
 | `annotations` | `Array` | `[]` | Annotation data |
 | `duration` | `number` | — | Total seconds (auto-detected if omitted) |
-| `typeColors` | `Object` | `{}` | `{ type: '#color' }` mapping |
-| `defaultColor` | `string` | `'#fbbf24'` | Fallback marker color |
-| `playheadColor` | `string` | `'#fbbf24'` | Playhead color |
 | `onSeek` | `Function` | — | `(timeInSeconds) => void` |
+| `markerClass` | `string` | `'pa-timeline-marker'` | CSS class for markers |
+| `playheadClass` | `string` | `'pa-timeline-playhead'` | CSS class for playhead |
+| `renderMarker` | `Function` | — | `(annotation, element) => void` |
+
+Markers get `data-type` attributes for CSS-based styling. Style with:
+```css
+.pa-timeline-marker[data-type="car"] { background: #60a5fa; }
+.pa-timeline-marker[data-type="term"] { background: #c084fc; }
+```
 
 **Methods:** `setAnnotations(annotations)`, `destroy()`
 
