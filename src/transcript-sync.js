@@ -48,6 +48,11 @@ export class TranscriptSync {
     this._programmaticScroll = false
     this._scrollResetTimeout = null
 
+    // Cache segments and their start times once
+    this._segments = []
+    this._startTimes = []
+    this._cacheSegments()
+
     this._boundUpdate = this._update.bind(this)
     this._boundScroll = this._handleUserScroll.bind(this)
 
@@ -58,39 +63,81 @@ export class TranscriptSync {
     }
   }
 
-  _getSegments() {
-    if (!this.container) return []
-    return Array.from(this.container.querySelectorAll(this.options.segmentSelector))
+  _cacheSegments() {
+    if (!this.container) return
+    this._segments = Array.from(this.container.querySelectorAll(this.options.segmentSelector))
+    this._startTimes = this._segments.map(el =>
+      parseFloat(el.getAttribute(this.options.startTimeAttribute))
+    )
   }
 
   _update() {
     const time = this.audio.currentTime
-    const segments = this._getSegments()
     let activeIndex = -1
 
-    for (let i = segments.length - 1; i >= 0; i--) {
-      const start = parseFloat(segments[i].getAttribute(this.options.startTimeAttribute))
-      if (time >= start) {
-        activeIndex = i
-        break
+    // Binary search for active segment (segments are sorted by start time)
+    let lo = 0
+    let hi = this._startTimes.length - 1
+    while (lo <= hi) {
+      const mid = (lo + hi) >>> 1
+      if (this._startTimes[mid] <= time) {
+        activeIndex = mid
+        lo = mid + 1
+      } else {
+        hi = mid - 1
       }
     }
 
     if (activeIndex === this.activeSegmentIndex) return
+
+    const prevIndex = this.activeSegmentIndex
     this.activeSegmentIndex = activeIndex
 
-    segments.forEach((el, i) => {
-      el.classList.toggle(this.options.activeClass, i === activeIndex)
-      el.classList.toggle(this.options.pastClass, i < activeIndex)
-      el.classList.toggle(this.options.futureClass, i > activeIndex)
-    })
+    // Only update the segments that changed — not all N segments
+    this._updateSegmentClasses(prevIndex, activeIndex)
 
     if (this.options.onSegmentChange && activeIndex >= 0) {
-      this.options.onSegmentChange(segments[activeIndex], activeIndex)
+      this.options.onSegmentChange(this._segments[activeIndex], activeIndex)
     }
 
     if (activeIndex >= 0 && this.autoScrollEnabled && !this.audio.paused) {
-      this._scrollToSegment(segments[activeIndex])
+      this._scrollToSegment(this._segments[activeIndex])
+    }
+  }
+
+  _updateSegmentClasses(prevIndex, newIndex) {
+    const { activeClass, pastClass, futureClass } = this.options
+
+    if (prevIndex === -1 && newIndex >= 0) {
+      // First activation — set all segments
+      this._segments.forEach((el, i) => {
+        el.classList.toggle(activeClass, i === newIndex)
+        el.classList.toggle(pastClass, i < newIndex)
+        el.classList.toggle(futureClass, i > newIndex)
+      })
+      return
+    }
+
+    // Remove classes from previous active
+    if (prevIndex >= 0 && this._segments[prevIndex]) {
+      this._segments[prevIndex].classList.remove(activeClass)
+    }
+
+    // Add classes to new active
+    if (newIndex >= 0 && this._segments[newIndex]) {
+      this._segments[newIndex].classList.add(activeClass)
+      this._segments[newIndex].classList.remove(pastClass)
+      this._segments[newIndex].classList.remove(futureClass)
+    }
+
+    // Update only the segments between prev and new
+    const lo = Math.min(prevIndex, newIndex)
+    const hi = Math.max(prevIndex, newIndex)
+    for (let i = lo; i <= hi; i++) {
+      if (i === newIndex || i < 0 || !this._segments[i]) continue
+      this._segments[i].classList.remove(activeClass)
+      this._segments[i].classList.toggle(pastClass, i < newIndex)
+      this._segments[i].classList.toggle(futureClass, i > newIndex)
     }
   }
 
@@ -129,10 +176,17 @@ export class TranscriptSync {
       this.options.onAutoScrollResume()
     }
 
-    const segments = this._getSegments()
-    if (this.activeSegmentIndex >= 0 && segments[this.activeSegmentIndex]) {
-      this._scrollToSegment(segments[this.activeSegmentIndex])
+    if (this.activeSegmentIndex >= 0 && this._segments[this.activeSegmentIndex]) {
+      this._scrollToSegment(this._segments[this.activeSegmentIndex])
     }
+  }
+
+  /**
+   * Re-cache segments from the DOM. Call this if the transcript content changes dynamically.
+   */
+  refresh() {
+    this._cacheSegments()
+    this.activeSegmentIndex = -1
   }
 
   /**
@@ -152,5 +206,7 @@ export class TranscriptSync {
       this.container.removeEventListener('scroll', this._boundScroll)
     }
     clearTimeout(this._scrollResetTimeout)
+    this._segments = []
+    this._startTimes = []
   }
 }

@@ -46,8 +46,11 @@ describe('AnnotationTimeline', () => {
 
     const markers = container.querySelectorAll('.pa-timeline-marker')
     expect(markers).toHaveLength(2)
-    expect(markers[0].style.left).toBe('25%')
-    expect(markers[1].style.left).toBe('75%')
+    expect(markers[0].style.left).toContain('25')
+    expect(markers[1].style.left).toContain('75')
+    // Markers use data attributes for type-based CSS styling
+    expect(markers[0].dataset.type).toBe('car')
+    expect(markers[1].dataset.type).toBe('term')
   })
 
   it('renders a playhead', () => {

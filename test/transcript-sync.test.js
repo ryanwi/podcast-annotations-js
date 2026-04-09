@@ -109,6 +109,24 @@ describe('TranscriptSync', () => {
     expect(audio._listeners.timeupdate).toHaveLength(0)
   })
 
+  it('supports refresh() for dynamic transcripts', () => {
+    const container = createTranscriptDOM()
+    const sync = new TranscriptSync(audio, { container, autoScroll: false })
+
+    // Add a new segment dynamically
+    const newSegment = container.ownerDocument.createElement('div')
+    newSegment.setAttribute('data-start-time', '40')
+    newSegment.textContent = 'Fifth segment'
+    container.appendChild(newSegment)
+
+    sync.refresh()
+
+    audio.currentTime = 42
+    audio._emit('timeupdate')
+
+    expect(newSegment.classList.contains('active')).toBe(true)
+  })
+
   it('exposes isAutoScrolling', () => {
     const container = createTranscriptDOM()
     const sync = new TranscriptSync(audio, { container, autoScroll: true })

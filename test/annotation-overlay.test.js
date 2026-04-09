@@ -129,4 +129,43 @@ describe('AnnotationOverlay', () => {
 
     expect(onChange).toHaveBeenCalledWith(expect.objectContaining({ data: { id: 'b' } }))
   })
+
+  it('distinguishes annotations with same time window but different ids', () => {
+    const onChange = vi.fn()
+    new AnnotationOverlay(audio, {
+      annotations: [
+        { id: 'x', startTime: 10, endTime: 30, data: { title: 'First' } },
+        { id: 'y', startTime: 10, endTime: 30, data: { title: 'Second' } }
+      ],
+      onAnnotationChange: onChange
+    })
+
+    audio.currentTime = 15
+    audio._emit('timeupdate')
+
+    // Should resolve to one of them (the last matching, per findLast)
+    expect(onChange).toHaveBeenCalledTimes(1)
+    expect(onChange).toHaveBeenCalledWith(expect.objectContaining({ id: 'y' }))
+  })
+
+  it('uses data.id as fallback when top-level id is missing', () => {
+    const overlay = new AnnotationOverlay(audio, {
+      annotations: [{ startTime: 10, endTime: 30, data: { id: 42, title: 'Test' } }]
+    })
+
+    // The annotation should get id=42 from data.id
+    expect(overlay.annotations[0].id).toBe(42)
+  })
+
+  it('auto-assigns ids when none provided', () => {
+    const overlay = new AnnotationOverlay(audio, {
+      annotations: [
+        { startTime: 10, endTime: 30 },
+        { startTime: 50, endTime: 70 }
+      ]
+    })
+
+    expect(overlay.annotations[0].id).toBe('_pa_0')
+    expect(overlay.annotations[1].id).toBe('_pa_1')
+  })
 })

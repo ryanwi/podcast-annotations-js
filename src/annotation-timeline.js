@@ -3,15 +3,22 @@ import { enrichAnnotationsWithTiming } from './timing.js'
 /**
  * Visual annotation timeline with position markers and a playhead.
  *
- * Renders colored markers at annotation positions within a container element,
- * tracks audio playback with a playhead, and supports click-to-seek.
+ * Renders markers as DOM elements with CSS classes and data attributes.
+ * All visual styling is controlled via CSS — the library only sets `left` position
+ * and data attributes for type-based styling.
+ *
+ * Minimal CSS to get started:
+ * ```css
+ * .pa-timeline { position: relative; height: 6px; background: #333; cursor: pointer; }
+ * .pa-timeline-marker { position: absolute; top: 0; width: 4px; height: 100%; border-radius: 2px; background: #fbbf24; }
+ * .pa-timeline-playhead { position: absolute; top: -2px; width: 2px; height: calc(100% + 4px); background: #fbbf24; }
+ * ```
  *
  * @example
  * const timeline = new AnnotationTimeline(audioElement, {
  *   container: document.querySelector('#timeline'),
  *   annotations: [{ startTime: 45, endTime: 75, data: { type: "car" } }],
  *   duration: 2847,
- *   typeColors: { car: '#60a5fa', part: '#2dd4bf' },
  *   onSeek: (time) => { audioElement.currentTime = time }
  * })
  */
@@ -20,21 +27,16 @@ export class AnnotationTimeline {
    * @param {HTMLAudioElement} audio - The audio element to sync with
    * @param {Object} options
    * @param {HTMLElement} options.container - Container element for the timeline
-   * @param {Array<{startTime: number, endTime: number, data?: {type?: string}}>} options.annotations - Annotation data
+   * @param {Array<{startTime: number, endTime: number, data?: {type?: string, title?: string}}>} options.annotations
    * @param {number} [options.duration] - Total duration in seconds (auto-detected from audio if omitted)
-   * @param {Object} [options.typeColors={}] - Map of annotation type to CSS color string
-   * @param {string} [options.defaultColor='#fbbf24'] - Color for annotations without a type mapping
-   * @param {string} [options.playheadColor='#fbbf24'] - Playhead color
    * @param {Function} [options.onSeek] - Called with (timeInSeconds) when user clicks the timeline
    * @param {string} [options.markerClass='pa-timeline-marker'] - CSS class for marker elements
    * @param {string} [options.playheadClass='pa-timeline-playhead'] - CSS class for playhead element
+   * @param {Function} [options.renderMarker] - Custom marker renderer: (annotation, markerElement) => void
    */
   constructor(audio, options = {}) {
     this.audio = audio
     this.options = {
-      typeColors: {},
-      defaultColor: '#fbbf24',
-      playheadColor: '#fbbf24',
       markerClass: 'pa-timeline-marker',
       playheadClass: 'pa-timeline-playhead',
       ...options
@@ -75,47 +77,34 @@ export class AnnotationTimeline {
     const dur = this._getDuration()
     if (dur <= 0) return
 
-    this.container.style.position = 'relative'
     this.container.innerHTML = ''
 
-    // Render annotation markers
+    // Render annotation markers with data attributes — no inline styles except position
     this.annotations.forEach(annotation => {
       const marker = document.createElement('div')
       marker.className = this.options.markerClass
-      const percent = (annotation.startTime / dur * 100).toFixed(2)
-      const type = annotation.data?.type
-      const color = (type && this.options.typeColors[type]) || this.options.defaultColor
+      marker.style.left = `${(annotation.startTime / dur * 100).toFixed(2)}%`
 
-      Object.assign(marker.style, {
-        position: 'absolute',
-        top: '0',
-        left: `${percent}%`,
-        width: '4px',
-        height: '100%',
-        borderRadius: '2px',
-        background: color,
-        opacity: '0.7',
-        transition: 'opacity 0.15s'
-      })
+      // Data attributes for CSS-based styling
+      if (annotation.data?.type) {
+        marker.dataset.type = annotation.data.type
+      }
+      if (annotation.data?.title) {
+        marker.title = annotation.data.title
+      }
 
-      marker.title = annotation.data?.title || ''
+      // Allow custom rendering
+      if (this.options.renderMarker) {
+        this.options.renderMarker(annotation, marker)
+      }
+
       this.container.appendChild(marker)
     })
 
     // Render playhead
     this.playhead = document.createElement('div')
     this.playhead.className = this.options.playheadClass
-    Object.assign(this.playhead.style, {
-      position: 'absolute',
-      top: '-2px',
-      left: '0%',
-      width: '2px',
-      height: 'calc(100% + 4px)',
-      background: this.options.playheadColor,
-      transition: 'left 0.1s linear',
-      boxShadow: `0 0 6px ${this.options.playheadColor}80`,
-      zIndex: '1'
-    })
+    this.playhead.style.left = '0%'
     this.container.appendChild(this.playhead)
   }
 
@@ -124,8 +113,8 @@ export class AnnotationTimeline {
     const dur = this._getDuration()
     if (dur <= 0) return
 
-    const percent = (this.audio.currentTime / dur * 100).toFixed(2)
-    this.playhead.style.left = `${Math.min(parseFloat(percent), 100)}%`
+    const percent = Math.min(this.audio.currentTime / dur * 100, 100)
+    this.playhead.style.left = `${percent.toFixed(2)}%`
   }
 
   _handleClick(event) {

@@ -17,7 +17,7 @@ export class AnnotationOverlay {
   /**
    * @param {HTMLAudioElement} audio - The audio element to sync with
    * @param {Object} options
-   * @param {Array<{startTime: number, endTime: number, data?: any}>} options.annotations - Annotation data
+   * @param {Array<{id?: string|number, startTime: number, endTime: number, data?: any}>} options.annotations - Annotation data. Each annotation should have a unique `id` field; if omitted, one is auto-assigned.
    * @param {HTMLElement} [options.overlayElement] - Optional element to show/hide with activeClass
    * @param {string} [options.activeClass='active'] - Class added to overlayElement when annotation is active
    * @param {string} [options.hiddenClass='hidden'] - Class added to overlayElement when no annotation
@@ -42,7 +42,9 @@ export class AnnotationOverlay {
     if (options.transitionBuffer !== undefined) this._timingOpts.transitionBuffer = options.transitionBuffer
     if (options.maxExtension !== undefined) this._timingOpts.maxExtension = options.maxExtension
 
-    this.annotations = enrichAnnotationsWithTiming(options.annotations || [], this._timingOpts)
+    this.annotations = this._assignIds(
+      enrichAnnotationsWithTiming(options.annotations || [], this._timingOpts)
+    )
 
     this._displayedId = null
     this._lastUpcomingKey = null
@@ -91,8 +93,15 @@ export class AnnotationOverlay {
     }
   }
 
+  _assignIds(annotations) {
+    return annotations.map((a, i) => ({
+      ...a,
+      id: a.id ?? a.data?.id ?? `_pa_${i}`
+    }))
+  }
+
   _annotationKey(annotation) {
-    return `${annotation.startTime}:${annotation.endTime}`
+    return String(annotation.id)
   }
 
   /**
@@ -116,7 +125,9 @@ export class AnnotationOverlay {
    * @param {Array} annotations - New annotation data
    */
   setAnnotations(annotations) {
-    this.annotations = enrichAnnotationsWithTiming(annotations, this._timingOpts)
+    this.annotations = this._assignIds(
+      enrichAnnotationsWithTiming(annotations, this._timingOpts)
+    )
     this._displayedId = null
     this._lastUpcomingKey = null
     this._update()
