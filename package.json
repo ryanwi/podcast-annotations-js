@@ -1,0 +1,38 @@
+{
+  "name": "podcast-annotations",
+  "version": "0.1.0",
+  "description": "Timed annotation overlays, live transcript sync, and annotation timelines for audio players",
+  "type": "module",
+  "main": "src/index.js",
+  "exports": {
+    ".": "./src/index.js",
+    "./timing": "./src/timing.js",
+    "./overlay": "./src/annotation-overlay.js",
+    "./transcript": "./src/transcript-sync.js",
+    "./timeline": "./src/annotation-timeline.js"
+  },
+  "scripts": {
+    "test": "vitest run",
+    "test:watch": "vitest"
+  },
+  "keywords": [
+    "podcast",
+    "annotations",
+    "transcript",
+    "audio",
+    "player",
+    "sync",
+    "overlay",
+    "timeline"
+  ],
+  "author": "Ryan Williams",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ryanwi/podcast-annotations-js.git"
+  },
+  "devDependencies": {
+    "vitest": "^3.2.1",
+    "jsdom": "^26.1.0"
+  }
+}
