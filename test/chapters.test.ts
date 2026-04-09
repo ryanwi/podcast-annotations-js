@@ -133,6 +133,29 @@ describe('ChapterSync', () => {
     expect(onChange).toHaveBeenLastCalledWith(null, -1)
   })
 
+  it('does not call play on click by default', () => {
+    const onSeek = vi.fn()
+    const sync = new ChapterSync(audio, SAMPLE_JSON.chapters, { onSeek })
+    audio.paused = true
+
+    // Simulate what _handleClick does
+    sync['_handleClick']({ currentTarget: { dataset: { startTime: '60' } } } as unknown as Event)
+
+    expect(onSeek).toHaveBeenCalledWith(60)
+    expect((audio as any).play).not.toHaveBeenCalled()
+  })
+
+  it('calls play on click when autoplay is true', () => {
+    const onSeek = vi.fn()
+    const sync = new ChapterSync(audio, SAMPLE_JSON.chapters, { onSeek, autoplay: true })
+    audio.paused = true
+
+    sync['_handleClick']({ currentTarget: { dataset: { startTime: '60' } } } as unknown as Event)
+
+    expect(onSeek).toHaveBeenCalledWith(60)
+    expect((audio as any).play).toHaveBeenCalled()
+  })
+
   it('exposes currentChapter getter', () => {
     const sync = new ChapterSync(audio, SAMPLE_JSON.chapters)
 

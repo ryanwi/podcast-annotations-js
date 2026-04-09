@@ -138,6 +138,38 @@ Markers get `data-type` attributes for CSS-based styling. Style with:
 
 **Methods:** `setAnnotations(annotations)`, `destroy()`
 
+### `ChapterSync(audio, chapters, options)`
+
+Syncs Podcasting 2.0 JSON chapters with audio playback.
+
+```js
+// From a URL
+const chapters = await ChapterSync.fromURL(audio, '/chapters.json', {
+  container: document.querySelector('#chapters'),
+  onChapterChange(chapter) { updateNowPlaying(chapter?.title) }
+})
+
+// From a JSON object
+const chapters = ChapterSync.fromJSON(audio, chaptersData, options)
+
+// From an array directly
+const chapters = new ChapterSync(audio, chaptersArray, options)
+```
+
+| Option | Type | Default | Description |
+|--------|------|---------|-------------|
+| `container` | `HTMLElement` | — | Container for rendered chapter list |
+| `activeClass` | `string` | `'active'` | Class for current chapter |
+| `autoplay` | `boolean` | `false` | Start playback when a chapter is clicked |
+| `chapterClass` | `string` | `'pa-chapter'` | CSS class for chapter elements |
+| `onChapterChange` | `Function` | — | `(chapter \| null, index) => void` |
+| `onSeek` | `Function` | — | `(timeInSeconds) => void` |
+| `renderChapter` | `Function` | — | `(chapter, element) => void` |
+
+**Methods:** `setChapters(chapters)`, `destroy()`
+**Getters:** `currentChapter`
+**Static:** `ChapterSync.fromJSON(audio, json, options)`, `ChapterSync.fromURL(audio, url, options)`
+
 ### Timing utilities
 
 ```js

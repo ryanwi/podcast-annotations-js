@@ -31,7 +31,6 @@ export interface ChapterSyncOptions {
   onSeek?: (time: number) => void
   renderChapter?: (chapter: Chapter, element: HTMLElement) => void
   chapterClass?: string
-  playheadClass?: string
 }
 
 /**
@@ -52,7 +51,7 @@ export class ChapterSync {
   container?: HTMLElement
   activeIndex: number = -1
 
-  private options: Required<Pick<ChapterSyncOptions, 'activeClass' | 'chapterClass' | 'playheadClass'>> & ChapterSyncOptions
+  private options: Required<Pick<ChapterSyncOptions, 'activeClass' | 'chapterClass' | 'autoplay'>> & ChapterSyncOptions
   private _elements: HTMLElement[] = []
   private _boundUpdate: () => void
   private _boundClick: (e: Event) => void
@@ -65,7 +64,6 @@ export class ChapterSync {
       activeClass: 'active',
       autoplay: false,
       chapterClass: 'pa-chapter',
-      playheadClass: 'pa-chapter-playhead',
       ...options
     }
 
