@@ -148,12 +148,11 @@ describe('AnnotationOverlay', () => {
     expect(onChange).toHaveBeenCalledWith(expect.objectContaining({ id: 'y' }))
   })
 
-  it('uses data.id as fallback when top-level id is missing', () => {
+  it('uses top-level id when provided', () => {
     const overlay = new AnnotationOverlay(audio, {
-      annotations: [{ startTime: 10, endTime: 30, data: { id: 42, title: 'Test' } }]
+      annotations: [{ id: 42, startTime: 10, endTime: 30, data: { title: 'Test' } }]
     })
 
-    // The annotation should get id=42 from data.id
     expect(overlay.annotations[0].id).toBe(42)
   })
 

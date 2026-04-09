@@ -1,36 +1,41 @@
 import { parseVTT, fetchVTT } from './vtt-parser.js'
+import type { VTTCue } from './types.js'
 
-/**
- * Live transcript synchronization with audio playback.
- *
- * Highlights the active transcript segment, manages auto-scroll,
- * and detects when the user manually scrolls away.
- *
- * @example
- * const sync = new TranscriptSync(audioElement, {
- *   container: document.querySelector('#transcript'),
- *   segmentSelector: '[data-start-time]',
- *   onSegmentChange: (segment, index) => console.log('Active:', segment)
- * })
- */
+export interface TranscriptSyncOptions {
+  container?: HTMLElement
+  segmentSelector?: string
+  startTimeAttribute?: string
+  activeClass?: string
+  pastClass?: string
+  futureClass?: string
+  autoScroll?: boolean
+  scrollBehavior?: ScrollBehavior
+  scrollBlock?: ScrollLogicalPosition
+  onSegmentChange?: (element: Element, index: number) => void
+  onAutoScrollPause?: () => void
+  onAutoScrollResume?: () => void
+  renderSegment?: (cue: VTTCue, element: HTMLElement) => void
+}
+
 export class TranscriptSync {
-  /**
-   * @param {HTMLAudioElement} audio - The audio element to sync with
-   * @param {Object} options
-   * @param {HTMLElement} options.container - Scrollable container holding transcript segments
-   * @param {string} [options.segmentSelector='[data-start-time]'] - CSS selector for segment elements
-   * @param {string} [options.startTimeAttribute='data-start-time'] - Attribute holding start time in seconds
-   * @param {string} [options.activeClass='active'] - Class for the current segment
-   * @param {string} [options.pastClass='past'] - Class for segments before current
-   * @param {string} [options.futureClass='future'] - Class for segments after current
-   * @param {boolean} [options.autoScroll=true] - Enable auto-scrolling to active segment
-   * @param {string} [options.scrollBehavior='smooth'] - ScrollIntoView behavior
-   * @param {string} [options.scrollBlock='center'] - ScrollIntoView block alignment
-   * @param {Function} [options.onSegmentChange] - Called with (element, index) when active segment changes
-   * @param {Function} [options.onAutoScrollPause] - Called when user manually scrolls away
-   * @param {Function} [options.onAutoScrollResume] - Called when auto-scroll is re-enabled
-   */
-  constructor(audio, options = {}) {
+  audio: HTMLAudioElement
+  container?: HTMLElement
+  autoScrollEnabled: boolean
+  activeSegmentIndex: number = -1
+
+  private options: Required<Pick<TranscriptSyncOptions,
+    'segmentSelector' | 'startTimeAttribute' | 'activeClass' | 'pastClass' | 'futureClass' |
+    'autoScroll' | 'scrollBehavior' | 'scrollBlock'
+  >> & TranscriptSyncOptions
+
+  private _segments: Element[] = []
+  private _startTimes: number[] = []
+  private _programmaticScroll = false
+  private _scrollResetTimeout: ReturnType<typeof setTimeout> | null = null
+  private _boundUpdate: () => void
+  private _boundScroll: () => void
+
+  constructor(audio: HTMLAudioElement, options: TranscriptSyncOptions = {}) {
     this.audio = audio
     this.options = {
       segmentSelector: '[data-start-time]',
@@ -46,13 +51,7 @@ export class TranscriptSync {
 
     this.container = options.container
     this.autoScrollEnabled = this.options.autoScroll
-    this.activeSegmentIndex = -1
-    this._programmaticScroll = false
-    this._scrollResetTimeout = null
 
-    // Cache segments and their start times once
-    this._segments = []
-    this._startTimes = []
     this._cacheSegments()
 
     this._boundUpdate = this._update.bind(this)
@@ -65,19 +64,18 @@ export class TranscriptSync {
     }
   }
 
-  _cacheSegments() {
+  private _cacheSegments(): void {
     if (!this.container) return
     this._segments = Array.from(this.container.querySelectorAll(this.options.segmentSelector))
     this._startTimes = this._segments.map(el =>
-      parseFloat(el.getAttribute(this.options.startTimeAttribute))
+      parseFloat(el.getAttribute(this.options.startTimeAttribute) ?? '0')
     )
   }
 
-  _update() {
+  private _update(): void {
     const time = this.audio.currentTime
     let activeIndex = -1
 
-    // Binary search for active segment (segments are sorted by start time)
     let lo = 0
     let hi = this._startTimes.length - 1
     while (lo <= hi) {
@@ -95,7 +93,6 @@ export class TranscriptSync {
     const prevIndex = this.activeSegmentIndex
     this.activeSegmentIndex = activeIndex
 
-    // Only update the segments that changed — not all N segments
     this._updateSegmentClasses(prevIndex, activeIndex)
 
     if (this.options.onSegmentChange && activeIndex >= 0) {
@@ -107,11 +104,10 @@ export class TranscriptSync {
     }
   }
 
-  _updateSegmentClasses(prevIndex, newIndex) {
+  private _updateSegmentClasses(prevIndex: number, newIndex: number): void {
     const { activeClass, pastClass, futureClass } = this.options
 
     if (prevIndex === -1 && newIndex >= 0) {
-      // First activation — set all segments
       this._segments.forEach((el, i) => {
         el.classList.toggle(activeClass, i === newIndex)
         el.classList.toggle(pastClass, i < newIndex)
@@ -120,19 +116,16 @@ export class TranscriptSync {
       return
     }
 
-    // Remove classes from previous active
     if (prevIndex >= 0 && this._segments[prevIndex]) {
       this._segments[prevIndex].classList.remove(activeClass)
     }
 
-    // Add classes to new active
     if (newIndex >= 0 && this._segments[newIndex]) {
       this._segments[newIndex].classList.add(activeClass)
       this._segments[newIndex].classList.remove(pastClass)
       this._segments[newIndex].classList.remove(futureClass)
     }
 
-    // Update only the segments between prev and new
     const lo = Math.min(prevIndex, newIndex)
     const hi = Math.max(prevIndex, newIndex)
     for (let i = lo; i <= hi; i++) {
@@ -143,7 +136,7 @@ export class TranscriptSync {
     }
   }
 
-  _scrollToSegment(segment) {
+  private _scrollToSegment(segment: Element): void {
     if (!segment) return
 
     this._programmaticScroll = true
@@ -152,102 +145,68 @@ export class TranscriptSync {
       block: this.options.scrollBlock
     })
 
-    clearTimeout(this._scrollResetTimeout)
+    if (this._scrollResetTimeout) clearTimeout(this._scrollResetTimeout)
     this._scrollResetTimeout = setTimeout(() => {
       this._programmaticScroll = false
     }, 1000)
   }
 
-  _handleUserScroll() {
+  private _handleUserScroll(): void {
     if (this._programmaticScroll) return
     if (this.audio.paused) return
     if (!this.autoScrollEnabled) return
 
     this.autoScrollEnabled = false
-    if (this.options.onAutoScrollPause) {
-      this.options.onAutoScrollPause()
-    }
+    this.options.onAutoScrollPause?.()
   }
 
-  /**
-   * Re-enable auto-scrolling and immediately scroll to the active segment.
-   */
-  resumeAutoScroll() {
+  resumeAutoScroll(): void {
     this.autoScrollEnabled = true
-    if (this.options.onAutoScrollResume) {
-      this.options.onAutoScrollResume()
-    }
+    this.options.onAutoScrollResume?.()
 
     if (this.activeSegmentIndex >= 0 && this._segments[this.activeSegmentIndex]) {
       this._scrollToSegment(this._segments[this.activeSegmentIndex])
     }
   }
 
-  /**
-   * Re-cache segments from the DOM. Call this if the transcript content changes dynamically.
-   */
-  refresh() {
+  refresh(): void {
     this._cacheSegments()
     this.activeSegmentIndex = -1
   }
 
-  /**
-   * Whether auto-scroll is currently active.
-   * @returns {boolean}
-   */
-  get isAutoScrolling() {
+  get isAutoScrolling(): boolean {
     return this.autoScrollEnabled
   }
 
-  /**
-   * Remove event listeners and clean up.
-   */
-  destroy() {
+  destroy(): void {
     this.audio.removeEventListener('timeupdate', this._boundUpdate)
     if (this.container) {
       this.container.removeEventListener('scroll', this._boundScroll)
     }
-    clearTimeout(this._scrollResetTimeout)
+    if (this._scrollResetTimeout) clearTimeout(this._scrollResetTimeout)
     this._segments = []
     this._startTimes = []
   }
 
-  /**
-   * Create a TranscriptSync from a VTT/SRT string.
-   * Renders transcript segments into the container automatically.
-   *
-   * @param {HTMLAudioElement} audio
-   * @param {string} vttString - Raw VTT or SRT content
-   * @param {Object} options - Same as constructor options, plus:
-   * @param {Function} [options.renderSegment] - Custom renderer: (cue, element) => void
-   * @returns {TranscriptSync}
-   */
-  static fromVTT(audio, vttString, options = {}) {
+  /** Create from a VTT/SRT string. Renders segments into the container. */
+  static fromVTT(audio: HTMLAudioElement, vttString: string, options: TranscriptSyncOptions = {}): TranscriptSync {
     const cues = parseVTT(vttString)
     TranscriptSync._renderCues(cues, options)
     return new TranscriptSync(audio, options)
   }
 
-  /**
-   * Create a TranscriptSync by fetching a VTT/SRT file from a URL.
-   *
-   * @param {HTMLAudioElement} audio
-   * @param {string} url - URL to the VTT or SRT file
-   * @param {Object} options - Same as constructor options, plus:
-   * @param {Function} [options.renderSegment] - Custom renderer: (cue, element) => void
-   * @returns {Promise<TranscriptSync>}
-   */
-  static async fromURL(audio, url, options = {}) {
+  /** Create by fetching a VTT/SRT file from a URL. */
+  static async fromURL(audio: HTMLAudioElement, url: string, options: TranscriptSyncOptions = {}): Promise<TranscriptSync> {
     const cues = await fetchVTT(url)
     TranscriptSync._renderCues(cues, options)
     return new TranscriptSync(audio, options)
   }
 
-  static _renderCues(cues, options) {
+  private static _renderCues(cues: VTTCue[], options: TranscriptSyncOptions): void {
     if (!options.container) return
 
-    const attr = options.startTimeAttribute || 'data-start-time'
-    const doc = options.container.ownerDocument || document
+    const attr = options.startTimeAttribute ?? 'data-start-time'
+    const doc = options.container.ownerDocument ?? document
 
     cues.forEach(cue => {
       const el = doc.createElement('div')
@@ -257,7 +216,6 @@ export class TranscriptSync {
       if (options.renderSegment) {
         options.renderSegment(cue, el)
       } else {
-        // Default rendering
         if (cue.speaker) {
           const speakerEl = doc.createElement('span')
           speakerEl.className = 'pa-transcript-speaker'
@@ -273,7 +231,7 @@ export class TranscriptSync {
         }
       }
 
-      options.container.appendChild(el)
+      options.container!.appendChild(el)
     })
   }
 }
