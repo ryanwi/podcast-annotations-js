@@ -170,6 +170,39 @@ describe('ChapterSync', () => {
     expect(sync.chapters).toHaveLength(4)
   })
 
+  it('fromURL fetches and parses chapters', async () => {
+    vi.stubGlobal('fetch', vi.fn().mockResolvedValue({
+      ok: true,
+      json: () => Promise.resolve(SAMPLE_JSON)
+    }))
+
+    const sync = await ChapterSync.fromURL(audio, '/chapters.json')
+    expect(sync.chapters).toHaveLength(4)
+    expect(sync.chapters[0].title).toBe('Intro')
+
+    vi.unstubAllGlobals()
+  })
+
+  it('fromURL throws on non-OK response', async () => {
+    vi.stubGlobal('fetch', vi.fn().mockResolvedValue({
+      ok: false,
+      status: 404,
+      statusText: 'Not Found'
+    }))
+
+    await expect(ChapterSync.fromURL(audio, '/chapters.json')).rejects.toThrow('404')
+
+    vi.unstubAllGlobals()
+  })
+
+  it('fromURL throws on network error', async () => {
+    vi.stubGlobal('fetch', vi.fn().mockRejectedValue(new TypeError('Failed to fetch')))
+
+    await expect(ChapterSync.fromURL(audio, '/chapters.json')).rejects.toThrow('Failed to fetch')
+
+    vi.unstubAllGlobals()
+  })
+
   it('cleans up on destroy', () => {
     const dom = new JSDOM('<div id="chapters"></div>')
     const container = dom.window.document.querySelector('#chapters') as HTMLElement
