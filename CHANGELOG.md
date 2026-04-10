@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.4.2 (2026-04-10)
+
+### Added
+- `position` field on `AlignmentGap` type — `"pre-roll"`, `"mid-roll"`, or `"post-roll"` classification from the alignment pipeline.
+- Documentation for `AlignedTranscript`, `TranscriptSync` gap options, and alignment types in README.
+- Prior Art section crediting Overcast DAI discussion.
+
 ## 0.4.1 (2026-04-10)
 
 ### Added

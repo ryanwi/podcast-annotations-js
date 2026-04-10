@@ -244,7 +244,8 @@ interface AlignmentRange {
 interface AlignmentGap {
   variantStart: number       // Start time in variant audio
   variantEnd: number         // End time in variant audio
-  label?: string             // e.g. "ad", "promo"
+  label?: string             // e.g. "ad", "transition", "unknown"
+  position?: string          // "pre-roll", "mid-roll", or "post-roll"
 }
 ```
 

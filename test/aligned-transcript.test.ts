@@ -107,6 +107,25 @@ describe('AlignedTranscript', () => {
     expect(gapSegments).toHaveLength(2)
   })
 
+  it('preserves position field on gaps', () => {
+    const mapping: AlignmentMapping = {
+      confidence: 0.9,
+      ranges: [
+        { canonicalStart: 0, canonicalEnd: 15, variantStart: 0, variantEnd: 15 },
+        { canonicalStart: 15, canonicalEnd: 60, variantStart: 45, variantEnd: 90 }
+      ],
+      gaps: [
+        { variantStart: 15, variantEnd: 45, label: 'ad', position: 'pre-roll' }
+      ]
+    }
+
+    const aligned = new AlignedTranscript(canonicalCues, mapping)
+    const gapSeg = aligned.segments.find(s => s.type === 'gap')
+    expect(gapSeg).toBeDefined()
+    expect(gapSeg!.type === 'gap' && gapSeg!.gap.position).toBe('pre-roll')
+    expect(gapSeg!.type === 'gap' && gapSeg!.gap.label).toBe('ad')
+  })
+
   it('returns empty remappedCues when no ranges match', () => {
     const aligned = new AlignedTranscript(canonicalCues, {
       confidence: 0.1,

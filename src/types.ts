@@ -64,8 +64,10 @@ export interface AlignmentGap {
   variantStart: number
   /** End time in the variant audio where the gap ends. */
   variantEnd: number
-  /** Optional label (e.g. "ad", "promo"). */
+  /** Optional label (e.g. "ad", "transition", "unknown"). */
   label?: string
+  /** Position in episode: "pre-roll", "mid-roll", or "post-roll". */
+  position?: string
 }
 
 /** Full alignment mapping between canonical transcript and a variant audio file. */
