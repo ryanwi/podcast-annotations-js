@@ -256,6 +256,12 @@ import { enrichAnnotationsWithTiming, selectCurrentAnnotation, upcomingAnnotatio
 
 Low-level functions if you want full control over the timing logic.
 
+## Prior Art
+
+The DAI alignment model was informed by Marco Arment's discussion of transcript synchronization
+with dynamic ad insertion in [Overcast](https://overcast.fm) ([ATP #683](https://atp.fm/683)),
+which helped shape how we combined our existing offset and signature work into the alignment API.
+
 ## License
 
 MIT
