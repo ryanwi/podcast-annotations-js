@@ -9,6 +9,7 @@ Built for [Car Curious](https://getcarcurious.com), the automotive podcast annot
 - **Annotation Overlay** — Auto-trigger contextual content at specific moments during audio playback
 - **Transcript Sync** — Highlight the active transcript segment with auto-scroll and user-interrupt detection
 - **Annotation Timeline** — Visual markers showing where annotations appear, with a playhead and click-to-seek
+- **DAI Alignment** — Remap canonical transcripts to variant audio with dynamic ad insertion, with gap-aware sync that pauses during ad breaks
 
 Each module works independently. Use one, two, or all three.
 
@@ -169,6 +170,83 @@ const chapters = new ChapterSync(audio, chaptersArray, options)
 **Methods:** `setChapters(chapters)`, `destroy()`
 **Getters:** `currentChapter`
 **Static:** `ChapterSync.fromJSON(audio, json, options)`, `ChapterSync.fromURL(audio, url, options)`
+
+### `AlignedTranscript(canonicalCues, mapping)`
+
+Handles DAI (Dynamic Ad Insertion) alignment — takes a canonical transcript and an alignment mapping, produces a timeline with remapped timestamps and gap regions for inserted ads/promos.
+
+```js
+import { AlignedTranscript } from 'podcast-annotations'
+
+const aligned = new AlignedTranscript(canonicalCues, {
+  confidence: 0.95,
+  ranges: [
+    { canonicalStart: 0, canonicalEnd: 120, variantStart: 0, variantEnd: 120 },
+    { canonicalStart: 120, canonicalEnd: 300, variantStart: 150, variantEnd: 330 }
+  ],
+  gaps: [
+    { variantStart: 120, variantEnd: 150, label: 'ad' }
+  ]
+})
+
+// Interleaved content + gap segments, sorted by variant time
+aligned.segments.forEach(seg => {
+  if (seg.type === 'content') {
+    renderCue(seg.cue, seg.variantStart, seg.variantEnd)
+  } else {
+    renderAdBreak(seg.gap.label, seg.gap.variantStart)
+  }
+})
+
+// Feed remapped cues into TranscriptSync with gap awareness
+const transcript = TranscriptSync.fromVTT(audio, vttString, {
+  container: document.querySelector('#transcript'),
+  gaps: aligned.gaps,
+  onGapEnter(gap) { showAdIndicator(gap.label) },
+  onGapExit() { hideAdIndicator() }
+})
+```
+
+**Getters:** `segments`, `remappedCues`, `gaps`, `confidence`, `isSyncReliable`
+**Methods:** `isInGap(variantTime)`
+
+#### TranscriptSync gap options
+
+When using `TranscriptSync` with DAI content, these additional options pause highlighting during ad breaks:
+
+| Option | Type | Default | Description |
+|--------|------|---------|-------------|
+| `gaps` | `AlignmentGap[]` | `[]` | Gap ranges where highlighting pauses |
+| `gapClass` | `string` | `'gap'` | Class applied to gap elements |
+| `onGapEnter` | `Function` | — | `(gap) => void` — called when playback enters a gap |
+| `onGapExit` | `Function` | — | `() => void` — called when playback leaves a gap |
+
+**Methods:** `setGaps(gaps)` — update gap ranges dynamically
+**Getters:** `isInGap` — whether current playback position is inside a gap
+
+#### Types
+
+```ts
+interface AlignmentMapping {
+  variantHash?: string       // Hash of the variant audio file
+  confidence: number         // Confidence score 0–1
+  ranges: AlignmentRange[]   // Matched content ranges
+  gaps: AlignmentGap[]       // Unmapped gap ranges (ads, promos, etc)
+}
+
+interface AlignmentRange {
+  canonicalStart: number     // Start time in the canonical transcript
+  canonicalEnd: number       // End time in the canonical transcript
+  variantStart: number       // Start time in the variant audio
+  variantEnd: number         // End time in the variant audio
+}
+
+interface AlignmentGap {
+  variantStart: number       // Start time in variant audio
+  variantEnd: number         // End time in variant audio
+  label?: string             // e.g. "ad", "promo"
+}
+```
 
 ### Timing utilities
 
