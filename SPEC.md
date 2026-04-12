@@ -38,7 +38,7 @@ Timestamped annotation on media is a proven pattern. It works, it scales, and po
 - **Overcast** — podcast-native precedent for structured metadata (Smart Speed, chapters, transcript sync) improving UX. Marco Arment's discussion of DAI transcript synchronization ([ATP #683](https://atp.fm/683)) informed this spec's approach to ad break alignment.
 - **Snipd** — a podcast app that lets listeners highlight and annotate moments for personal note-taking. Listener-side annotation on podcast audio, already in production. This spec makes the same capability possible as an open, shared layer rather than a closed, personal tool.
 
-Podcast audio has no open format for fine-grained entity annotation. This is the data format that makes it possible.
+Podcast audio already contains this information — what's missing is a way to represent it as structured data. This spec defines a format that makes it possible. While annotations can be derived from transcripts, precomputed annotations enable more accurate timing, higher-quality entity resolution, and consistent cross-platform behavior.
 
 ## Annotation Object
 
@@ -55,7 +55,7 @@ An annotation represents a single entity mention or topic reference in audio. An
 | `image` | `string` | No | URL to an image representing the entity |
 | `speaker` | `string` | No | Speaker ID (references an entry in `speakers`) |
 | `quote` | `string` | No | The exact words from the transcript that triggered this annotation |
-| `tags` | `array of strings` | No | Freeform labels for search, clustering, and filtering |
+| `tags` | `string[]` | No | Freeform labels for search, clustering, and filtering |
 | `priority` | `number` | No | Editorial importance from 0.0 to 1.0, for UI display ordering |
 | `canonicalId` | `string` | No | Stable entity identifier for cross-episode deduplication |
 | `confidence` | `number` | No | Confidence score from 0.0 to 1.0 |
