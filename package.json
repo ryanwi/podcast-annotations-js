@@ -20,6 +20,7 @@
     "build": "tsup",
     "test": "vitest run",
     "test:watch": "vitest",
+    "build:site": "node scripts/build-site.js",
     "prepublishOnly": "npm run build"
   },
   "keywords": [
@@ -44,6 +45,7 @@
   },
   "devDependencies": {
     "jsdom": "^26.1.0",
+    "marked": "^18.0.0",
     "tsup": "^8.5.0",
     "typescript": "^5.8.3",
     "vitest": "^3.2.1"
