@@ -8,37 +8,37 @@ A minimal JSON format for timestamped entity annotations on podcast and spoken m
 
 WebVTT tells you what was said. Podcast annotations tell you what was said *about*.
 
-Transcripts give you words and timestamps. But when a host mentions a 1969 Camaro at 0:45, a turbocharger at 2:00, or Carroll Shelby at 3:15, that meaning is invisible to apps — not structured, not linkable, and difficult to extract reliably later.
+Transcripts give you words and timestamps. But when a host mentions a 1969 Camaro at 0:45, a turbocharger at 2:00, or Carroll Shelby at 3:15, that meaning is invisible to apps. It's not structured, not linkable, and difficult to extract reliably after the fact.
 
 The Podcast Annotation Format is a simple, open JSON spec for timestamped entity annotations on audio. Annotation sets can be produced by humans, automated pipelines, or hybrid workflows. Transcripts made podcasts searchable. Annotations make them understandable.
 
 ### Design Principles
 
-- **Minimal** — only two required fields (`startTime`, `endTime`). Everything else is optional.
-- **Extensible** — the `data` object is an open extension point for app-specific metadata.
-- **Framework-agnostic** — plain JSON. No JSON-LD, no XML, no runtime dependencies.
-- **Human-readable** — a developer should understand an annotation file without reading this spec.
+- **Minimal.** Only two required fields (`startTime`, `endTime`). Everything else is optional.
+- **Extensible.** The `data` object is an open extension point for app-specific metadata.
+- **Framework-agnostic.** Plain JSON. No JSON-LD, no XML, no runtime dependencies.
+- **Human-readable.** A developer should understand an annotation file without reading this spec.
 
 ## Prior Art & Inspiration
 
 Timestamped annotation on media is a proven pattern. It works, it scales, and podcasting is the missing piece.
 
 **Proven UX pattern:**
-- **VH1 Pop-Up Video** — the original mainstream example: timestamped contextual notes overlaid on media playback.
-- **Amazon Prime Video X-Ray** — surfaces cast, characters, and trivia synced to the current scene. The canonical modern implementation.
-- **YouTube Info Cards** — lightweight timed overlays linking to related content mid-video.
-- **SoundCloud timed comments** — the earliest mainstream timestamped annotation on audio. Users drop comments at any `t=` position, proving listeners engage with moment-level audio annotation.
+- **VH1 Pop-Up Video.** The original mainstream example: timestamped contextual notes overlaid on media playback.
+- **Amazon Prime Video X-Ray.** Cast, characters, and trivia synced to the current scene. The canonical modern implementation.
+- **YouTube Info Cards.** Lightweight timed overlays linking to related content mid-video.
+- **SoundCloud timed comments.** The earliest mainstream timestamped annotation on audio. Users drop comments at any `t=` position, proving listeners engage with moment-level audio annotation.
 
 **Proven at scale:**
-- **Genius** — community annotation layer on lyrics, proving that entity-level annotation on media content is a viable product at scale. Structurally the closest analog: annotation body attached to a media anchor, with a URL for more context.
-- **BBC Linked Data** — around 2012–2016 the BBC built the most serious real-world deployment of entity annotation on broadcast content, tagging people, places, and topics against their audio and video archive using their `programmes` ontology. The closest institutional precedent.
+- **Genius.** Community annotation layer on lyrics, proving that entity-level annotation on media content is a viable product at scale. Structurally the closest analog: annotation body attached to a media anchor, with a URL for more context.
+- **BBC Linked Data.** Around 2012-2016 the BBC built the most serious real-world deployment of entity annotation on broadcast content, tagging people, places, and topics against their audio and video archive using their `programmes` ontology. The closest institutional precedent.
 
 **Proven in podcasting:**
-- **Podcast chapters** (Podcasting 2.0, Podlove, MP4) — coarse timestamped metadata that podcast apps already implement, proving the ecosystem will adopt spec extensions that improve the listening experience.
-- **Overcast** — podcast-native precedent for structured metadata (Smart Speed, chapters, transcript sync) improving UX. Marco Arment's public discussion of DAI transcript synchronization informed this spec's approach to ad break alignment.
-- **Snipd** — a podcast app that lets listeners highlight and annotate moments for personal note-taking. Listener-side annotation on podcast audio, already in production. This spec makes the same capability possible as an open, shared layer rather than a closed, personal tool.
+- **Podcast chapters** (Podcasting 2.0, Podlove, MP4). Coarse timestamped metadata that podcast apps already implement, proving the ecosystem will adopt spec extensions that improve the listening experience.
+- **Overcast.** Podcast-native precedent for structured metadata (Smart Speed, chapters, transcript sync) improving UX. Marco Arment's public discussion of DAI transcript synchronization informed this spec's approach to ad break alignment.
+- **Snipd.** A podcast app that lets listeners highlight and annotate moments for personal note-taking. Listener-side annotation on podcast audio, already in production. This spec makes the same capability possible as an open, shared layer rather than a closed, personal tool.
 
-Podcast audio already contains this information — what's missing is a way to represent it as structured data. This spec defines a format that makes it possible. While annotations can be derived from transcripts, precomputed annotations enable more accurate timing, higher-quality entity resolution, and consistent cross-platform behavior.
+Podcast audio already contains this information. What's missing is a way to represent it as structured data. This spec defines a format that makes it possible. While annotations can be derived from transcripts, precomputed annotations enable more accurate timing, higher-quality entity resolution, and consistent cross-platform behavior.
 
 ## Annotation Object
 
@@ -55,7 +55,7 @@ An annotation represents a single entity mention or topic reference in audio. An
 | `image` | `string` | No | URL to an image representing the entity |
 | `speaker` | `string` | No | Speaker ID (references an entry in `speakers`) |
 | `quote` | `string` | No | The exact words from the transcript that triggered this annotation |
-| `tags` | `array of strings` | No | Freeform labels for search, clustering, and filtering |
+| `tags` | `string[]` | No | Freeform labels for search, clustering, and filtering |
 | `priority` | `number` | No | Editorial importance from 0.0 to 1.0, for UI display ordering |
 | `canonicalId` | `string` | No | Stable entity identifier for cross-episode deduplication |
 | `confidence` | `number` | No | Confidence score from 0.0 to 1.0 |
@@ -124,20 +124,20 @@ If provided, `id` MUST be unique within the annotation set. IDs SHOULD be stable
 
 Annotations SHOULD be sorted by `startTime` in ascending order. Consumers MUST NOT rely on ordering and SHOULD sort if necessary.
 
-Annotations MAY overlap in time. Multiple annotations at the same timestamp are valid — for example, a single moment might reference both a car and the person driving it. Implementations should define rendering behavior for overlapping annotations, such as stacking, prioritizing by type or confidence, or limiting simultaneous display.
+Annotations MAY overlap in time. Multiple annotations at the same timestamp are valid. A single moment might reference both a car and the person driving it. Implementations should define rendering behavior for overlapping annotations, such as stacking, prioritizing by type or confidence, or limiting simultaneous display.
 
 ### Validation Rules
 
 - `startTime` MUST be >= 0
 - `endTime` MUST be >= `startTime`
-- `confidence`, if provided, MUST be >= 0.0 and <= 1.0. Reflects extraction certainty — how sure the producer is that this annotation is correct.
-- `priority`, if provided, MUST be >= 0.0 and <= 1.0. Reflects editorial importance — how prominently this annotation should be displayed. A high-confidence annotation may still have low priority if it's tangential.
+- `confidence`, if provided, MUST be >= 0.0 and <= 1.0. This reflects extraction certainty: how sure the producer is that this annotation is correct.
+- `priority`, if provided, MUST be >= 0.0 and <= 1.0. This reflects editorial importance: how prominently this annotation should be displayed. A high-confidence annotation may still have low priority if it's tangential.
 - `speaker`, if provided, MUST reference a valid `id` in the `speakers` array
 - Time values SHOULD be within the duration of the associated audio
 
 ### Canonical IDs
 
-The `canonicalId` field provides a stable, human-readable identifier for the underlying entity — not the annotation itself. The same entity across multiple episodes or annotation sets SHOULD use the same `canonicalId`, enabling cross-episode deduplication, entity graphs, and aggregate views (e.g., "every episode that mentions the LS engine").
+The `canonicalId` field provides a stable, human-readable identifier for the underlying entity, not the annotation itself. The same entity across multiple episodes or annotation sets SHOULD use the same `canonicalId`, enabling cross-episode deduplication, entity graphs, and aggregate views (e.g., "every episode that mentions the LS engine").
 
 There is no required format, but a namespaced convention is recommended:
 
@@ -247,7 +247,7 @@ Speaker IDs are opaque strings. Use short, stable identifiers (e.g., `"s1"`, `"m
 
 ## Ad Breaks
 
-The `adBreaks` array defines time ranges where dynamically inserted content (ads, promos, sponsorships) appears. This is separate from annotations to keep the semantic distinction clean — ad breaks are structural holes in the content, not entity references.
+The `adBreaks` array defines time ranges where dynamically inserted content (ads, promos, sponsorships) appears. This is separate from annotations to keep the semantic distinction clean: ad breaks are structural holes in the content, not entity references.
 
 | Field | Type | Required | Description |
 |-------|------|----------|-------------|
@@ -267,11 +267,11 @@ The `adBreaks` array defines time ranges where dynamically inserted content (ads
 
 Players can use ad breaks to skip or realign annotations around dynamic ad insertion. When the audio variant differs from the canonical recording (different ads stitched in at different times), the ad break ranges describe where the inserted content lives.
 
-**Overlapping annotations:** When an annotation's time range overlaps with an ad break, behavior is player-defined. A player might pause the annotation during the ad and resume after, skip the annotation entirely, or extend it past the break. This spec does not mandate a specific behavior — implementations should document their approach.
+**Overlapping annotations:** When an annotation's time range overlaps with an ad break, behavior is player-defined. A player might pause the annotation during the ad and resume after, skip the annotation entirely, or extend it past the break. This spec does not mandate a specific behavior. Implementations should document their approach.
 
 ## Recommended Entity Types
 
-The following types are proven in production and recommended for interoperability. This list is not exhaustive — producers may use any string value for `type`.
+The following types are proven in production and recommended for interoperability. This list is not exhaustive; producers may use any string value for `type`.
 
 | Type | Description | Example |
 |------|-------------|---------|
@@ -474,21 +474,21 @@ Maps to this W3C Web Annotation:
 
 ## Relationship to Other Standards
 
-**Podcasting 2.0 Chapters** — Chapters define coarse segments (intro, topic, outro) with titles and artwork. Podcast annotations are fine-grained entity references within those segments. They are complementary: an episode might have 5 chapters and 40 annotations.
+**Podcasting 2.0 Chapters.** Chapters define coarse segments (intro, topic, outro) with titles and artwork. Podcast annotations are fine-grained entity references within those segments. They're complementary: an episode might have 5 chapters and 40 annotations.
 
-**WebVTT / SRT** — Subtitle formats carry the transcript text. This spec carries the entities and topics referenced in that text. A player might use WebVTT for the transcript and podcast annotations for contextual overlays.
+**WebVTT / SRT.** Subtitle formats carry the transcript text. This spec carries the entities and topics referenced in that text. A player might use WebVTT for the transcript and podcast annotations for contextual overlays.
 
-**Schema.org PodcastEpisode** — Schema.org defines episode-level metadata for search engines. This spec defines within-episode annotations. A `PodcastEpisode` might link to an `.annotations.json` file via a custom property.
+**Schema.org PodcastEpisode.** Schema.org defines episode-level metadata for search engines. This spec defines within-episode annotations. A `PodcastEpisode` might link to an `.annotations.json` file via a custom property.
 
-**Podcasting 2.0 `<podcast:person>`** — Tags people at the episode level (hosts, guests). Podcast annotations with `type: "person"` tag people at the moment level (when they're discussed, not just who's on the show).
+**Podcasting 2.0 `<podcast:person>`.** Tags people at the episode level (hosts, guests). Podcast annotations with `type: "person"` tag people at the moment level: when they're discussed, not just who's on the show.
 
-**RSS Distribution** — An episode's annotation file MAY be referenced from the RSS feed or episode web page. A future `<podcast:annotations>` namespace element could formalize this — see the Podcasting 2.0 namespace for the proposal process.
+**RSS Distribution.** An episode's annotation file MAY be referenced from the RSS feed or episode web page. A future `<podcast:annotations>` namespace element could formalize this. See the Podcasting 2.0 namespace for the proposal process.
 
-**Wikidata / DBpedia** — The `url` field on annotations can reference Wikidata entities (e.g., `https://www.wikidata.org/wiki/Q5300`) for canonical, language-independent entity identification. This enables linked data use cases without adding complexity to the core format.
+**Wikidata / DBpedia.** The `url` field on annotations can reference Wikidata entities (e.g., `https://www.wikidata.org/wiki/Q5300`) for canonical, language-independent entity identification. This enables linked data use cases without adding complexity to the core format.
 
 ## Reference Implementation
 
-[podcast-annotations](https://github.com/Car-Curious/podcast-annotations-js) — Framework-agnostic JavaScript library for rendering podcast annotations with audio players. Supports annotation overlays, transcript sync, timelines, chapters, and DAI alignment.
+[podcast-annotations](https://github.com/Car-Curious/podcast-annotations-js) is a framework-agnostic JavaScript library for rendering podcast annotations with audio players. It supports annotation overlays, transcript sync, timelines, chapters, and DAI alignment.
 
 This format was developed by [Car Curious](https://getcarcurious.com), a podcast annotation platform for automotive content, and is released as an open specification for the broader podcast ecosystem.
 
