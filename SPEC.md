@@ -32,8 +32,9 @@ Timestamped annotation on media is a proven pattern. It works, it scales, and po
 **Proven in podcasting:**
 - **Podcast chapters** (Podcasting 2.0, Podlove, MP4) — coarse timestamped metadata that podcast apps already implement, proving the ecosystem will adopt spec extensions that improve the listening experience.
 - **Overcast** — podcast-native precedent for structured metadata (Smart Speed, chapters, transcript sync) improving UX. Marco Arment's discussion of DAI transcript synchronization ([ATP #683](https://atp.fm/683)) informed this spec's approach to ad break alignment.
+- **Snipd** — a podcast app that lets listeners highlight and annotate moments for personal note-taking. Listener-side annotation on podcast audio, already in production. This spec makes the same capability possible as an open, shared layer rather than a closed, personal tool.
 
-Podcast audio has no equivalent for fine-grained entity annotation. This is the data format that makes it possible.
+Podcast audio has no open format for fine-grained entity annotation. This is the data format that makes it possible.
 
 ## Annotation Object
 
@@ -420,6 +421,8 @@ Maps to this W3C Web Annotation:
 **Schema.org PodcastEpisode** — Schema.org defines episode-level metadata for search engines. This spec defines within-episode annotations. A `PodcastEpisode` might link to an `.annotations.json` file via a custom property.
 
 **Podcasting 2.0 `<podcast:person>`** — Tags people at the episode level (hosts, guests). Podcast annotations with `type: "person"` tag people at the moment level (when they're discussed, not just who's on the show).
+
+**Wikidata / DBpedia** — The `url` field on annotations can reference Wikidata entities (e.g., `https://www.wikidata.org/wiki/Q5300`) for canonical, language-independent entity identification. This enables linked data use cases without adding complexity to the core format.
 
 ## Reference Implementation
 
