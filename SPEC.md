@@ -38,7 +38,7 @@ Podcast audio has no open format for fine-grained entity annotation. This is the
 
 ## Annotation Object
 
-An annotation represents a single entity mention or topic reference at a specific moment in audio.
+An annotation represents a single entity mention or topic reference in audio. An annotation's time range represents the duration over which the entity is actively discussed or relevant, not just the exact moment it is first mentioned.
 
 | Field | Type | Required | Description |
 |-------|------|----------|-------------|
@@ -78,6 +78,8 @@ An annotation represents a single entity mention or topic reference at a specifi
 
 All times are in **seconds as floating-point numbers**, measured from the start of the audio. This matches the Web Audio API, HTMLMediaElement, WebVTT, and most podcast tooling.
 
+Time values SHOULD use millisecond precision (e.g., `45.123`). Consumers SHOULD tolerate minor floating-point variance (e.g., treat `45.1999` and `45.2` as equivalent).
+
 ### The `data` Field
 
 The `data` object is an open extension point. Producers can store any JSON-serializable metadata here. Consumers should ignore fields they don't recognize.
@@ -86,6 +88,24 @@ Common uses:
 - Domain-specific attributes (make, model, year for cars)
 - Rendering hints (color, icon, priority)
 - Additional provenance or source metadata beyond `confidence` and `source`
+
+### Identifiers
+
+If provided, `id` MUST be unique within the annotation set. IDs SHOULD be stable across revisions of the same annotation set to support diffing, syncing, and caching. IDs MAY be strings or numbers, but producers SHOULD prefer strings for consistency.
+
+### Ordering and Overlaps
+
+Annotations SHOULD be sorted by `startTime` in ascending order. Consumers MUST NOT rely on ordering and SHOULD sort if necessary.
+
+Annotations MAY overlap in time. Multiple annotations at the same timestamp are valid — for example, a single moment might reference both a car and the person driving it. Implementations should define rendering behavior for overlapping annotations, such as stacking, prioritizing by type or confidence, or limiting simultaneous display.
+
+### Validation Rules
+
+- `startTime` MUST be >= 0
+- `endTime` MUST be >= `startTime`
+- `confidence`, if provided, MUST be >= 0.0 and <= 1.0
+- `speaker`, if provided, MUST reference a valid `id` in the `speakers` array
+- Time values SHOULD be within the duration of the associated audio
 
 ## Annotation Set
 
@@ -223,7 +243,7 @@ The following types are proven in production and recommended for interoperabilit
 | `person` | A person referenced in the content | "Carroll Shelby", "Ayrton Senna" |
 | `place` | A location or venue | "Nurburgring", "Bonneville Salt Flats" |
 
-All type values use **lowercase**. Single words are preferred for common types. Multi-word custom types should be hyphenated (e.g., `"race-series"`, `"engine-code"`).
+All type values use **lowercase**. Producers SHOULD use recommended types when applicable to maximize interoperability. Single words are preferred for common types. Custom types SHOULD be hyphenated (e.g., `"race-series"`, `"engine-code"`).
 
 ## File Extension and MIME Type
 
@@ -401,11 +421,11 @@ Maps to this W3C Web Annotation:
 |-----------|--------------------|
 | `startTime`, `endTime` | `target.selector.value` as `t=start,end` |
 | `title` | `body.value` |
-| `type` | `body.purpose` or a custom `body.type` |
+| `type` | Custom `body.type` or encoded within `body.purpose`, depending on implementation |
 | `url` | Additional `body` with `purpose: "linking"` |
 | `image` | Additional `body` with `purpose: "depicting"` |
 | `quote` | `body[1]` with `purpose: "quoting"` |
-| `speaker` | Not mapped (no W3C equivalent) |
+| `speaker` | May be represented via `creator` or external metadata in W3C systems |
 | `confidence` | Not mapped (application-specific) |
 | `data` | Not mapped (application-specific) |
 | `episode.audioUrl` | `target.source` |
