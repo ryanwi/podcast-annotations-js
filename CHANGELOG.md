@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.5.1 (2026-04-12)
+
+### Added
+- `fetchAnnotationSet(url)` — fetch and parse a `.annotations.json` file.
+- `AnnotationOverlay.fromURL(audio, url, options)` — static factory that fetches an annotation set and creates a synced overlay. Returns `{ overlay, annotationSet }` so consumers also get episode metadata, speakers, transcripts, and ad breaks.
+
 ## 0.5.0 (2026-04-11)
 
 ### Added

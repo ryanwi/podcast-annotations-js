@@ -1,4 +1,4 @@
-export { AnnotationOverlay } from './annotation-overlay.js'
+export { AnnotationOverlay, fetchAnnotationSet } from './annotation-overlay.js'
 export type { AnnotationOverlayOptions } from './annotation-overlay.js'
 
 export { TranscriptSync } from './transcript-sync.js'

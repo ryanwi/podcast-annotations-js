@@ -105,6 +105,19 @@ const timeline = new AnnotationTimeline(audio, {
 **Methods:** `setAnnotations(annotations)`, `destroy()`
 **Getters:** `currentAnnotation`, `upcoming`
 
+**Static factories:**
+- `AnnotationOverlay.fromURL(audio, url, options)` — Fetch a `.annotations.json` file and create a synced overlay. Returns `{ overlay, annotationSet }` where `annotationSet` contains episode metadata, speakers, transcripts, and ad breaks.
+
+```js
+const { overlay, annotationSet } = await AnnotationOverlay.fromURL(audio, '/episode.annotations.json', {
+  onAnnotationChange(annotation) { ... }
+})
+// annotationSet.speakers, annotationSet.adBreaks, etc. available for additional UI
+```
+
+**Standalone fetch:**
+- `fetchAnnotationSet(url)` — Fetch and parse a `.annotations.json` file without creating an overlay.
+
 ### `TranscriptSync(audio, options)`
 
 | Option | Type | Default | Description |

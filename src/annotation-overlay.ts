@@ -1,5 +1,16 @@
 import { enrichAnnotationsWithTiming, selectCurrentAnnotation, upcomingAnnotations } from './timing.js'
-import type { Annotation, EnrichedAnnotation, TimingOptions } from './types.js'
+import type { Annotation, AnnotationSet, EnrichedAnnotation, TimingOptions } from './types.js'
+
+/**
+ * Fetch and parse a `.annotations.json` file.
+ */
+export async function fetchAnnotationSet(url: string): Promise<AnnotationSet> {
+  const response = await fetch(url)
+  if (!response.ok) {
+    throw new Error(`Failed to fetch annotation set: ${response.status} ${response.statusText}`)
+  }
+  return response.json()
+}
 
 export interface AnnotationOverlayOptions extends TimingOptions {
   annotations?: Annotation[]
@@ -105,5 +116,29 @@ export class AnnotationOverlay {
 
   destroy(): void {
     this.audio.removeEventListener('timeupdate', this._boundUpdate)
+  }
+
+  /**
+   * Create by fetching a `.annotations.json` file.
+   *
+   * Returns both the overlay instance and the full annotation set
+   * (which includes episode metadata, speakers, transcripts, and ad breaks).
+   *
+   * @example
+   * const { overlay, annotationSet } = await AnnotationOverlay.fromURL(audio, '/episode.annotations.json', {
+   *   onAnnotationChange(annotation) { ... }
+   * })
+   */
+  static async fromURL(
+    audio: HTMLAudioElement,
+    url: string,
+    options: AnnotationOverlayOptions = {}
+  ): Promise<{ overlay: AnnotationOverlay; annotationSet: AnnotationSet }> {
+    const annotationSet = await fetchAnnotationSet(url)
+    const overlay = new AnnotationOverlay(audio, {
+      ...options,
+      annotations: annotationSet.annotations
+    })
+    return { overlay, annotationSet }
   }
 }

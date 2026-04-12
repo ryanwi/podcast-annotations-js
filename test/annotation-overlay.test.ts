@@ -1,5 +1,5 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest'
-import { AnnotationOverlay } from '../src/annotation-overlay.js'
+import { AnnotationOverlay, fetchAnnotationSet } from '../src/annotation-overlay.js'
 
 function createMockAudio() {
   const listeners = {}
@@ -194,5 +194,79 @@ describe('AnnotationOverlay', () => {
     const result = overlay.queryAtTime(5)
     expect(result.current).toBeNull()
     expect(result.upcoming).toHaveLength(1)
+  })
+})
+
+describe('fetchAnnotationSet', () => {
+  beforeEach(() => {
+    vi.restoreAllMocks()
+  })
+
+  it('fetches and returns an annotation set', async () => {
+    const mockSet = {
+      version: '1.0.0',
+      episode: { title: 'Test Episode' },
+      annotations: [
+        { startTime: 10, endTime: 30, type: 'car', title: 'Honda Civic' }
+      ]
+    }
+
+    vi.stubGlobal('fetch', vi.fn().mockResolvedValue({
+      ok: true,
+      json: () => Promise.resolve(mockSet)
+    }))
+
+    const result = await fetchAnnotationSet('/test.annotations.json')
+    expect(result.version).toBe('1.0.0')
+    expect(result.annotations).toHaveLength(1)
+    expect(result.episode.title).toBe('Test Episode')
+  })
+
+  it('throws on non-OK response', async () => {
+    vi.stubGlobal('fetch', vi.fn().mockResolvedValue({
+      ok: false,
+      status: 404,
+      statusText: 'Not Found'
+    }))
+
+    await expect(fetchAnnotationSet('/missing.json'))
+      .rejects.toThrow('Failed to fetch annotation set: 404 Not Found')
+  })
+})
+
+describe('AnnotationOverlay.fromURL', () => {
+  it('creates overlay from fetched annotation set', async () => {
+    const mockSet = {
+      version: '1.0.0',
+      episode: { title: 'Test Episode' },
+      speakers: [{ id: 's1', name: 'Host', role: 'host' }],
+      annotations: [
+        { startTime: 10, endTime: 30, type: 'car', title: 'Honda Civic' },
+        { startTime: 50, endTime: 70, type: 'term', title: 'Turbo' }
+      ]
+    }
+
+    vi.stubGlobal('fetch', vi.fn().mockResolvedValue({
+      ok: true,
+      json: () => Promise.resolve(mockSet)
+    }))
+
+    const audio = {
+      currentTime: 0,
+      addEventListener: vi.fn(),
+      removeEventListener: vi.fn()
+    }
+
+    const { overlay, annotationSet } = await AnnotationOverlay.fromURL(
+      audio as any,
+      '/test.annotations.json',
+      { upcomingLimit: 5 }
+    )
+
+    expect(overlay.annotations).toHaveLength(2)
+    expect(overlay.options.upcomingLimit).toBe(5)
+    expect(annotationSet.version).toBe('1.0.0')
+    expect(annotationSet.speakers).toHaveLength(1)
+    expect(annotationSet.episode.title).toBe('Test Episode')
   })
 })
