@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.4.3 (2026-04-11)
+
+### Fixed
+- `TranscriptSync` did not clear segment classes when seeking backward past all segments. The adjacent-move optimization skipped the full reclassify when `newIndex` was -1 due to an off-by-one in the threshold check.
+
 ## 0.4.2 (2026-04-10)
 
 ### Added
