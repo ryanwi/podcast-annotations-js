@@ -55,7 +55,7 @@ An annotation represents a single entity mention or topic reference in audio. An
 | `image` | `string` | No | URL to an image representing the entity |
 | `speaker` | `string` | No | Speaker ID (references an entry in `speakers`) |
 | `quote` | `string` | No | The exact words from the transcript that triggered this annotation |
-| `tags` | `string[]` | No | Freeform labels for search, clustering, and filtering |
+| `tags` | `array of strings` | No | Freeform labels for search, clustering, and filtering |
 | `priority` | `number` | No | Editorial importance from 0.0 to 1.0, for UI display ordering |
 | `canonicalId` | `string` | No | Stable entity identifier for cross-episode deduplication |
 | `confidence` | `number` | No | Confidence score from 0.0 to 1.0 |
