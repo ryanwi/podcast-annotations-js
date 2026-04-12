@@ -27,7 +27,7 @@ Timestamped annotation on media is a proven pattern. It works, it scales, and po
 - **VH1 Pop-Up Video.** The original mainstream example: timestamped contextual notes overlaid on media playback.
 - **Amazon Prime Video X-Ray.** Cast, characters, and trivia synced to the current scene. The canonical modern implementation.
 - **YouTube Info Cards.** Lightweight timed overlays linking to related content mid-video.
-- **SoundCloud timed comments.** The earliest mainstream timestamped annotation on audio. Users drop comments at any `t=` position, proving listeners engage with moment-level audio annotation.
+- **SoundCloud timed comments.** One of the earliest mainstream timestamped annotations on audio. Users drop comments at any `t=` position, proving listeners engage with moment-level audio annotation.
 
 **Proven at scale:**
 - **Genius.** Community annotation layer on lyrics, proving that entity-level annotation on media content is a viable product at scale. Structurally the closest analog: annotation body attached to a media anchor, with a URL for more context.
@@ -103,7 +103,7 @@ Full example with all optional fields:
 
 ### Time Format
 
-All times are in **seconds as floating-point numbers**, measured from the start of the audio. This matches the Web Audio API, HTMLMediaElement, WebVTT, and most podcast tooling.
+All times are in **seconds as floating-point numbers**, measured from the start of the audio. This aligns with the Web Audio API, HTMLMediaElement, WebVTT, and most podcast tooling.
 
 Time values SHOULD use millisecond precision (e.g., `45.123`). Consumers SHOULD tolerate minor floating-point variance (e.g., treat `45.1999` and `45.2` as equivalent).
 
@@ -145,7 +145,7 @@ There is no required format, but a namespaced convention is recommended:
 - `person:carroll-shelby`
 - `place:nurburgring`
 
-Producers MAY also use external identifiers such as Wikidata QIDs (e.g., `wikidata:Q5300`).
+Producers MAY also use external identifiers such as Wikidata QIDs (e.g., `wikidata:Q332448`).
 
 ## Annotation Set
 
