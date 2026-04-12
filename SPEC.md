@@ -51,6 +51,9 @@ An annotation represents a single entity mention or topic reference in audio. An
 | `image` | `string` | No | URL to an image representing the entity |
 | `speaker` | `string` | No | Speaker ID (references an entry in `speakers`) |
 | `quote` | `string` | No | The exact words from the transcript that triggered this annotation |
+| `tags` | `string[]` | No | Freeform labels for search, clustering, and filtering |
+| `priority` | `number` | No | Importance from 0.0 to 1.0, for UI prioritization |
+| `canonicalId` | `string` | No | Stable entity identifier for cross-episode deduplication |
 | `confidence` | `number` | No | Confidence score from 0.0 to 1.0 |
 | `source` | `string` | No | How the annotation was produced (e.g., `"human"`, `"ai"`, `"hybrid"`) |
 | `data` | `object` | No | Arbitrary extension metadata |
@@ -65,6 +68,9 @@ An annotation represents a single entity mention or topic reference in audio. An
   "url": "https://example.com/ls-engine",
   "speaker": "s1",
   "quote": "the LS is just a completely different animal",
+  "tags": ["engine", "swap", "performance"],
+  "priority": 0.9,
+  "canonicalId": "car:chevrolet:ls",
   "confidence": 0.95,
   "source": "ai",
   "data": {
@@ -104,8 +110,21 @@ Annotations MAY overlap in time. Multiple annotations at the same timestamp are 
 - `startTime` MUST be >= 0
 - `endTime` MUST be >= `startTime`
 - `confidence`, if provided, MUST be >= 0.0 and <= 1.0
+- `priority`, if provided, MUST be >= 0.0 and <= 1.0
 - `speaker`, if provided, MUST reference a valid `id` in the `speakers` array
 - Time values SHOULD be within the duration of the associated audio
+
+### Canonical IDs
+
+The `canonicalId` field provides a stable, human-readable identifier for the underlying entity — not the annotation itself. The same entity across multiple episodes or annotation sets SHOULD use the same `canonicalId`, enabling cross-episode deduplication, entity graphs, and aggregate views (e.g., "every episode that mentions the LS engine").
+
+There is no required format, but a namespaced convention is recommended:
+
+- `car:chevrolet:camaro:1969`
+- `person:carroll-shelby`
+- `place:nurburgring`
+
+Producers MAY also use external identifiers such as Wikidata QIDs (e.g., `wikidata:Q5300`).
 
 ## Annotation Set
 
