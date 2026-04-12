@@ -4,7 +4,13 @@ Every podcast episode is full of references — cars, people, places, concepts �
 
 **podcast-annotations** is the reference implementation of the [Podcast Annotation Format](SPEC.md) — an open spec for timestamped, typed entity annotations on audio. Think X-Ray for podcasts, but open and format-level instead of locked inside one platform.
 
-Timed annotation overlays, live transcript sync, and annotation timelines for audio players. Framework-agnostic vanilla JavaScript — zero dependencies. Built for [Car Curious](https://getcarcurious.com).
+Hit play and see:
+
+- **"LS Engine"** appears at 0:45 as the host discusses it
+- **"Turbocharger"** pops up at 2:00 with a link to learn more
+- A **timeline** shows every topic in the episode — click to jump
+
+All synced to playback. Framework-agnostic vanilla JavaScript — zero dependencies. Built for [Car Curious](https://getcarcurious.com).
 
 ## Features
 
@@ -14,6 +20,8 @@ Timed annotation overlays, live transcript sync, and annotation timelines for au
 - **DAI Alignment** — Remap canonical transcripts to variant audio with dynamic ad insertion, with gap-aware sync that pauses during ad breaks
 
 Each module works independently. Use one, two, or all three.
+
+Handling timing, overlaps, ad insertion gaps, and transcript sync correctly is surprisingly tricky. This library provides a minimal, battle-tested implementation so you don't have to rebuild it.
 
 ## Install
 
@@ -39,17 +47,17 @@ const audio = document.querySelector('audio')
 // Annotations auto-trigger during playback
 const overlay = new AnnotationOverlay(audio, {
   annotations: [
-    { startTime: 45, endTime: 75, data: { title: 'LS Engine', type: 'car' } },
-    { startTime: 120, endTime: 150, data: { title: 'Turbocharger', type: 'part' } }
+    { startTime: 45, endTime: 75, type: 'car', title: 'LS Engine' },
+    { startTime: 120, endTime: 150, type: 'part', title: 'Turbocharger' }
   ],
   onAnnotationChange(annotation) {
     document.querySelector('#overlay').innerHTML = annotation
-      ? `<strong>${annotation.data.title}</strong>`
+      ? `<strong>${annotation.title}</strong>`
       : ''
   },
   onUpcomingChange(upcoming) {
     document.querySelector('#coming-up').innerHTML = upcoming
-      .map(a => `<span>${a.data.title} at ${Math.floor(a.startTime)}s</span>`)
+      .map(a => `<span>${a.title} at ${Math.floor(a.startTime)}s</span>`)
       .join('')
   }
 })

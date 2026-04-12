@@ -8,9 +8,9 @@ A minimal JSON format for timestamped entity annotations on podcast and spoken m
 
 WebVTT tells you what was said. Podcast annotations tell you what was said *about*.
 
-Transcripts give you words and timestamps. But when a host mentions a 1969 Camaro at 0:45, a turbocharger at 2:00, or Carroll Shelby at 3:15, that meaning is buried in text — not structured, not linkable, and not reliable to extract later.
+Transcripts give you words and timestamps. But when a host mentions a 1969 Camaro at 0:45, a turbocharger at 2:00, or Carroll Shelby at 3:15, that meaning is invisible to apps — not structured, not linkable, and difficult to extract reliably later.
 
-The Podcast Annotation Format is a simple, open JSON spec for timestamped entity annotations on audio. Transcripts made podcasts searchable. Annotations make them understandable.
+The Podcast Annotation Format is a simple, open JSON spec for timestamped entity annotations on audio. Annotation sets can be produced by humans, automated pipelines, or hybrid workflows. Transcripts made podcasts searchable. Annotations make them understandable.
 
 ### Design Principles
 
@@ -55,12 +55,28 @@ An annotation represents a single entity mention or topic reference in audio. An
 | `image` | `string` | No | URL to an image representing the entity |
 | `speaker` | `string` | No | Speaker ID (references an entry in `speakers`) |
 | `quote` | `string` | No | The exact words from the transcript that triggered this annotation |
-| `tags` | `string[]` | No | Freeform labels for search, clustering, and filtering |
-| `priority` | `number` | No | Importance from 0.0 to 1.0, for UI prioritization |
+| `tags` | `array of strings` | No | Freeform labels for search, clustering, and filtering |
+| `priority` | `number` | No | Editorial importance from 0.0 to 1.0, for UI display ordering |
 | `canonicalId` | `string` | No | Stable entity identifier for cross-episode deduplication |
 | `confidence` | `number` | No | Confidence score from 0.0 to 1.0 |
 | `source` | `string` | No | How the annotation was produced (e.g., `"human"`, `"ai"`, `"hybrid"`) |
 | `data` | `object` | No | Arbitrary extension metadata |
+
+Typical usage:
+
+```json
+{
+  "startTime": 45.2,
+  "endTime": 75.0,
+  "type": "car",
+  "title": "LS Engine",
+  "url": "https://example.com/ls-engine",
+  "speaker": "s1",
+  "quote": "the LS is just a completely different animal"
+}
+```
+
+Full example with all optional fields:
 
 ```json
 {
@@ -70,6 +86,7 @@ An annotation represents a single entity mention or topic reference in audio. An
   "type": "car",
   "title": "LS Engine",
   "url": "https://example.com/ls-engine",
+  "image": "https://example.com/ls-engine.jpg",
   "speaker": "s1",
   "quote": "the LS is just a completely different animal",
   "tags": ["engine", "swap", "performance"],
@@ -113,8 +130,8 @@ Annotations MAY overlap in time. Multiple annotations at the same timestamp are 
 
 - `startTime` MUST be >= 0
 - `endTime` MUST be >= `startTime`
-- `confidence`, if provided, MUST be >= 0.0 and <= 1.0
-- `priority`, if provided, MUST be >= 0.0 and <= 1.0
+- `confidence`, if provided, MUST be >= 0.0 and <= 1.0. Reflects extraction certainty — how sure the producer is that this annotation is correct.
+- `priority`, if provided, MUST be >= 0.0 and <= 1.0. Reflects editorial importance — how prominently this annotation should be displayed. A high-confidence annotation may still have low priority if it's tangential.
 - `speaker`, if provided, MUST reference a valid `id` in the `speakers` array
 - Time values SHOULD be within the duration of the associated audio
 
@@ -464,6 +481,8 @@ Maps to this W3C Web Annotation:
 **Schema.org PodcastEpisode** — Schema.org defines episode-level metadata for search engines. This spec defines within-episode annotations. A `PodcastEpisode` might link to an `.annotations.json` file via a custom property.
 
 **Podcasting 2.0 `<podcast:person>`** — Tags people at the episode level (hosts, guests). Podcast annotations with `type: "person"` tag people at the moment level (when they're discussed, not just who's on the show).
+
+**RSS Distribution** — An episode's annotation file MAY be referenced from the RSS feed (e.g., via a `<podcast:annotations>` link element) or linked from the episode web page. This spec defines the format, not the delivery mechanism — integration with RSS and Podcasting 2.0 namespace is a natural next step.
 
 **Wikidata / DBpedia** — The `url` field on annotations can reference Wikidata entities (e.g., `https://www.wikidata.org/wiki/Q5300`) for canonical, language-independent entity identification. This enables linked data use cases without adding complexity to the core format.
 
