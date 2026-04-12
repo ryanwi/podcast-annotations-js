@@ -482,7 +482,7 @@ Maps to this W3C Web Annotation:
 
 ## Reference Implementation
 
-[podcast-annotations](https://github.com/Car-Curious/podcast-annotations-js) is a framework-agnostic JavaScript library for rendering podcast annotations with audio players. It supports annotation overlays, transcript sync, timelines, chapters, and DAI alignment.
+[podcast-annotations](https://github.com/ryanwi/podcast-annotations-js) is a framework-agnostic JavaScript library for rendering podcast annotations with audio players. It supports annotation overlays, transcript sync, timelines, chapters, and DAI alignment.
 
 This format was developed by [Car Curious](https://getcarcurious.com), a podcast annotation platform for automotive content, and is released as an open specification for the broader podcast ecosystem.
 
