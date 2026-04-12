@@ -133,4 +133,27 @@ describe('TranscriptSync', () => {
 
     expect(sync.isAutoScrolling).toBe(true)
   })
+
+  it('clears all classes when seeking backward past all segments', () => {
+    const container = createTranscriptDOM()
+    new TranscriptSync(audio, { container, autoScroll: false })
+
+    // First, seek to activate segment 0
+    audio.currentTime = 5
+    audio._emit('timeupdate')
+
+    const segments = container.querySelectorAll('[data-start-time]')
+    expect(segments[0].classList.contains('active')).toBe(true)
+
+    // Now seek backward before all segments
+    audio.currentTime = -1
+    audio._emit('timeupdate')
+
+    // All classes should be cleared — no segment is active, past, or future
+    for (const seg of segments) {
+      expect(seg.classList.contains('active')).toBe(false)
+      expect(seg.classList.contains('past')).toBe(false)
+      expect(seg.classList.contains('future')).toBe(false)
+    }
+  })
 })

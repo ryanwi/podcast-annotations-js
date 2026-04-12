@@ -141,8 +141,8 @@ export class TranscriptSync {
   private _updateSegmentClasses(prevIndex: number, newIndex: number): void {
     const { activeClass, pastClass, futureClass } = this.options
 
-    // For first activation, large seeks, or backward seeks — full reclassify
-    if (prevIndex === -1 || Math.abs(newIndex - prevIndex) > 1) {
+    // For first activation, deactivation, large seeks, or backward seeks — full reclassify
+    if (prevIndex === -1 || newIndex === -1 || Math.abs(newIndex - prevIndex) > 1) {
       this._segments.forEach((el, i) => {
         el.classList.toggle(activeClass, i === newIndex)
         el.classList.toggle(pastClass, i < newIndex && newIndex >= 0)
