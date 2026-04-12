@@ -273,7 +273,8 @@ The following types are proven in production and recommended for interoperabilit
 | `part` | A vehicle or mechanical component | "Turbocharger", "LS3 crate engine" |
 | `term` | A technical or domain-specific term | "Oversteer", "Forced induction" |
 | `concept` | A broader topic or idea | "Electrification", "Motorsport safety" |
-| `brand` | A company or brand name | "Brembo", "Michelin" |
+| `brand` | A brand name | "Brembo", "Michelin" |
+| `company` | A company or organization | "FCP Euro", "General Motors" |
 | `person` | A person referenced in the content | "Carroll Shelby", "Ayrton Senna" |
 | `place` | A location or venue | "Nurburgring", "Bonneville Salt Flats" |
 
