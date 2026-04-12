@@ -1,8 +1,12 @@
 import { readFileSync, writeFileSync } from 'fs'
+import { execSync } from 'child_process'
 import { marked } from 'marked'
 
 const spec = readFileSync('SPEC.md', 'utf-8')
 const body = marked.parse(spec)
+
+// Get last commit date of SPEC.md for sitemap lastmod
+const lastmod = execSync('git log -1 --format=%cI SPEC.md', { encoding: 'utf-8' }).trim().slice(0, 10)
 
 const html = `<!DOCTYPE html>
 <html lang="en">
@@ -14,8 +18,8 @@ const html = `<!DOCTYPE html>
   <meta property="og:title" content="Podcast Annotation Format">
   <meta property="og:description" content="WebVTT tells you what was said. Podcast annotations tell you what was said about.">
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://podcastannotation.org">
-  <link rel="canonical" href="https://podcastannotation.org">
+  <meta property="og:url" content="https://www.podcastannotation.org">
+  <link rel="canonical" href="https://www.podcastannotation.org">
   <style>
     :root {
       --text: #1a1a1a;
@@ -99,3 +103,15 @@ ${body}
 
 writeFileSync('docs/index.html', html)
 console.log('docs/index.html updated')
+
+const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://www.podcastannotation.org/</loc>
+    <lastmod>${lastmod}</lastmod>
+  </url>
+</urlset>
+`
+
+writeFileSync('docs/sitemap.xml', sitemap)
+console.log('docs/sitemap.xml updated')
