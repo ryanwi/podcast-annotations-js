@@ -80,19 +80,716 @@
   </style>
 </head>
 <body>
-  <article id="spec"></article>
+  <article id="spec">
+<h1>Podcast Annotation Format</h1>
+<p><strong>Version 1.0.0</strong></p>
+<p>A minimal JSON format for timestamped entity annotations on podcast and spoken media content.</p>
+<h2>Overview</h2>
+<p>WebVTT tells you what was said. Podcast annotations tell you what was said <em>about</em>.</p>
+<p>Transcripts give you words and timestamps. But when a host mentions a 1969 Camaro at 0:45, a turbocharger at 2:00, or Carroll Shelby at 3:15, that meaning is invisible to apps. It&#39;s not structured, not linkable, and difficult to extract reliably after the fact.</p>
+<p>The Podcast Annotation Format is a simple, open JSON spec for timestamped entity annotations on audio. Annotation sets can be produced by humans, automated pipelines, or hybrid workflows. Transcripts made podcasts searchable. Annotations make them understandable.</p>
+<h3>Design Principles</h3>
+<ul>
+<li><strong>Minimal.</strong> Only two required fields (<code>startTime</code>, <code>endTime</code>). Everything else is optional.</li>
+<li><strong>Extensible.</strong> The <code>data</code> object is an open extension point for app-specific metadata.</li>
+<li><strong>Framework-agnostic.</strong> Plain JSON. No JSON-LD, no XML, no runtime dependencies.</li>
+<li><strong>Human-readable.</strong> A developer should understand an annotation file without reading this spec.</li>
+</ul>
+<h2>Prior Art &amp; Inspiration</h2>
+<p>Timestamped annotation on media is a proven pattern. It works, it scales, and podcasting is the missing piece.</p>
+<p><strong>Proven UX pattern:</strong></p>
+<ul>
+<li><strong>VH1 Pop-Up Video.</strong> The original mainstream example: timestamped contextual notes overlaid on media playback.</li>
+<li><strong>Amazon Prime Video X-Ray.</strong> Cast, characters, and trivia synced to the current scene. The canonical modern implementation.</li>
+<li><strong>YouTube Info Cards.</strong> Lightweight timed overlays linking to related content mid-video.</li>
+<li><strong>SoundCloud timed comments.</strong> One of the earliest mainstream timestamped annotations on audio. Users drop comments at any <code>t=</code> position, proving listeners engage with moment-level audio annotation.</li>
+</ul>
+<p><strong>Proven at scale:</strong></p>
+<ul>
+<li><strong>Genius.</strong> Community annotation layer on lyrics, proving that entity-level annotation on media content is a viable product at scale. Structurally the closest analog: annotation body attached to a media anchor, with a URL for more context.</li>
+<li><strong>BBC Linked Data.</strong> Around 2012-2016 the BBC built the most serious real-world deployment of entity annotation on broadcast content, tagging people, places, and topics against their audio and video archive using their <code>programmes</code> ontology. The closest institutional precedent.</li>
+</ul>
+<p><strong>Proven in podcasting:</strong></p>
+<ul>
+<li><strong>Podcast chapters</strong> (Podcasting 2.0, Podlove, MP4). Coarse timestamped metadata that podcast apps already implement, proving the ecosystem will adopt spec extensions that improve the listening experience.</li>
+<li><strong>Overcast.</strong> Podcast-native precedent for structured metadata (Smart Speed, chapters, transcript sync) improving UX. Marco Arment&#39;s public discussion of DAI transcript synchronization informed this spec&#39;s approach to ad break alignment.</li>
+<li><strong>Snipd.</strong> A podcast app that lets listeners highlight and annotate moments for personal note-taking. Listener-side annotation on podcast audio, already in production. This spec makes the same capability possible as an open, shared layer rather than a closed, personal tool.</li>
+</ul>
+<p>Podcast audio already contains this information. What&#39;s missing is a way to represent it as structured data. This spec defines a format that makes it possible. While annotations can be derived from transcripts, precomputed annotations enable more accurate timing, higher-quality entity resolution, and consistent cross-platform behavior.</p>
+<h2>Annotation Object</h2>
+<p>An annotation represents a single entity mention or topic reference in audio. An annotation&#39;s time range represents the duration over which the entity is actively discussed or relevant, not just the exact moment it is first mentioned.</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>id</code></td>
+<td><code>string | number</code></td>
+<td>No</td>
+<td>Unique identifier within the annotation set</td>
+</tr>
+<tr>
+<td><code>startTime</code></td>
+<td><code>number</code></td>
+<td><strong>Yes</strong></td>
+<td>Start time in seconds (float)</td>
+</tr>
+<tr>
+<td><code>endTime</code></td>
+<td><code>number</code></td>
+<td><strong>Yes</strong></td>
+<td>End time in seconds (float)</td>
+</tr>
+<tr>
+<td><code>type</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Entity type (see <a href="#recommended-entity-types">Recommended Types</a>)</td>
+</tr>
+<tr>
+<td><code>title</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Human-readable display label</td>
+</tr>
+<tr>
+<td><code>url</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>URL to more information about the entity</td>
+</tr>
+<tr>
+<td><code>image</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>URL to an image representing the entity</td>
+</tr>
+<tr>
+<td><code>speaker</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Speaker ID (references an entry in <code>speakers</code>)</td>
+</tr>
+<tr>
+<td><code>quote</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The exact words from the transcript that triggered this annotation</td>
+</tr>
+<tr>
+<td><code>tags</code></td>
+<td><code>array of strings</code></td>
+<td>No</td>
+<td>Freeform labels for search, clustering, and filtering</td>
+</tr>
+<tr>
+<td><code>priority</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>Editorial importance from 0.0 to 1.0, for UI display ordering</td>
+</tr>
+<tr>
+<td><code>canonicalId</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Stable entity identifier for cross-episode deduplication</td>
+</tr>
+<tr>
+<td><code>confidence</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>Confidence score from 0.0 to 1.0</td>
+</tr>
+<tr>
+<td><code>source</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>How the annotation was produced (e.g., <code>&quot;human&quot;</code>, <code>&quot;ai&quot;</code>, <code>&quot;hybrid&quot;</code>)</td>
+</tr>
+<tr>
+<td><code>data</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Arbitrary extension metadata</td>
+</tr>
+</tbody></table>
+<p>Typical usage:</p>
+<pre><code class="language-json">{
+  &quot;startTime&quot;: 45.2,
+  &quot;endTime&quot;: 75.0,
+  &quot;type&quot;: &quot;car&quot;,
+  &quot;title&quot;: &quot;LS Engine&quot;,
+  &quot;url&quot;: &quot;https://example.com/ls-engine&quot;,
+  &quot;speaker&quot;: &quot;s1&quot;,
+  &quot;quote&quot;: &quot;the LS is just a completely different animal&quot;
+}
+</code></pre>
+<p>Full example with all optional fields:</p>
+<pre><code class="language-json">{
+  &quot;id&quot;: &quot;ls-engine-1&quot;,
+  &quot;startTime&quot;: 45.2,
+  &quot;endTime&quot;: 75.0,
+  &quot;type&quot;: &quot;car&quot;,
+  &quot;title&quot;: &quot;LS Engine&quot;,
+  &quot;url&quot;: &quot;https://example.com/ls-engine&quot;,
+  &quot;image&quot;: &quot;https://example.com/ls-engine.jpg&quot;,
+  &quot;speaker&quot;: &quot;s1&quot;,
+  &quot;quote&quot;: &quot;the LS is just a completely different animal&quot;,
+  &quot;tags&quot;: [&quot;engine&quot;, &quot;swap&quot;, &quot;performance&quot;],
+  &quot;priority&quot;: 0.9,
+  &quot;canonicalId&quot;: &quot;car:chevrolet:ls&quot;,
+  &quot;confidence&quot;: 0.95,
+  &quot;source&quot;: &quot;ai&quot;,
+  &quot;data&quot;: {
+    &quot;make&quot;: &quot;Chevrolet&quot;,
+    &quot;displacement&quot;: &quot;5.7L&quot;
+  }
+}
+</code></pre>
+<h3>Time Format</h3>
+<p>All times are in <strong>seconds as floating-point numbers</strong>, measured from the start of the audio. This aligns with the Web Audio API, HTMLMediaElement, WebVTT, and most podcast tooling.</p>
+<p>Time values SHOULD use millisecond precision (e.g., <code>45.123</code>). Consumers SHOULD tolerate minor floating-point variance (e.g., treat <code>45.1999</code> and <code>45.2</code> as equivalent).</p>
+<h3>The <code>data</code> Field</h3>
+<p>The <code>data</code> object is an open extension point. Producers can store any JSON-serializable metadata here. Consumers should ignore fields they don&#39;t recognize.</p>
+<p>Common uses:</p>
+<ul>
+<li>Domain-specific attributes (make, model, year for cars)</li>
+<li>Rendering hints (color, icon, priority)</li>
+<li>Additional provenance or source metadata beyond <code>confidence</code> and <code>source</code></li>
+</ul>
+<h3>Identifiers</h3>
+<p>If provided, <code>id</code> MUST be unique within the annotation set. IDs SHOULD be stable across revisions of the same annotation set to support diffing, syncing, and caching. IDs MAY be strings or numbers, but producers SHOULD prefer strings for consistency.</p>
+<h3>Ordering and Overlaps</h3>
+<p>Annotations SHOULD be sorted by <code>startTime</code> in ascending order. Consumers MUST NOT rely on ordering and SHOULD sort if necessary.</p>
+<p>Annotations MAY overlap in time. Multiple annotations at the same timestamp are valid. A single moment might reference both a car and the person driving it. Implementations should define rendering behavior for overlapping annotations, such as stacking, prioritizing by type or confidence, or limiting simultaneous display.</p>
+<h3>Validation Rules</h3>
+<ul>
+<li><code>startTime</code> MUST be &gt;= 0</li>
+<li><code>endTime</code> MUST be &gt;= <code>startTime</code></li>
+<li><code>confidence</code>, if provided, MUST be &gt;= 0.0 and &lt;= 1.0. This reflects extraction certainty: how sure the producer is that this annotation is correct.</li>
+<li><code>priority</code>, if provided, MUST be &gt;= 0.0 and &lt;= 1.0. This reflects editorial importance: how prominently this annotation should be displayed. A high-confidence annotation may still have low priority if it&#39;s tangential.</li>
+<li><code>speaker</code>, if provided, MUST reference a valid <code>id</code> in the <code>speakers</code> array</li>
+<li>Time values SHOULD be within the duration of the associated audio</li>
+</ul>
+<h3>Canonical IDs</h3>
+<p>The <code>canonicalId</code> field provides a stable, human-readable identifier for the underlying entity, not the annotation itself. The same entity across multiple episodes or annotation sets SHOULD use the same <code>canonicalId</code>, enabling cross-episode deduplication, entity graphs, and aggregate views (e.g., &quot;every episode that mentions the LS engine&quot;).</p>
+<p>There is no required format, but a namespaced convention is recommended:</p>
+<ul>
+<li><code>car:chevrolet:camaro:1969</code></li>
+<li><code>person:carroll-shelby</code></li>
+<li><code>place:nurburgring</code></li>
+</ul>
+<p>Producers MAY also use external identifiers such as Wikidata QIDs (e.g., <code>wikidata:Q332448</code>).</p>
+<h2>Annotation Set</h2>
+<p>An annotation set is the container format for a collection of annotations associated with a single episode or audio file.</p>
+<pre><code class="language-json">{
+  &quot;version&quot;: &quot;1.0.0&quot;,
+  &quot;episode&quot;: {
+    &quot;title&quot;: &quot;Cars That Need A Comeback (A-M), The Fourth Car, Minivan Peer Pressure | Episode 1,013&quot;,
+    &quot;url&quot;: &quot;https://getcarcurious.com/episodes/cars-that-need-a-comeback-a-m-the-fourth-car-minivan-peer-pressure-episode-1-013&quot;,
+    &quot;audioUrl&quot;: &quot;https://traffic.megaphone.fm/EDLLC3477736751.mp3&quot;
+  },
+  &quot;speakers&quot;: [
+    { &quot;id&quot;: &quot;paul&quot;, &quot;name&quot;: &quot;Paul Zarella&quot;, &quot;role&quot;: &quot;host&quot; },
+    { &quot;id&quot;: &quot;todd&quot;, &quot;name&quot;: &quot;Todd Deeken&quot;, &quot;role&quot;: &quot;host&quot; }
+  ],
+  &quot;annotations&quot;: [
+    {
+      &quot;startTime&quot;: 53.12,
+      &quot;endTime&quot;: 57.6,
+      &quot;type&quot;: &quot;car&quot;,
+      &quot;title&quot;: &quot;Honda Prelude&quot;
+    },
+    {
+      &quot;startTime&quot;: 898.24,
+      &quot;endTime&quot;: 902.96,
+      &quot;type&quot;: &quot;car&quot;,
+      &quot;title&quot;: &quot;Toyota Supra&quot;
+    }
+  ]
+}
+</code></pre>
+<h3>Container Fields</h3>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>version</code></td>
+<td><code>string</code></td>
+<td><strong>Yes</strong></td>
+<td>Spec version (semver, currently <code>&quot;1.0.0&quot;</code>)</td>
+</tr>
+<tr>
+<td><code>episode</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Episode metadata</td>
+</tr>
+<tr>
+<td><code>episode.title</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Episode title</td>
+</tr>
+<tr>
+<td><code>episode.url</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Episode web page</td>
+</tr>
+<tr>
+<td><code>episode.audioUrl</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>URL to the audio file</td>
+</tr>
+<tr>
+<td><code>transcripts</code></td>
+<td><code>array</code></td>
+<td>No</td>
+<td>Transcript files (see <a href="#transcripts">Transcripts</a>)</td>
+</tr>
+<tr>
+<td><code>speakers</code></td>
+<td><code>array</code></td>
+<td>No</td>
+<td>Speaker definitions (see <a href="#speakers">Speakers</a>)</td>
+</tr>
+<tr>
+<td><code>adBreaks</code></td>
+<td><code>array</code></td>
+<td>No</td>
+<td>Ad/insertion break ranges (see <a href="#ad-breaks">Ad Breaks</a>)</td>
+</tr>
+<tr>
+<td><code>annotations</code></td>
+<td><code>array</code></td>
+<td><strong>Yes</strong></td>
+<td>Array of annotation objects</td>
+</tr>
+</tbody></table>
+<p>The <code>episode</code> object is optional. When annotations are delivered alongside audio (e.g., via RSS or an API), episode metadata may be redundant. For episode-level prose metadata (show notes, descriptions), see Schema.org <code>PodcastEpisode</code>.</p>
+<h2>Transcripts</h2>
+<p>The <code>transcripts</code> array links to transcript files associated with the audio. Multiple formats can be provided.</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>url</code></td>
+<td><code>string</code></td>
+<td><strong>Yes</strong></td>
+<td>URL to the transcript file</td>
+</tr>
+<tr>
+<td><code>format</code></td>
+<td><code>string</code></td>
+<td><strong>Yes</strong></td>
+<td>File format: <code>&quot;vtt&quot;</code>, <code>&quot;srt&quot;</code>, or <code>&quot;json&quot;</code></td>
+</tr>
+<tr>
+<td><code>language</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>BCP 47 language tag (e.g., <code>&quot;en&quot;</code>, <code>&quot;es&quot;</code>)</td>
+</tr>
+</tbody></table>
+<pre><code class="language-json">{
+  &quot;transcripts&quot;: [
+    { &quot;url&quot;: &quot;https://example.com/ep42.vtt&quot;, &quot;format&quot;: &quot;vtt&quot;, &quot;language&quot;: &quot;en&quot; },
+    { &quot;url&quot;: &quot;https://example.com/ep42.srt&quot;, &quot;format&quot;: &quot;srt&quot;, &quot;language&quot;: &quot;en&quot; }
+  ]
+}
+</code></pre>
+<h2>Speakers</h2>
+<p>The <code>speakers</code> array defines the people speaking in the audio. Annotations reference speakers by <code>id</code>.</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>id</code></td>
+<td><code>string</code></td>
+<td><strong>Yes</strong></td>
+<td>Unique identifier referenced by annotations</td>
+</tr>
+<tr>
+<td><code>name</code></td>
+<td><code>string</code></td>
+<td><strong>Yes</strong></td>
+<td>Display name</td>
+</tr>
+<tr>
+<td><code>role</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Role in the episode (see recommended values below)</td>
+</tr>
+<tr>
+<td><code>url</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>URL to the speaker&#39;s profile or website</td>
+</tr>
+</tbody></table>
+<pre><code class="language-json">{
+  &quot;speakers&quot;: [
+    { &quot;id&quot;: &quot;paul&quot;, &quot;name&quot;: &quot;Paul Zarella&quot;, &quot;role&quot;: &quot;host&quot; },
+    { &quot;id&quot;: &quot;todd&quot;, &quot;name&quot;: &quot;Todd Deeken&quot;, &quot;role&quot;: &quot;host&quot; }
+  ]
+}
+</code></pre>
+<p><strong>Recommended roles:</strong> <code>&quot;host&quot;</code>, <code>&quot;guest&quot;</code>, <code>&quot;narrator&quot;</code>, <code>&quot;caller&quot;</code>, <code>&quot;correspondent&quot;</code>. Custom roles should use lowercase. Consistent role values across implementations improve interoperability.</p>
+<p>Speaker IDs are opaque strings. Use short, stable identifiers (e.g., <code>&quot;s1&quot;</code>, <code>&quot;matt-farah&quot;</code>). The same speaker across episodes should use the same ID to enable cross-episode analysis.</p>
+<h2>Ad Breaks</h2>
+<p>The <code>adBreaks</code> array defines time ranges where dynamically inserted content (ads, promos, sponsorships) appears. This is separate from annotations to keep the semantic distinction clean: ad breaks are structural holes in the content, not entity references.</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>startTime</code></td>
+<td><code>number</code></td>
+<td><strong>Yes</strong></td>
+<td>Start time in seconds</td>
+</tr>
+<tr>
+<td><code>endTime</code></td>
+<td><code>number</code></td>
+<td><strong>Yes</strong></td>
+<td>End time in seconds</td>
+</tr>
+<tr>
+<td><code>label</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Type of insertion (e.g., <code>&quot;ad&quot;</code>, <code>&quot;promo&quot;</code>, <code>&quot;sponsorship&quot;</code>)</td>
+</tr>
+<tr>
+<td><code>position</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Placement: <code>&quot;pre-roll&quot;</code>, <code>&quot;mid-roll&quot;</code>, or <code>&quot;post-roll&quot;</code></td>
+</tr>
+</tbody></table>
+<pre><code class="language-json">{
+  &quot;adBreaks&quot;: [
+    { &quot;startTime&quot;: 120.0, &quot;endTime&quot;: 150.0, &quot;label&quot;: &quot;ad&quot;, &quot;position&quot;: &quot;mid-roll&quot; },
+    { &quot;startTime&quot;: 600.0, &quot;endTime&quot;: 630.0, &quot;label&quot;: &quot;promo&quot;, &quot;position&quot;: &quot;mid-roll&quot; }
+  ]
+}
+</code></pre>
+<p>Players can use ad breaks to skip or realign annotations around dynamic ad insertion. When the audio variant differs from the canonical recording (different ads stitched in at different times), the ad break ranges describe where the inserted content lives.</p>
+<p><strong>Overlapping annotations:</strong> When an annotation&#39;s time range overlaps with an ad break, behavior is player-defined. A player might pause the annotation during the ad and resume after, skip the annotation entirely, or extend it past the break. This spec does not mandate a specific behavior. Implementations should document their approach.</p>
+<h2>Recommended Entity Types</h2>
+<p>The following types are proven in production and recommended for interoperability. This list is not exhaustive; producers may use any string value for <code>type</code>.</p>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Description</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>car</code></td>
+<td>A specific car, truck, or vehicle</td>
+<td>&quot;1967 Ford Mustang&quot;</td>
+</tr>
+<tr>
+<td><code>part</code></td>
+<td>A vehicle or mechanical component</td>
+<td>&quot;Turbocharger&quot;, &quot;LS3 crate engine&quot;</td>
+</tr>
+<tr>
+<td><code>term</code></td>
+<td>A technical or domain-specific term</td>
+<td>&quot;Oversteer&quot;, &quot;Forced induction&quot;</td>
+</tr>
+<tr>
+<td><code>concept</code></td>
+<td>A broader topic or idea</td>
+<td>&quot;Electrification&quot;, &quot;Motorsport safety&quot;</td>
+</tr>
+<tr>
+<td><code>brand</code></td>
+<td>A brand name</td>
+<td>&quot;Brembo&quot;, &quot;Michelin&quot;</td>
+</tr>
+<tr>
+<td><code>company</code></td>
+<td>A company or organization</td>
+<td>&quot;FCP Euro&quot;, &quot;General Motors&quot;</td>
+</tr>
+<tr>
+<td><code>person</code></td>
+<td>A person referenced in the content</td>
+<td>&quot;Carroll Shelby&quot;, &quot;Ayrton Senna&quot;</td>
+</tr>
+<tr>
+<td><code>place</code></td>
+<td>A location or venue</td>
+<td>&quot;Nurburgring&quot;, &quot;Bonneville Salt Flats&quot;</td>
+</tr>
+</tbody></table>
+<p>All type values use <strong>lowercase</strong>. Producers SHOULD use recommended types when applicable to maximize interoperability. Single words are preferred for common types. Custom types SHOULD be hyphenated (e.g., <code>&quot;race-series&quot;</code>, <code>&quot;engine-code&quot;</code>).</p>
+<h2>File Extension and MIME Type</h2>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Recommendation</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>File extension</td>
+<td><code>.annotations.json</code></td>
+</tr>
+<tr>
+<td>MIME type</td>
+<td><code>application/json</code></td>
+</tr>
+</tbody></table>
+<h2>Examples</h2>
+<h3>Automotive Podcast</h3>
+<p>From <a href="https://getcarcurious.com">The Everyday Driver Podcast</a>, Episode 1,013 (113 annotations across ~97 minutes):</p>
+<pre><code class="language-json">{
+  &quot;version&quot;: &quot;1.0.0&quot;,
+  &quot;episode&quot;: {
+    &quot;title&quot;: &quot;Cars That Need A Comeback (A-M), The Fourth Car, Minivan Peer Pressure | Episode 1,013&quot;,
+    &quot;url&quot;: &quot;https://getcarcurious.com/episodes/cars-that-need-a-comeback-a-m-the-fourth-car-minivan-peer-pressure-episode-1-013&quot;,
+    &quot;audioUrl&quot;: &quot;https://traffic.megaphone.fm/EDLLC3477736751.mp3&quot;
+  },
+  &quot;speakers&quot;: [
+    { &quot;id&quot;: &quot;paul&quot;, &quot;name&quot;: &quot;Paul Zarella&quot;, &quot;role&quot;: &quot;host&quot; },
+    { &quot;id&quot;: &quot;todd&quot;, &quot;name&quot;: &quot;Todd Deeken&quot;, &quot;role&quot;: &quot;host&quot; }
+  ],
+  &quot;annotations&quot;: [
+    {
+      &quot;startTime&quot;: 53.12,
+      &quot;endTime&quot;: 57.6,
+      &quot;type&quot;: &quot;car&quot;,
+      &quot;title&quot;: &quot;Honda Prelude&quot;,
+      &quot;image&quot;: &quot;https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/1982_Honda_Prelude_%2815977118997%29.jpg/1200px-1982_Honda_Prelude_%2815977118997%29.jpg&quot;,
+      &quot;data&quot;: {
+        &quot;imageAttribution&quot;: &quot;Riley from Christchurch, New Zealand (CC BY 2.0)&quot;
+      }
+    },
+    {
+      &quot;startTime&quot;: 145.1,
+      &quot;endTime&quot;: 145.1,
+      &quot;type&quot;: &quot;part&quot;,
+      &quot;title&quot;: &quot;solenoid handles&quot;,
+      &quot;data&quot;: {
+        &quot;explanation&quot;: &quot;Electronic door handles that use a solenoid mechanism to lock and unlock. Common in modern EVs, they can malfunction if jammed or stuck.&quot;
+      }
+    },
+    {
+      &quot;startTime&quot;: 760.6,
+      &quot;endTime&quot;: 773.0,
+      &quot;type&quot;: &quot;company&quot;,
+      &quot;title&quot;: &quot;FCP Euro&quot;,
+      &quot;data&quot;: {
+        &quot;explanation&quot;: &quot;Supplier of automotive parts specializing in genuine OE and aftermarket performance upgrades for European vehicles.&quot;
+      }
+    },
+    {
+      &quot;startTime&quot;: 898.2,
+      &quot;endTime&quot;: 901.0,
+      &quot;type&quot;: &quot;term&quot;,
+      &quot;title&quot;: &quot;2JZ engine&quot;,
+      &quot;data&quot;: {
+        &quot;explanation&quot;: &quot;A 3.0-liter inline-six engine produced by Toyota, famous for its strength and tuning potential. Most well-known for powering the Toyota Supra Mark IV.&quot;
+      }
+    },
+    {
+      &quot;startTime&quot;: 898.24,
+      &quot;endTime&quot;: 902.96,
+      &quot;type&quot;: &quot;car&quot;,
+      &quot;title&quot;: &quot;Toyota Supra&quot;,
+      &quot;image&quot;: &quot;https://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/D%C3%BClmen%2C_Auto_Bertels%2C_Toyota_GR_Supra_--_2021_--_9558.jpg/1200px-D%C3%BClmen%2C_Auto_Bertels%2C_Toyota_GR_Supra_--_2021_--_9558.jpg&quot;,
+      &quot;data&quot;: {
+        &quot;imageAttribution&quot;: &quot;Dietmar Rabich (CC BY-SA 4.0)&quot;
+      }
+    }
+  ]
+}
+</code></pre>
+<p>The full 113-annotation file is available at <a href="examples/everyday-driver-episode-1013.annotations.json"><code>examples/everyday-driver-episode-1013.annotations.json</code></a>.</p>
+<h3>General Podcast (Interview)</h3>
+<pre><code class="language-json">{
+  &quot;version&quot;: &quot;1.0.0&quot;,
+  &quot;episode&quot;: {
+    &quot;title&quot;: &quot;Climate Tech with Dr. Sarah Chen&quot;
+  },
+  &quot;speakers&quot;: [
+    { &quot;id&quot;: &quot;host&quot;, &quot;name&quot;: &quot;Alex Rivera&quot;, &quot;role&quot;: &quot;host&quot; },
+    { &quot;id&quot;: &quot;guest&quot;, &quot;name&quot;: &quot;Dr. Sarah Chen&quot;, &quot;role&quot;: &quot;guest&quot; }
+  ],
+  &quot;annotations&quot;: [
+    {
+      &quot;startTime&quot;: 30.0,
+      &quot;endTime&quot;: 55.0,
+      &quot;type&quot;: &quot;person&quot;,
+      &quot;title&quot;: &quot;Dr. Sarah Chen&quot;,
+      &quot;url&quot;: &quot;https://example.com/guests/sarah-chen&quot;
+    },
+    {
+      &quot;startTime&quot;: 120.0,
+      &quot;endTime&quot;: 180.0,
+      &quot;type&quot;: &quot;concept&quot;,
+      &quot;title&quot;: &quot;Carbon capture and storage&quot;,
+      &quot;url&quot;: &quot;https://en.wikipedia.org/wiki/Carbon_capture_and_storage&quot;,
+      &quot;speaker&quot;: &quot;guest&quot;,
+      &quot;quote&quot;: &quot;we&#39;re pulling CO2 directly from the atmosphere&quot;
+    },
+    {
+      &quot;startTime&quot;: 300.0,
+      &quot;endTime&quot;: 330.0,
+      &quot;type&quot;: &quot;brand&quot;,
+      &quot;title&quot;: &quot;Climeworks&quot;,
+      &quot;url&quot;: &quot;https://climeworks.com&quot;,
+      &quot;speaker&quot;: &quot;guest&quot;
+    },
+    {
+      &quot;startTime&quot;: 450.0,
+      &quot;endTime&quot;: 480.0,
+      &quot;type&quot;: &quot;place&quot;,
+      &quot;title&quot;: &quot;Orca Plant, Iceland&quot;,
+      &quot;speaker&quot;: &quot;host&quot;,
+      &quot;data&quot;: {
+        &quot;lat&quot;: 64.0,
+        &quot;lng&quot;: -21.4
+      }
+    }
+  ]
+}
+</code></pre>
+<h2>W3C Web Annotation Mapping</h2>
+<p>Podcast annotations can be expressed as <a href="https://www.w3.org/TR/annotation-model/">W3C Web Annotations</a> for interoperability with standards-compliant tools. The mapping uses <a href="https://www.w3.org/TR/media-frags/">Media Fragments</a> for temporal targeting.</p>
+<p>A podcast annotation:</p>
+<pre><code class="language-json">{
+  &quot;startTime&quot;: 53.12,
+  &quot;endTime&quot;: 57.6,
+  &quot;type&quot;: &quot;car&quot;,
+  &quot;title&quot;: &quot;Honda Prelude&quot;
+}
+</code></pre>
+<p>Maps to this W3C Web Annotation:</p>
+<pre><code class="language-json">{
+  &quot;@context&quot;: &quot;http://www.w3.org/ns/anno.jsonld&quot;,
+  &quot;type&quot;: &quot;Annotation&quot;,
+  &quot;body&quot;: {
+    &quot;type&quot;: &quot;TextualBody&quot;,
+    &quot;value&quot;: &quot;Honda Prelude&quot;,
+    &quot;purpose&quot;: &quot;describing&quot;,
+    &quot;format&quot;: &quot;text/plain&quot;
+  },
+  &quot;target&quot;: {
+    &quot;source&quot;: &quot;https://traffic.megaphone.fm/EDLLC3477736751.mp3&quot;,
+    &quot;selector&quot;: {
+      &quot;type&quot;: &quot;FragmentSelector&quot;,
+      &quot;conformsTo&quot;: &quot;http://www.w3.org/TR/media-frags/&quot;,
+      &quot;value&quot;: &quot;t=53.12,57.6&quot;
+    }
+  }
+}
+</code></pre>
+<h3>Mapping Rules</h3>
+<table>
+<thead>
+<tr>
+<th>Podcast Annotation Field</th>
+<th>W3C Web Annotation</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>startTime</code>, <code>endTime</code></td>
+<td><code>target.selector.value</code> as <code>t=start,end</code></td>
+</tr>
+<tr>
+<td><code>title</code></td>
+<td><code>body.value</code></td>
+</tr>
+<tr>
+<td><code>type</code></td>
+<td>Custom <code>body.type</code> or encoded within <code>body.purpose</code>, depending on implementation</td>
+</tr>
+<tr>
+<td><code>url</code></td>
+<td>Additional <code>body</code> with <code>purpose: &quot;linking&quot;</code></td>
+</tr>
+<tr>
+<td><code>image</code></td>
+<td>Additional <code>body</code> with <code>purpose: &quot;depicting&quot;</code></td>
+</tr>
+<tr>
+<td><code>quote</code></td>
+<td><code>body[1]</code> with <code>purpose: &quot;quoting&quot;</code></td>
+</tr>
+<tr>
+<td><code>speaker</code></td>
+<td>May be represented via <code>creator</code> or external metadata in W3C systems</td>
+</tr>
+<tr>
+<td><code>confidence</code></td>
+<td>Not mapped (application-specific)</td>
+</tr>
+<tr>
+<td><code>data</code></td>
+<td>Not mapped (application-specific)</td>
+</tr>
+<tr>
+<td><code>episode.audioUrl</code></td>
+<td><code>target.source</code></td>
+</tr>
+</tbody></table>
+<blockquote>
+<p><strong>Note:</strong> The W3C mapping requires <code>episode.audioUrl</code> to populate <code>target.source</code>. Annotation sets without <code>episode.audioUrl</code> cannot produce complete W3C Web Annotations.</p>
+</blockquote>
+<h2>Relationship to Other Standards</h2>
+<p><strong>Podcasting 2.0 Chapters.</strong> Chapters define coarse segments (intro, topic, outro) with titles and artwork. Podcast annotations are fine-grained entity references within those segments. They&#39;re complementary: an episode might have 5 chapters and 40 annotations.</p>
+<p><strong>WebVTT / SRT.</strong> Subtitle formats carry the transcript text. This spec carries the entities and topics referenced in that text. A player might use WebVTT for the transcript and podcast annotations for contextual overlays.</p>
+<p><strong>Schema.org PodcastEpisode.</strong> Schema.org defines episode-level metadata for search engines. This spec defines within-episode annotations. A <code>PodcastEpisode</code> might link to an <code>.annotations.json</code> file via a custom property.</p>
+<p><strong>Podcasting 2.0 <code>&lt;podcast:person&gt;</code>.</strong> Tags people at the episode level (hosts, guests). Podcast annotations with <code>type: &quot;person&quot;</code> tag people at the moment level: when they&#39;re discussed, not just who&#39;s on the show.</p>
+<p><strong>RSS Distribution.</strong> An episode&#39;s annotation file MAY be referenced from the RSS feed or episode web page. A future <code>&lt;podcast:annotations&gt;</code> namespace element could formalize this. See the Podcasting 2.0 namespace for the proposal process.</p>
+<p><strong>Wikidata / DBpedia.</strong> The <code>url</code> field on annotations can reference Wikidata entities (e.g., <code>https://www.wikidata.org/wiki/Q5300</code>) for canonical, language-independent entity identification. This enables linked data use cases without adding complexity to the core format.</p>
+<h2>Reference Implementation</h2>
+<p><a href="https://github.com/ryanwi/podcast-annotations-js">podcast-annotations</a> is a framework-agnostic JavaScript library for rendering podcast annotations with audio players. It supports annotation overlays, transcript sync, timelines, chapters, and DAI alignment.</p>
+<p>This format was developed by <a href="https://getcarcurious.com">Car Curious</a>, a podcast annotation platform for automotive content, and is released as an open specification for the broader podcast ecosystem.</p>
+<h2>License</h2>
+<p>This specification is released under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>.</p>
+  </article>
   <footer>
     Developed by <a href="https://getcarcurious.com">Car Curious</a> &middot;
     <a href="https://github.com/ryanwi/podcast-annotations-js">GitHub</a> &middot;
     <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>
   </footer>
-  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
-  <script>
-    fetch('https://raw.githubusercontent.com/ryanwi/podcast-annotations-js/main/SPEC.md')
-      .then(r => r.text())
-      .then(md => {
-        document.getElementById('spec').innerHTML = marked.parse(md)
-      })
-  </script>
 </body>
 </html>
