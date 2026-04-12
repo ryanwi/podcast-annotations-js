@@ -155,32 +155,26 @@ An annotation set is the container format for a collection of annotations associ
 {
   "version": "1.0.0",
   "episode": {
-    "title": "The Greatest Engine Swaps",
-    "url": "https://example.com/episodes/engine-swaps",
-    "audioUrl": "https://example.com/audio/engine-swaps.mp3"
+    "title": "Cars That Need A Comeback (A-M), The Fourth Car, Minivan Peer Pressure | Episode 1,013",
+    "url": "https://getcarcurious.com/episodes/cars-that-need-a-comeback-a-m-the-fourth-car-minivan-peer-pressure-episode-1-013",
+    "audioUrl": "https://traffic.megaphone.fm/EDLLC3477736751.mp3"
   },
-  "transcripts": [
-    { "url": "https://example.com/episodes/engine-swaps.vtt", "format": "vtt" }
-  ],
   "speakers": [
-    { "id": "s1", "name": "Matt Farah", "role": "host" },
-    { "id": "s2", "name": "Zack Peterson", "role": "host" }
+    { "id": "paul", "name": "Paul Zarella", "role": "host" },
+    { "id": "todd", "name": "Todd Deeken", "role": "host" }
   ],
   "annotations": [
     {
-      "startTime": 45.2,
-      "endTime": 75.0,
+      "startTime": 53.12,
+      "endTime": 57.6,
       "type": "car",
-      "title": "LS Engine",
-      "speaker": "s1",
-      "quote": "the LS is just a completely different animal"
+      "title": "Honda Prelude"
     },
     {
-      "startTime": 120.0,
-      "endTime": 150.5,
-      "type": "part",
-      "title": "Turbocharger",
-      "speaker": "s2"
+      "startTime": 898.24,
+      "endTime": 902.96,
+      "type": "car",
+      "title": "Toyota Supra"
     }
   ]
 }
@@ -235,8 +229,8 @@ The `speakers` array defines the people speaking in the audio. Annotations refer
 ```json
 {
   "speakers": [
-    { "id": "s1", "name": "Matt Farah", "role": "host", "url": "https://example.com/matt" },
-    { "id": "s2", "name": "Zack Peterson", "role": "host" }
+    { "id": "paul", "name": "Paul Zarella", "role": "host" },
+    { "id": "todd", "name": "Todd Deeken", "role": "host" }
   ]
 }
 ```
@@ -296,73 +290,73 @@ All type values use **lowercase**. Producers SHOULD use recommended types when a
 
 ### Automotive Podcast
 
+From [The Everyday Driver Podcast](https://getcarcurious.com), Episode 1,013 (113 annotations across ~97 minutes):
+
 ```json
 {
   "version": "1.0.0",
   "episode": {
-    "title": "The Greatest Engine Swaps of All Time",
-    "url": "https://example.com/episodes/42",
-    "audioUrl": "https://cdn.example.com/episodes/42.mp3"
+    "title": "Cars That Need A Comeback (A-M), The Fourth Car, Minivan Peer Pressure | Episode 1,013",
+    "url": "https://getcarcurious.com/episodes/cars-that-need-a-comeback-a-m-the-fourth-car-minivan-peer-pressure-episode-1-013",
+    "audioUrl": "https://traffic.megaphone.fm/EDLLC3477736751.mp3"
   },
-  "transcripts": [
-    { "url": "https://cdn.example.com/episodes/42.vtt", "format": "vtt" }
-  ],
   "speakers": [
-    { "id": "matt", "name": "Matt Farah", "role": "host" },
-    { "id": "zack", "name": "Zack Peterson", "role": "host" }
-  ],
-  "adBreaks": [
-    { "startTime": 120.0, "endTime": 150.0, "label": "ad", "position": "mid-roll" }
+    { "id": "paul", "name": "Paul Zarella", "role": "host" },
+    { "id": "todd", "name": "Todd Deeken", "role": "host" }
   ],
   "annotations": [
     {
-      "id": "annotation-1",
-      "startTime": 45.2,
-      "endTime": 75.0,
+      "startTime": 53.12,
+      "endTime": 57.6,
       "type": "car",
-      "title": "1969 Chevrolet Camaro Z/28",
-      "url": "https://example.com/cars/camaro-z28",
-      "image": "https://cdn.example.com/images/camaro-z28.jpg",
-      "speaker": "matt",
-      "quote": "the Z28 was just a completely different animal",
+      "title": "Honda Prelude",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/1982_Honda_Prelude_%2815977118997%29.jpg/1200px-1982_Honda_Prelude_%2815977118997%29.jpg",
       "data": {
-        "make": "Chevrolet",
-        "model": "Camaro Z/28",
-        "year": 1969
+        "imageAttribution": "Riley from Christchurch, New Zealand (CC BY 2.0)"
       }
     },
     {
-      "id": "annotation-2",
-      "startTime": 160.0,
-      "endTime": 190.0,
+      "startTime": 145.1,
+      "endTime": 145.1,
       "type": "part",
-      "title": "LS3 Crate Engine",
-      "speaker": "zack",
+      "title": "solenoid handles",
       "data": {
-        "displacement": "6.2L",
-        "horsepower": 430
+        "explanation": "Electronic door handles that use a solenoid mechanism to lock and unlock. Common in modern EVs, they can malfunction if jammed or stuck."
       }
     },
     {
-      "id": "annotation-3",
-      "startTime": 220.0,
-      "endTime": 250.0,
-      "type": "person",
-      "title": "Carroll Shelby",
-      "speaker": "matt"
+      "startTime": 760.6,
+      "endTime": 773.0,
+      "type": "company",
+      "title": "FCP Euro",
+      "data": {
+        "explanation": "Supplier of automotive parts specializing in genuine OE and aftermarket performance upgrades for European vehicles."
+      }
     },
     {
-      "id": "annotation-4",
-      "startTime": 280.5,
-      "endTime": 310.0,
+      "startTime": 898.2,
+      "endTime": 901.0,
       "type": "term",
-      "title": "Engine swap",
-      "url": "https://example.com/glossary/engine-swap",
-      "quote": "when we talk about an engine swap we mean..."
+      "title": "2JZ engine",
+      "data": {
+        "explanation": "A 3.0-liter inline-six engine produced by Toyota, famous for its strength and tuning potential. Most well-known for powering the Toyota Supra Mark IV."
+      }
+    },
+    {
+      "startTime": 898.24,
+      "endTime": 902.96,
+      "type": "car",
+      "title": "Toyota Supra",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/D%C3%BClmen%2C_Auto_Bertels%2C_Toyota_GR_Supra_--_2021_--_9558.jpg/1200px-D%C3%BClmen%2C_Auto_Bertels%2C_Toyota_GR_Supra_--_2021_--_9558.jpg",
+      "data": {
+        "imageAttribution": "Dietmar Rabich (CC BY-SA 4.0)"
+      }
     }
   ]
 }
 ```
+
+The full 113-annotation file is available at [`examples/everyday-driver-episode-1013.annotations.json`](examples/everyday-driver-episode-1013.annotations.json).
 
 ### General Podcast (Interview)
 
@@ -424,11 +418,10 @@ A podcast annotation:
 
 ```json
 {
-  "startTime": 45.2,
-  "endTime": 75.0,
+  "startTime": 53.12,
+  "endTime": 57.6,
   "type": "car",
-  "title": "1969 Chevrolet Camaro Z/28",
-  "url": "https://example.com/cars/camaro-z28"
+  "title": "Honda Prelude"
 }
 ```
 
@@ -440,16 +433,16 @@ Maps to this W3C Web Annotation:
   "type": "Annotation",
   "body": {
     "type": "TextualBody",
-    "value": "1969 Chevrolet Camaro Z/28",
+    "value": "Honda Prelude",
     "purpose": "describing",
     "format": "text/plain"
   },
   "target": {
-    "source": "https://cdn.example.com/episodes/42.mp3",
+    "source": "https://traffic.megaphone.fm/EDLLC3477736751.mp3",
     "selector": {
       "type": "FragmentSelector",
       "conformsTo": "http://www.w3.org/TR/media-frags/",
-      "value": "t=45.2,75.0"
+      "value": "t=53.12,57.6"
     }
   }
 }

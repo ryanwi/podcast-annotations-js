@@ -1,0 +1,1146 @@
+{
+  "version": "1.0.0",
+  "episode": {
+    "title": "Cars That Need A Comeback (A-M), The Fourth Car, Minivan Peer Pressure | Episode 1,013",
+    "url": "https://getcarcurious.com/episodes/cars-that-need-a-comeback-a-m-the-fourth-car-minivan-peer-pressure-episode-1-013",
+    "audioUrl": "https://traffic.megaphone.fm/EDLLC3477736751.mp3?updated=1758432751"
+  },
+  "speakers": [
+    {
+      "id": "paul",
+      "name": "Paul Zarella",
+      "role": "host"
+    },
+    {
+      "id": "todd",
+      "name": "Todd Deeken",
+      "role": "host"
+    }
+  ],
+  "annotations": [
+    {
+      "startTime": 53.12,
+      "endTime": 57.6,
+      "type": "car",
+      "title": "Honda Prelude",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/1982_Honda_Prelude_%2815977118997%29.jpg/1200px-1982_Honda_Prelude_%2815977118997%29.jpg",
+      "data": {
+        "imageAttribution": "Riley from Christchurch, New Zealand (CC BY 2.0)"
+      }
+    },
+    {
+      "startTime": 81.92,
+      "endTime": 85.44,
+      "type": "car",
+      "title": "Tesla Model Y",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/Tesla_Model_Y_%282025%29_MYLE_Festival_2025_DSC_9565.jpg/1200px-Tesla_Model_Y_%282025%29_MYLE_Festival_2025_DSC_9565.jpg",
+      "data": {
+        "explanation": "The Tesla Model Y is an all-electric compact SUV that shares a platform with the Model 3 sedan. It offers impressive range, performance, and advanced technology features, making it a popular choice in the electric vehicle market.",
+        "simplifiedExplanation": "The Tesla Model Y is a type of electric car that looks like an SUV. It's known for being efficient and having lots of modern features, like a big touchscreen inside.",
+        "imageAttribution": "Alexander Migl (CC BY-SA 4.0)"
+      }
+    },
+    {
+      "startTime": 145.1,
+      "endTime": 145.1,
+      "type": "part",
+      "title": "solenoid handles",
+      "data": {
+        "explanation": "Solenoid handles are electronic door handles that use a solenoid mechanism to lock and unlock the door. They are often found in modern vehicles, including electric cars like Teslas, and can malfunction if jammed or stuck.",
+        "simplifiedExplanation": "Solenoid handles are the parts that help you open and close car doors electronically. They can sometimes get stuck, making it hard to get into the car."
+      }
+    },
+    {
+      "startTime": 154.8,
+      "endTime": 158.48,
+      "type": "car",
+      "title": "Chevrolet Corvette",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e6/Chevrolet_Corvette%2C_BAS_24%2C_Brussels_%28P1170389-RR%29.jpg/1200px-Chevrolet_Corvette%2C_BAS_24%2C_Brussels_%28P1170389-RR%29.jpg",
+      "data": {
+        "explanation": "The Chevrolet Corvette C8 is the eighth generation of the Corvette sports car, known for its mid-engine layout and advanced technology. It represents a significant shift in design and performance for the Corvette lineup.",
+        "simplifiedExplanation": "The Corvette C8 is a modern sports car from Chevrolet that has its engine located in the middle of the car, which helps with handling and speed. It's known for being very powerful and high-tech.",
+        "imageAttribution": "Matti Blume (CC BY-SA)"
+      }
+    },
+    {
+      "startTime": 315.5,
+      "endTime": 319.76,
+      "type": "car",
+      "title": "Nissan GT-R",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/f/ff/Nissan_4BA-R35_GT-R_NISMO_%2823092416543%29.jpg",
+      "data": {
+        "explanation": "The Nissan GT-R is a high-performance sports car known for its advanced technology and impressive speed. It has a strong motorsport heritage and is often regarded as a benchmark in the supercar segment.",
+        "simplifiedExplanation": "The Nissan GT-R is a fast sports car that many people admire for its speed and technology. It's famous for being very powerful and is often compared to other supercars.",
+        "imageAttribution": "\u5148\u5f93\u9697\u59cb (CC0)"
+      }
+    },
+    {
+      "startTime": 342.48,
+      "endTime": 346.72,
+      "type": "car",
+      "title": "Nissan Leaf",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/62/2017_Nissan_LEAF_%28ZE0_MY17%29_hatchback_%282018-11-02%29_01.jpg/1200px-2017_Nissan_LEAF_%28ZE0_MY17%29_hatchback_%282018-11-02%29_01.jpg",
+      "data": {
+        "explanation": "The Nissan Leaf is an all-electric hatchback that has been one of the best-selling electric vehicles globally, known for its practicality and affordability.",
+        "simplifiedExplanation": "The Nissan Leaf is an electric car that is popular for being affordable and practical for everyday use.",
+        "imageAttribution": "EurovisionNim (CC BY-SA 4.0)"
+      }
+    },
+    {
+      "startTime": 760.6,
+      "endTime": 773.0,
+      "type": "company",
+      "title": "FCP Euro",
+      "data": {
+        "explanation": "FCP Euro is a well-known supplier of automotive parts, specializing in genuine original equipment and aftermarket performance upgrades for European vehicles. They have been in the industry for nearly 40 years, making them a trusted source for car enthusiasts and professionals alike.",
+        "simplifiedExplanation": "FCP Euro is a company that sells car parts, especially for European cars. They provide both original parts and performance upgrades, helping people maintain or improve their vehicles."
+      }
+    },
+    {
+      "startTime": 770.9,
+      "endTime": 773.0,
+      "type": "term",
+      "title": "OEM parts",
+      "data": {
+        "explanation": "OEM stands for Original Equipment Manufacturer, referring to parts made by the vehicle's original manufacturer. These parts are designed to fit and function exactly as the original components in a vehicle.",
+        "simplifiedExplanation": "OEM parts are the same parts that were used when the car was first made. They are made by the original company that built the car, so they fit perfectly and work just like the original parts."
+      }
+    },
+    {
+      "startTime": 789.6,
+      "endTime": 791.3,
+      "type": "term",
+      "title": "lifetime replacement guarantee",
+      "data": {
+        "explanation": "A lifetime replacement guarantee means that the company will replace a product for free if it fails or is defective for as long as the original purchaser owns it.",
+        "simplifiedExplanation": "A lifetime replacement guarantee is a promise from a company that they will replace a product for free if it breaks while you own it."
+      }
+    },
+    {
+      "startTime": 791.3,
+      "endTime": 793.1,
+      "type": "term",
+      "title": "consumables",
+      "data": {
+        "explanation": "Consumables are items that are used up or replaced regularly in a vehicle, such as brake pads, wiper blades, and oil filters.",
+        "simplifiedExplanation": "Consumables are parts of a car that you need to replace regularly, like brake pads and wiper blades."
+      }
+    },
+    {
+      "startTime": 898.2,
+      "endTime": 901.0,
+      "type": "term",
+      "title": "2JZ engine",
+      "data": {
+        "explanation": "The 2JZ engine is a 3.0-liter inline-six engine produced by Toyota, famous for its strength and tuning potential. It is most well-known for being used in the Toyota Supra Mark IV, making it a favorite among car enthusiasts.",
+        "simplifiedExplanation": "The 2JZ engine is a powerful engine made by Toyota that many people love to modify and race. It's known for being very strong and reliable."
+      }
+    },
+    {
+      "startTime": 898.24,
+      "endTime": 902.96,
+      "type": "car",
+      "title": "Toyota Supra",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/D%C3%BClmen%2C_Auto_Bertels%2C_Toyota_GR_Supra_--_2021_--_9558.jpg/1200px-D%C3%BClmen%2C_Auto_Bertels%2C_Toyota_GR_Supra_--_2021_--_9558.jpg",
+      "data": {
+        "imageAttribution": "Dietmar Rabich (CC BY-SA 4.0)"
+      }
+    },
+    {
+      "startTime": 983.76,
+      "endTime": 986.72,
+      "type": "car",
+      "title": "BMW Z4",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/56/BMW_Concept_Z4%2C_Frankfurt_%281Y7A3563%29.jpg/1200px-BMW_Concept_Z4%2C_Frankfurt_%281Y7A3563%29.jpg",
+      "data": {
+        "explanation": "The BMW Z4 is a two-door sports car known for its sporty handling and performance. It is available in both coupe and convertible body styles and has gone through multiple generations since its introduction.",
+        "simplifiedExplanation": "The BMW Z4 is a sporty car made by BMW. It comes as a coupe or a convertible and is known for being fun to drive.",
+        "imageAttribution": "Matti Blume (CC BY-SA 4.0)"
+      }
+    },
+    {
+      "startTime": 988.2,
+      "endTime": 988.2,
+      "type": "car",
+      "title": "Toyota GR86",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/6/6e/2022_Toyota_GR_86_front.jpg",
+      "data": {
+        "explanation": "The Toyota GR86 is a lightweight sports coupe designed for driving enthusiasts, featuring a rear-wheel-drive layout and a focus on handling.",
+        "simplifiedExplanation": "The Toyota GR86 is a fun, small sports car that is great for driving. It's designed to be light and easy to handle, making it enjoyable on the road.",
+        "imageAttribution": "DestinationFearFan (CC BY-SA 4.0)"
+      }
+    },
+    {
+      "startTime": 1004.32,
+      "endTime": 1008.88,
+      "type": "car",
+      "title": "Acura NSX",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/1995_Honda_NSX_Type_T.jpg/1200px-1995_Honda_NSX_Type_T.jpg",
+      "data": {
+        "imageAttribution": "TTTNIS (CC0)"
+      }
+    },
+    {
+      "startTime": 1027.3,
+      "endTime": 1028.8,
+      "type": "term",
+      "title": "hybrid technology",
+      "data": {
+        "explanation": "Hybrid technology refers to vehicles that use a combination of an internal combustion engine and one or more electric motors to improve fuel efficiency and reduce emissions.",
+        "simplifiedExplanation": "Hybrid technology means the car uses both a regular gas engine and electric motors to run. This helps save fuel and is better for the environment."
+      }
+    },
+    {
+      "startTime": 1027.3,
+      "endTime": 1028.8,
+      "type": "term",
+      "title": "all-wheel drive",
+      "data": {
+        "explanation": "All-wheel drive (AWD) is a drivetrain configuration that provides power to all four wheels of a vehicle simultaneously, improving traction and stability, especially in adverse weather conditions.",
+        "simplifiedExplanation": "All-wheel drive means that all four wheels of the car get power from the engine, which helps the car grip the road better, especially in rain or snow."
+      }
+    },
+    {
+      "startTime": 1069.44,
+      "endTime": 1072.4,
+      "type": "car",
+      "title": "Lotus Amira",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b3/2024_Lotus_Emira_2.jpg/1200px-2024_Lotus_Emira_2.jpg",
+      "data": {
+        "imageAttribution": "Calreyn88 (CC BY-SA 4.0)"
+      }
+    },
+    {
+      "startTime": 1071.0,
+      "endTime": 1073.0,
+      "type": "term",
+      "title": "mid-engine",
+      "data": {
+        "explanation": "A mid-engine layout places the engine between the front and rear axles, which helps improve weight distribution and handling characteristics of the vehicle. This design is commonly found in sports cars and supercars.",
+        "simplifiedExplanation": "Mid-engine means the car's engine is located in the middle of the vehicle, which helps it handle better when driving fast. This setup is often used in sports cars to improve performance."
+      }
+    },
+    {
+      "startTime": 1074.3,
+      "endTime": 1075.5,
+      "type": "term",
+      "title": "manual transmission",
+      "data": {
+        "explanation": "A manual transmission requires the driver to manually shift gears using a clutch pedal and gear stick, providing a more engaging driving experience compared to automatic transmissions. It allows for greater control over the vehicle's performance.",
+        "simplifiedExplanation": "A manual transmission is a type of car gearbox that you have to shift yourself using a stick and a pedal. It gives you more control over how the car drives, but it can be harder to learn than an automatic transmission."
+      }
+    },
+    {
+      "startTime": 1076.24,
+      "endTime": 1082.0,
+      "type": "car",
+      "title": "Porsche 918 Spyder",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/54/2015_Porsche_918_Spyder_4.6.jpg/1200px-2015_Porsche_918_Spyder_4.6.jpg",
+      "data": {
+        "imageAttribution": "Chelsea Jay (CC BY-SA 4.0)"
+      }
+    },
+    {
+      "startTime": 1131.52,
+      "endTime": 1134.24,
+      "type": "car",
+      "title": "Honda Accord",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/HONDA_ACCORD_%28CP1-CP3%29_China.jpg/1200px-HONDA_ACCORD_%28CP1-CP3%29_China.jpg",
+      "data": {
+        "explanation": "The Honda Accord is a popular midsize car known for its reliability, comfort, and fuel efficiency. It has been a staple in the automotive market since its introduction in the 1970s, appealing to a wide range of buyers.",
+        "simplifiedExplanation": "The Honda Accord is a well-known car that many people trust because it's reliable and good on gas. It's been around for a long time and is popular with families and commuters.",
+        "imageAttribution": "Dinkun Chen (CC BY-SA 4.0)"
+      }
+    },
+    {
+      "startTime": 1182.4,
+      "endTime": 1184.6,
+      "type": "car",
+      "title": "Audi R8",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/43/2010_Audi_R8_Spyder_Quattro_V10_5.2.jpg/1200px-2010_Audi_R8_Spyder_Quattro_V10_5.2.jpg",
+      "data": {
+        "explanation": "The Audi R8 is a luxury sports car known for its striking design and powerful performance. It features a mid-engine layout and is available with both V10 and V10 plus variants, making it a popular choice among enthusiasts.",
+        "simplifiedExplanation": "The Audi R8 is a high-end sports car that looks very cool and goes really fast. It's known for its powerful engine and great handling.",
+        "imageAttribution": "Vauxford (CC BY-SA 4.0)"
+      }
+    },
+    {
+      "startTime": 1230.1,
+      "endTime": 1232.4,
+      "type": "car",
+      "title": "Honda Insight",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a3/1999_Honda_Insight_is_the_first_hybrid_car_launched_in_the_UK.jpg/1200px-1999_Honda_Insight_is_the_first_hybrid_car_launched_in_the_UK.jpg",
+      "data": {
+        "explanation": "The Honda Insight is a compact hybrid car that was first introduced in 1999. It was designed to offer excellent fuel economy and was one of the first hybrid vehicles available in the market.",
+        "simplifiedExplanation": "The Honda Insight is a small car that uses both gas and electric power to drive. It was one of the first cars to be a hybrid, helping people save on gas.",
+        "imageAttribution": "Irmantas Baltrusaitis (CC BY-SA 4.0)"
+      }
+    },
+    {
+      "startTime": 1232.4,
+      "endTime": 1236.32,
+      "type": "car",
+      "title": "Honda Crz",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/96/2007_Honda_CR-Z_01.jpg/1200px-2007_Honda_CR-Z_01.jpg",
+      "data": {
+        "explanation": "The Honda CR-Z is a hybrid sports coupe that was produced from 2010 to 2016. It combines sporty styling with hybrid technology, offering a manual transmission option for enthusiasts.",
+        "simplifiedExplanation": "The Honda CR-Z is a sporty little car that uses both gas and electricity to run. It was unique because you could get it with a manual transmission, which is rare for hybrids.",
+        "imageAttribution": "Mytho88 (CC BY-SA 3.0)"
+      }
+    },
+    {
+      "startTime": 1248.88,
+      "endTime": 1254.24,
+      "type": "car",
+      "title": "Honda Nsx",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/1995_Honda_NSX_Type_T.jpg/1200px-1995_Honda_NSX_Type_T.jpg",
+      "data": {
+        "imageAttribution": "TTTNIS (CC0)"
+      }
+    },
+    {
+      "startTime": 1273.1,
+      "endTime": 1276.9,
+      "type": "concept",
+      "title": "full EV",
+      "data": {
+        "explanation": "'Full EV' refers to a vehicle that is entirely powered by electricity, with no internal combustion engine. This means it relies solely on electric batteries for propulsion, contributing to zero tailpipe emissions.",
+        "simplifiedExplanation": "A 'full EV' is a car that runs only on electricity and doesn't use gas or diesel. It has batteries instead of a traditional engine, which helps reduce pollution."
+      }
+    },
+    {
+      "startTime": 1316.64,
+      "endTime": 1321.68,
+      "type": "car",
+      "title": "Aston Martin DB5",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/1964_Aston_Martin_DB5_4.0_Front.jpg/1200px-1964_Aston_Martin_DB5_4.0_Front.jpg",
+      "data": {
+        "imageAttribution": "Vauxford (CC BY-SA 4.0)"
+      }
+    },
+    {
+      "startTime": 1322.96,
+      "endTime": 1327.6,
+      "type": "car",
+      "title": "Tesla 63 Model",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/97/Tesla_Model_3%2C_EMS_2024%2C_Essen_%28P1032260%29.jpg/1200px-Tesla_Model_3%2C_EMS_2024%2C_Essen_%28P1032260%29.jpg",
+      "data": {
+        "imageAttribution": "Matti Blume (CC BY-SA)"
+      }
+    },
+    {
+      "startTime": 1334.72,
+      "endTime": 1338.88,
+      "type": "car",
+      "title": "Ford Edge",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/FORD_EDGE_L_%28FORD_EDGE_THIRD_GENERATION%29.jpg/1200px-FORD_EDGE_L_%28FORD_EDGE_THIRD_GENERATION%29.jpg",
+      "data": {
+        "imageAttribution": "Dinkun Chen (CC BY-SA 4.0)"
+      }
+    },
+    {
+      "startTime": 1337.2,
+      "endTime": 1358.48,
+      "type": "car",
+      "title": "Aston Martin Vantage",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/47/2013_Aston_Martin_V8_Vantage_Roadster_fR.jpg/1200px-2013_Aston_Martin_V8_Vantage_Roadster_fR.jpg",
+      "data": {
+        "explanation": "The Aston Martin Vantage is a luxury sports car known for its elegant design and performance. It is often considered a grand tourer (GT) that balances comfort and sportiness, making it suitable for enjoyable cruising.",
+        "simplifiedExplanation": "The Aston Martin Vantage is a fancy sports car that looks great and drives well. It's designed for people who want a mix of comfort and speed, making it fun to drive on long trips.",
+        "imageAttribution": "Mr.choppers (CC BY-SA 3.0)"
+      }
+    },
+    {
+      "startTime": 1366.88,
+      "endTime": 1372.0,
+      "type": "car",
+      "title": "Aston Valkyries"
+    },
+    {
+      "startTime": 1368.48,
+      "endTime": 1374.48,
+      "type": "car",
+      "title": "Aston Martin Valhalla",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c8/2019_Aston_Martin_AM-RB_003_Front.jpg/1200px-2019_Aston_Martin_AM-RB_003_Front.jpg",
+      "data": {
+        "imageAttribution": "Vauxford (CC BY-SA 4.0)"
+      }
+    },
+    {
+      "startTime": 1381.52,
+      "endTime": 1386.96,
+      "type": "car",
+      "title": "Audi Quattro",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3d/Audi_A6_Allroad_Quattro_C8_1X7A0301.jpg/1200px-Audi_A6_Allroad_Quattro_C8_1X7A0301.jpg",
+      "data": {
+        "imageAttribution": "Alexander Migl (CC BY-SA 4.0)"
+      }
+    },
+    {
+      "startTime": 1438.4,
+      "endTime": 1440.2,
+      "type": "car",
+      "title": "BMW Z8",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f9/2002_BMW_Z8_Roadster_BS_O24.jpg/1200px-2002_BMW_Z8_Roadster_BS_O24.jpg",
+      "data": {
+        "explanation": "The BMW Z8 is a roadster produced by BMW from 1999 to 2003, known for its sleek design and powerful performance. It features a 4.9-liter V8 engine and is celebrated for its classic styling reminiscent of the BMW 507.",
+        "simplifiedExplanation": "The BMW Z8 is a stylish sports car made by BMW between 1999 and 2003. It's known for its powerful engine and beautiful design, similar to older classic BMWs.",
+        "imageAttribution": "MrWalkr (CC BY-SA 4.0)"
+      }
+    },
+    {
+      "startTime": 1438.4,
+      "endTime": 1442.08,
+      "type": "car",
+      "title": "Alpina Z8",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/aa/Alpina_Z8_hardtop.jpg/1200px-Alpina_Z8_hardtop.jpg",
+      "data": {
+        "imageAttribution": "Mr.choppers (CC BY-SA 3.0)"
+      }
+    },
+    {
+      "startTime": 1473.36,
+      "endTime": 1477.68,
+      "type": "car",
+      "title": "BMW M5",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/31/2018_BMW_M5_Automatic_4.4.jpg/1200px-2018_BMW_M5_Automatic_4.4.jpg",
+      "data": {
+        "explanation": "The BMW M5 is a high-performance version of the BMW 5 Series, known for its powerful engines and sporty handling. The hybrid V8 powertrain suggests a shift towards more efficient performance.",
+        "simplifiedExplanation": "The BMW M5 is a fast and powerful car that's part of the 5 Series lineup. It's designed for high performance and often features advanced technology.",
+        "imageAttribution": "Vauxford (CC BY-SA 4.0)"
+      }
+    },
+    {
+      "startTime": 1523.92,
+      "endTime": 1527.68,
+      "type": "car",
+      "title": "Chevrolet Blazer",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1d/1988_Chevrolet_Blazer_C10_Hardtop.jpg/1200px-1988_Chevrolet_Blazer_C10_Hardtop.jpg",
+      "data": {
+        "imageAttribution": "ArildV (CC BY-SA 4.0)"
+      }
+    },
+    {
+      "startTime": 1571.04,
+      "endTime": 1573.28,
+      "type": "car",
+      "title": "Ford F-150 Raptor",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/2013_Ford_F-150_Raptor_SVT_Roush.jpg/1200px-2013_Ford_F-150_Raptor_SVT_Roush.jpg",
+      "data": {
+        "imageAttribution": "Calreyn88 (CC BY-SA 4.0)"
+      }
+    },
+    {
+      "startTime": 1575.2,
+      "endTime": 1578.88,
+      "type": "car",
+      "title": "Ford Bronco",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/2022_Ford_Bronco_2.jpg/1200px-2022_Ford_Bronco_2.jpg",
+      "data": {
+        "imageAttribution": "Calreyn88 (CC BY-SA 4.0)"
+      }
+    },
+    {
+      "startTime": 1584.88,
+      "endTime": 1592.0,
+      "type": "car",
+      "title": "Chevrolet Camaro",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ae/Chevrolet_Camaro_Hirschaid_2022-20220709-RM-111908.jpg/1200px-Chevrolet_Camaro_Hirschaid_2022-20220709-RM-111908.jpg",
+      "data": {
+        "imageAttribution": "Ermell (CC BY-SA 4.0)"
+      }
+    },
+    {
+      "startTime": 1700.64,
+      "endTime": 1706.08,
+      "type": "car",
+      "title": "Dodge Charger Daytona",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/1969_Dodge_Charger_Daytona_%2813419983895%29.jpg/1200px-1969_Dodge_Charger_Daytona_%2813419983895%29.jpg",
+      "data": {
+        "imageAttribution": "Sicnag (CC BY 2.0)"
+      }
+    },
+    {
+      "startTime": 1710.4,
+      "endTime": 1714.16,
+      "type": "car",
+      "title": "Dodge Challenger",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b4/Dodge_Challenger_%281970%29_Hirschaid-20220709-RM-115601.jpg/1200px-Dodge_Challenger_%281970%29_Hirschaid-20220709-RM-115601.jpg",
+      "data": {
+        "imageAttribution": "Ermell (CC BY-SA 4.0)"
+      }
+    },
+    {
+      "startTime": 1718.32,
+      "endTime": 1721.84,
+      "type": "car",
+      "title": "Porsche 928",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/eb/Porsche_928%2C_EMS_2024%2C_Essen_%28P1032184%29.jpg/1200px-Porsche_928%2C_EMS_2024%2C_Essen_%28P1032184%29.jpg",
+      "data": {
+        "imageAttribution": "Matti Blume (CC BY-SA)"
+      }
+    },
+    {
+      "startTime": 1798.8,
+      "endTime": 1803.52,
+      "type": "car",
+      "title": "Honda S2000",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5a/Honda_S2000%2C_Pau_2015.jpg/1200px-Honda_S2000%2C_Pau_2015.jpg",
+      "data": {
+        "imageAttribution": "Handelsgeselschaft (CC BY-SA 4.0)"
+      }
+    },
+    {
+      "startTime": 1816.56,
+      "endTime": 1822.24,
+      "type": "car",
+      "title": "Toyota Prius",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/74/2014-2021_Toyota_Prius_%CE%B1_Touring_Selection.jpg/1200px-2014-2021_Toyota_Prius_%CE%B1_Touring_Selection.jpg",
+      "data": {
+        "imageAttribution": "TTTNIS (CC0)"
+      }
+    },
+    {
+      "startTime": 1839.36,
+      "endTime": 1842.64,
+      "type": "car",
+      "title": "Hyundai Veloster N",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/75/0_Hyundai_Veloster_%28JS%29_N_1.jpg/1200px-0_Hyundai_Veloster_%28JS%29_N_1.jpg",
+      "data": {
+        "imageAttribution": "Benespit (CC BY-SA 4.0)"
+      }
+    },
+    {
+      "startTime": 1951.04,
+      "endTime": 1955.36,
+      "type": "car",
+      "title": "Jaguar XKSS",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/0/0d/1957_Jaguar_XKSS_%284123738929%29.jpg",
+      "data": {
+        "imageAttribution": "Arend from Oosterhout, Netherlands (CC BY 2.0)"
+      }
+    },
+    {
+      "startTime": 1998.32,
+      "endTime": 2003.12,
+      "type": "car",
+      "title": "Jeep Wrangler",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/JEEP_WRANGLER_%28JL%29_China.jpg/1200px-JEEP_WRANGLER_%28JL%29_China.jpg",
+      "data": {
+        "imageAttribution": "Dinkun Chen (CC BY-SA 4.0)"
+      }
+    },
+    {
+      "startTime": 2076.48,
+      "endTime": 2079.12,
+      "type": "car",
+      "title": "Oldsmobile Intrigues",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/1998_Oldsmobile_Intrigue%2C_Rear_Left%2C_10-28-2020.jpg/1200px-1998_Oldsmobile_Intrigue%2C_Rear_Left%2C_10-28-2020.jpg",
+      "data": {
+        "imageAttribution": "SsmIntrigue (CC BY-SA 4.0)"
+      }
+    },
+    {
+      "startTime": 2105.76,
+      "endTime": 2110.0,
+      "type": "car",
+      "title": "Volkswagen Bora",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/49/2016_FAW-Volkswagen_Bora.jpg/1200px-2016_FAW-Volkswagen_Bora.jpg",
+      "data": {
+        "imageAttribution": "User3204 (CC BY-SA 4.0)"
+      }
+    },
+    {
+      "startTime": 2131.12,
+      "endTime": 2135.68,
+      "type": "car",
+      "title": "Maserati MC20",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/52/Maserati_MC20_001.jpg/1200px-Maserati_MC20_001.jpg",
+      "data": {
+        "imageAttribution": "Jengtingchen (CC BY-SA 4.0)"
+      }
+    },
+    {
+      "startTime": 2140.08,
+      "endTime": 2146.16,
+      "type": "car",
+      "title": "Mazda Rx7",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1e/1983_Mazda_RX-7_Group_B.jpg/1200px-1983_Mazda_RX-7_Group_B.jpg",
+      "data": {
+        "imageAttribution": "TTTNIS (CC0)"
+      }
+    },
+    {
+      "startTime": 2201.6,
+      "endTime": 2204.96,
+      "type": "car",
+      "title": "Mercedes-Benz SLK",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/50/MERCEDES-BENZ_SLK-CLASS_%28R170%29_%26_MERCEDES-BENZ_S-CLASS_%28W220%29_China.jpg/1200px-MERCEDES-BENZ_SLK-CLASS_%28R170%29_%26_MERCEDES-BENZ_S-CLASS_%28W220%29_China.jpg",
+      "data": {
+        "imageAttribution": "Dinkun Chen (CC BY-SA 4.0)"
+      }
+    },
+    {
+      "startTime": 2254.56,
+      "endTime": 2258.32,
+      "type": "car",
+      "title": "Mitsubishi Outlanders",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bd/2021-2024_Mitsubishi_Outlander_PHEV_P_rear.jpg/1200px-2021-2024_Mitsubishi_Outlander_PHEV_P_rear.jpg",
+      "data": {
+        "imageAttribution": "TTTNIS (CC0)"
+      }
+    },
+    {
+      "startTime": 2263.6,
+      "endTime": 2267.36,
+      "type": "car",
+      "title": "Mitsubishi Eclipse Cross",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b7/MITSUBISHI_ECLIPSE_CROSS_China.jpg/1200px-MITSUBISHI_ECLIPSE_CROSS_China.jpg",
+      "data": {
+        "imageAttribution": "Dinkun Chen (CC BY-SA 4.0)"
+      }
+    },
+    {
+      "startTime": 2389.68,
+      "endTime": 2392.64,
+      "type": "car",
+      "title": "Alfa Romeo Spider",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/Alfa_Romeo_Spider%2C_2._Gen_%282014-09-13_7140%29.JPG/1200px-Alfa_Romeo_Spider%2C_2._Gen_%282014-09-13_7140%29.JPG",
+      "data": {
+        "imageAttribution": "Lothar Spurzem (CC BY-SA 2.0 de)"
+      }
+    },
+    {
+      "startTime": 2392.0,
+      "endTime": 2393.12,
+      "type": "car",
+      "title": "Mazda Miata",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6e/2021_Mazda_MX-5_Miata_RF_Club.jpg/1200px-2021_Mazda_MX-5_Miata_RF_Club.jpg",
+      "data": {
+        "imageAttribution": "Yaktatel (Public domain)"
+      }
+    },
+    {
+      "startTime": 2406.88,
+      "endTime": 2410.24,
+      "type": "car",
+      "title": "Fiat 124",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/36/01_Alfa_Romeo_2000GTV_Fiat_124_Abarth.jpg/1200px-01_Alfa_Romeo_2000GTV_Fiat_124_Abarth.jpg",
+      "data": {
+        "imageAttribution": "Martin308GTB (CC BY-SA 4.0)"
+      }
+    },
+    {
+      "startTime": 2424.16,
+      "endTime": 2430.24,
+      "type": "car",
+      "title": "Mazda Mx5",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/2018_Mazda_MX-5_Miata_RF_Grand_Touring_Coup%C3%A9_in_Soul_Red_Crystal%2C_front_left.jpg/1200px-2018_Mazda_MX-5_Miata_RF_Grand_Touring_Coup%C3%A9_in_Soul_Red_Crystal%2C_front_left.jpg",
+      "data": {
+        "imageAttribution": "Mr.choppers (CC BY-SA 3.0)"
+      }
+    },
+    {
+      "startTime": 2495.36,
+      "endTime": 2499.92,
+      "type": "car",
+      "title": "Porsche Boxster",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7a/Porsche_718_Boxster_GTS_4.0_1X7A0320.jpg/1200px-Porsche_718_Boxster_GTS_4.0_1X7A0320.jpg",
+      "data": {
+        "imageAttribution": "Alexander Migl (CC BY-SA 4.0)"
+      }
+    },
+    {
+      "startTime": 2515.12,
+      "endTime": 2522.24,
+      "type": "car",
+      "title": "Porsche Cayman",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/2015_Porsche_Cayman_GTS_S-A_3.4_Front.jpg/1200px-2015_Porsche_Cayman_GTS_S-A_3.4_Front.jpg",
+      "data": {
+        "imageAttribution": "Vauxford (CC BY-SA 4.0)"
+      }
+    },
+    {
+      "startTime": 2535.28,
+      "endTime": 2541.04,
+      "type": "car",
+      "title": "Audi Tt",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b0/2013_Audi_TT_RS_%288404408386%29.jpg/1200px-2013_Audi_TT_RS_%288404408386%29.jpg",
+      "data": {
+        "imageAttribution": "Sarah Larson from Ann Arbor, MI, USA (CC BY 2.0)"
+      }
+    },
+    {
+      "startTime": 2745.68,
+      "endTime": 2750.96,
+      "type": "car",
+      "title": "Cadillac XLR",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/10/2005_Cadillac_XLR%2C_front_left%2C_08-27-2023.jpg/1200px-2005_Cadillac_XLR%2C_front_left%2C_08-27-2023.jpg",
+      "data": {
+        "imageAttribution": "MercurySable99 (CC BY-SA 4.0)"
+      }
+    },
+    {
+      "startTime": 2846.0,
+      "endTime": 2848.88,
+      "type": "car",
+      "title": "Pontiac Solstice",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1f/06-09_Pontiac_Solstice_base_convertible.jpg/1200px-06-09_Pontiac_Solstice_base_convertible.jpg",
+      "data": {
+        "imageAttribution": "MercurySable99 (CC BY-SA 4.0)"
+      }
+    },
+    {
+      "startTime": 3031.44,
+      "endTime": 3035.76,
+      "type": "car",
+      "title": "Ford Fiesta ST",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/70/2018_Ford_Fiesta_ST_1.5_Front.jpg/1200px-2018_Ford_Fiesta_ST_1.5_Front.jpg",
+      "data": {
+        "imageAttribution": "Vauxford (CC BY-SA 4.0)"
+      }
+    },
+    {
+      "startTime": 3069.68,
+      "endTime": 3073.92,
+      "type": "car",
+      "title": "Nissan Sentra",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7b/1990-1994_Nissan_Sentra_Coupe.png/1200px-1990-1994_Nissan_Sentra_Coupe.png",
+      "data": {
+        "imageAttribution": "LukaCali (CC BY-SA 4.0)"
+      }
+    },
+    {
+      "startTime": 3126.64,
+      "endTime": 3129.76,
+      "type": "car",
+      "title": "Ford Focus RS",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/90/2002_Ford_Focus_RS_%2844438%29.jpg/1200px-2002_Ford_Focus_RS_%2844438%29.jpg",
+      "data": {
+        "imageAttribution": "Calreyn88 (CC BY-SA 4.0)"
+      }
+    },
+    {
+      "startTime": 3164.72,
+      "endTime": 3168.24,
+      "type": "car",
+      "title": "Honda Civic",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/23/2022_Honda_Civic_LX_Sedan%2C_front_right%2C_11-02-2022.jpg/1200px-2022_Honda_Civic_LX_Sedan%2C_front_right%2C_11-02-2022.jpg",
+      "data": {
+        "imageAttribution": "MercurySable99 (CC BY-SA 4.0)"
+      }
+    },
+    {
+      "startTime": 3264.48,
+      "endTime": 3268.96,
+      "type": "car",
+      "title": "Hyundai Genesis",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/63/2010_Hyundai_Genesis_2.jpg/1200px-2010_Hyundai_Genesis_2.jpg",
+      "data": {
+        "imageAttribution": "Calreyn88 (CC BY-SA 4.0)"
+      }
+    },
+    {
+      "startTime": 3374.0,
+      "endTime": 3379.12,
+      "type": "car",
+      "title": "Genesis G70",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/GENESIS_G70_China.jpg/1200px-GENESIS_G70_China.jpg",
+      "data": {
+        "imageAttribution": "Dinkun Chen (CC BY-SA 4.0)"
+      }
+    },
+    {
+      "startTime": 3409.36,
+      "endTime": 3412.56,
+      "type": "car",
+      "title": "Nissan 350Z"
+    },
+    {
+      "startTime": 3465.68,
+      "endTime": 3470.32,
+      "type": "car",
+      "title": "Nissan Z",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/2023_Nissan_Z_RZ34_in_Granite_Black%2C_front_left%2C_05-05-2024.jpg/1200px-2023_Nissan_Z_RZ34_in_Granite_Black%2C_front_left%2C_05-05-2024.jpg",
+      "data": {
+        "imageAttribution": "Ethan Llamas (CC BY-SA 4.0)"
+      }
+    },
+    {
+      "startTime": 3483.92,
+      "endTime": 3490.56,
+      "type": "car",
+      "title": "Lexus Rc",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/2015_Lexus_RC_F_Auto_2.jpg/1200px-2015_Lexus_RC_F_Auto_2.jpg",
+      "data": {
+        "imageAttribution": "Calreyn88 (CC BY-SA 4.0)"
+      }
+    },
+    {
+      "startTime": 3486.72,
+      "endTime": 3492.48,
+      "type": "car",
+      "title": "Infiniti G37",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/%2709_Infiniti_G37_Convertible_%28MIAS%29.JPG/1200px-%2709_Infiniti_G37_Convertible_%28MIAS%29.JPG",
+      "data": {
+        "imageAttribution": "Bull-Doser (Public domain)"
+      }
+    },
+    {
+      "startTime": 3553.2,
+      "endTime": 3557.36,
+      "type": "car",
+      "title": "BMW E36",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/47/BMW_3_SERIES_E90_China.jpg/1200px-BMW_3_SERIES_E90_China.jpg",
+      "data": {
+        "imageAttribution": "Dinkun Chen (CC BY-SA 4.0)"
+      }
+    },
+    {
+      "startTime": 3743.68,
+      "endTime": 3745.68,
+      "type": "car",
+      "title": "Buick Envision",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/BUICK_ENVISION_PLUS_China.jpg/1200px-BUICK_ENVISION_PLUS_China.jpg",
+      "data": {
+        "imageAttribution": "Dinkun Chen (CC BY-SA 4.0)"
+      }
+    },
+    {
+      "startTime": 3845.92,
+      "endTime": 3849.68,
+      "type": "car",
+      "title": "Mini Countryman",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/02/Mini_Countryman_%28F60%29_FL_IMG_4974.jpg/1200px-Mini_Countryman_%28F60%29_FL_IMG_4974.jpg",
+      "data": {
+        "imageAttribution": "Alexander Migl (CC BY-SA 4.0)"
+      }
+    },
+    {
+      "startTime": 3865.76,
+      "endTime": 3868.24,
+      "type": "car",
+      "title": "Mitsubishi Lancer",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/10/2001_Mitsubishi_Lancer_Evolution_VI_Tommi_M%C3%A4kinen.jpg/1200px-2001_Mitsubishi_Lancer_Evolution_VI_Tommi_M%C3%A4kinen.jpg",
+      "data": {
+        "imageAttribution": "TTTNIS (CC0)"
+      }
+    },
+    {
+      "startTime": 4199.28,
+      "endTime": 4204.16,
+      "type": "car",
+      "title": "Honda Civic Type R",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4d/2007_Honda_Civic_Type_R_2.jpg/1200px-2007_Honda_Civic_Type_R_2.jpg",
+      "data": {
+        "imageAttribution": "Calreyn88 (CC BY-SA 4.0)"
+      }
+    },
+    {
+      "startTime": 4230.56,
+      "endTime": 4236.24,
+      "type": "car",
+      "title": "Toyota Highlander",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0b/2008_Toyota_Highlander.jpg/1200px-2008_Toyota_Highlander.jpg",
+      "data": {
+        "imageAttribution": "IFCAR (Public domain)"
+      }
+    },
+    {
+      "startTime": 4243.44,
+      "endTime": 4252.8,
+      "type": "car",
+      "title": "Porsche 718",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/93/2024_Porsche_718_Cayman_GT4.jpg/1200px-2024_Porsche_718_Cayman_GT4.jpg",
+      "data": {
+        "imageAttribution": "Calreyn88 (CC BY-SA 4.0)"
+      }
+    },
+    {
+      "startTime": 4337.92,
+      "endTime": 4339.28,
+      "type": "car",
+      "title": "Porsche Carrera T"
+    },
+    {
+      "startTime": 4349.68,
+      "endTime": 4353.92,
+      "type": "car",
+      "title": "Subaru Brz",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6a/SUBARU_BRZ_%28ZD8%29_China.jpg/1200px-SUBARU_BRZ_%28ZD8%29_China.jpg",
+      "data": {
+        "imageAttribution": "Dinkun Chen (CC BY-SA 4.0)"
+      }
+    },
+    {
+      "startTime": 4465.92,
+      "endTime": 4471.36,
+      "type": "car",
+      "title": "Acura Integra",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/6/6f/1988_Acura_Integra_LS_Coupe_%28US_Model%29.jpg",
+      "data": {
+        "imageAttribution": "Private photographer's collection, anonymous (Public domain)"
+      }
+    },
+    {
+      "startTime": 4506.08,
+      "endTime": 4513.36,
+      "type": "car",
+      "title": "BMW Z3"
+    },
+    {
+      "startTime": 4703.84,
+      "endTime": 4710.0,
+      "type": "car",
+      "title": "Toyota MR2",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/27/1985_Toyota_MR2.jpg/1200px-1985_Toyota_MR2.jpg",
+      "data": {
+        "imageAttribution": "TTTNIS (CC0)"
+      }
+    },
+    {
+      "startTime": 4848.0,
+      "endTime": 4852.72,
+      "type": "car",
+      "title": "Honda That Honda"
+    },
+    {
+      "startTime": 4902.56,
+      "endTime": 4908.48,
+      "type": "car",
+      "title": "Cupra Born",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/80/Cupra_Born%2C_Linz_%28P1130848%29.jpg/1200px-Cupra_Born%2C_Linz_%28P1130848%29.jpg",
+      "data": {
+        "imageAttribution": "Matti Blume (CC BY-SA)"
+      }
+    },
+    {
+      "startTime": 4904.72,
+      "endTime": 4909.92,
+      "type": "car",
+      "title": "BMW M2",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c9/2023_BMW_M2_Competition.jpg/1200px-2023_BMW_M2_Competition.jpg",
+      "data": {
+        "imageAttribution": "Wikisympathisant (CC BY-SA 4.0)"
+      }
+    },
+    {
+      "startTime": 4904.72,
+      "endTime": 4909.92,
+      "type": "car",
+      "title": "Lotus Evora",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/2012_Lotus_Evora_GTE.jpg/1200px-2012_Lotus_Evora_GTE.jpg",
+      "data": {
+        "imageAttribution": "Calreyn88 (CC BY-SA 4.0)"
+      }
+    },
+    {
+      "startTime": 4928.72,
+      "endTime": 4935.44,
+      "type": "car",
+      "title": "Volkswagen Golf GTI",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/Maria_W%C3%B6rth_Reifnitz_VW_Golf_GTI-Denkmal_22062015_1250.jpg/1200px-Maria_W%C3%B6rth_Reifnitz_VW_Golf_GTI-Denkmal_22062015_1250.jpg",
+      "data": {
+        "imageAttribution": "Johann Jaritz (CC BY-SA 4.0)"
+      }
+    },
+    {
+      "startTime": 4944.08,
+      "endTime": 4948.96,
+      "type": "car",
+      "title": "Toyota Sienna",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d7/TOYOTA_SIENNA_%28XL40%29_China.jpg/1200px-TOYOTA_SIENNA_%28XL40%29_China.jpg",
+      "data": {
+        "imageAttribution": "Dinkun Chen (CC BY-SA 4.0)"
+      }
+    },
+    {
+      "startTime": 4957.36,
+      "endTime": 4961.68,
+      "type": "car",
+      "title": "Audi RS6 Avant",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/AUDI_RS6_AVANT_C7_China.jpg/1200px-AUDI_RS6_AVANT_C7_China.jpg",
+      "data": {
+        "imageAttribution": "Dinkun Chen (CC BY-SA 4.0)"
+      }
+    },
+    {
+      "startTime": 4957.36,
+      "endTime": 4961.68,
+      "type": "car",
+      "title": "Volvo V90",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/94/2016_Volvo_V90_Inscription_rear.jpg/1200px-2016_Volvo_V90_Inscription_rear.jpg",
+      "data": {
+        "imageAttribution": "Herranderssvensson (CC BY-SA 3.0)"
+      }
+    },
+    {
+      "startTime": 4959.84,
+      "endTime": 4963.44,
+      "type": "car",
+      "title": "Mercedes-Benz Eclass",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/54/Mercedes-Benz_Concept_CLA_Class%2C_IAA%2C_M%C3%BAnich%2C_Alemania%2C_2023-09-10%2C_DD_05.jpg/1200px-Mercedes-Benz_Concept_CLA_Class%2C_IAA%2C_M%C3%BAnich%2C_Alemania%2C_2023-09-10%2C_DD_05.jpg",
+      "data": {
+        "imageAttribution": "Diego Delso (CC BY-SA 4.0)"
+      }
+    },
+    {
+      "startTime": 4995.84,
+      "endTime": 5000.4,
+      "type": "car",
+      "title": "Subaru Outback",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/2000-2004_Subaru_Outback_Wagon.jpg/1200px-2000-2004_Subaru_Outback_Wagon.jpg",
+      "data": {
+        "imageAttribution": "IFCAR (Public domain)"
+      }
+    },
+    {
+      "startTime": 5044.16,
+      "endTime": 5048.48,
+      "type": "car",
+      "title": "Kia Tellide",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/2020_Kia_Telluride_LX_V6_AWD.jpg/1200px-2020_Kia_Telluride_LX_V6_AWD.jpg",
+      "data": {
+        "imageAttribution": "Ghostofakina (CC BY-SA 4.0)"
+      }
+    },
+    {
+      "startTime": 5051.2,
+      "endTime": 5054.48,
+      "type": "car",
+      "title": "Hyundai Palisade"
+    },
+    {
+      "startTime": 5053.36,
+      "endTime": 5055.76,
+      "type": "car",
+      "title": "Hyundai Santa Fe",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/40/HYUNDAI_SANTA_FE_%28CM%29_China_%284%29.jpg/1200px-HYUNDAI_SANTA_FE_%28CM%29_China_%284%29.jpg",
+      "data": {
+        "imageAttribution": "Dinkun Chen (CC BY-SA 4.0)"
+      }
+    },
+    {
+      "startTime": 5089.6,
+      "endTime": 5096.16,
+      "type": "car",
+      "title": "Genesis GV80",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/79/2021_Genesis_GV80.jpg/1200px-2021_Genesis_GV80.jpg",
+      "data": {
+        "imageAttribution": "Alawadhi3000 (CC BY-SA 4.0)"
+      }
+    },
+    {
+      "startTime": 5136.32,
+      "endTime": 5143.12,
+      "type": "car",
+      "title": "Cadillac Escalade",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/2021_Cadillac_Escalade_rear.jpg/1200px-2021_Cadillac_Escalade_rear.jpg",
+      "data": {
+        "imageAttribution": "Baron Maddock (CC BY 4.0)"
+      }
+    },
+    {
+      "startTime": 5228.96,
+      "endTime": 5232.56,
+      "type": "car",
+      "title": "Porsche Cayenne",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/60/2023_Porsche_Cayenne_Coup%C3%A9_S_1X7A1674.jpg/1200px-2023_Porsche_Cayenne_Coup%C3%A9_S_1X7A1674.jpg",
+      "data": {
+        "imageAttribution": "Alexander-93 (CC BY-SA 4.0)"
+      }
+    },
+    {
+      "startTime": 5325.76,
+      "endTime": 5331.12,
+      "type": "car",
+      "title": "Chrysler Pacifica",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8d/%2707_Chrysler_Pacifica.jpg/1200px-%2707_Chrysler_Pacifica.jpg",
+      "data": {
+        "imageAttribution": "Bull-Doser (Public domain)"
+      }
+    },
+    {
+      "startTime": 5347.36,
+      "endTime": 5356.0,
+      "type": "car",
+      "title": "Tesla Model S"
+    },
+    {
+      "startTime": 5498.16,
+      "endTime": 5503.28,
+      "type": "car",
+      "title": "Ford Thunderbird",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5b/1957_Ford_Thunderbird_%2828911503716%29_%28cropped%29.jpg/1200px-1957_Ford_Thunderbird_%2828911503716%29_%28cropped%29.jpg",
+      "data": {
+        "imageAttribution": "Greg Gjerdingen from Willmar, USA (CC BY 2.0)"
+      }
+    },
+    {
+      "startTime": 5566.4,
+      "endTime": 5570.4,
+      "type": "car",
+      "title": "Genesis G90",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9b/2024_Genesis_G90_%28RS4%29_DSC_7461.jpg/1200px-2024_Genesis_G90_%28RS4%29_DSC_7461.jpg",
+      "data": {
+        "imageAttribution": "Alexander Migl (CC BY-SA 4.0)"
+      }
+    },
+    {
+      "startTime": 5658.24,
+      "endTime": 5663.12,
+      "type": "car",
+      "title": "BMW M3"
+    },
+    {
+      "startTime": 5669.44,
+      "endTime": 5672.0,
+      "type": "car",
+      "title": "BMW E39",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/BMW_5_SERIES_LWB_SEDAN_%28BMW_G38%29_China.jpg/1200px-BMW_5_SERIES_LWB_SEDAN_%28BMW_G38%29_China.jpg",
+      "data": {
+        "imageAttribution": "Dinkun Chen (CC BY-SA 4.0)"
+      }
+    },
+    {
+      "startTime": 5694.24,
+      "endTime": 5697.76,
+      "type": "car",
+      "title": "Hyundai Elantra N",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/2022_Hyundai_Elantra_N_in_Fiery_Red%2C_Front_Left%2C_04-18-2022.jpg/1200px-2022_Hyundai_Elantra_N_in_Fiery_Red%2C_Front_Left%2C_04-18-2022.jpg",
+      "data": {
+        "imageAttribution": "Elise240SX (CC BY-SA 4.0)"
+      }
+    },
+    {
+      "startTime": 5761.12,
+      "endTime": 5767.2,
+      "type": "car",
+      "title": "BMW 440I",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/2020_BMW_4.jpg/1200px-2020_BMW_4.jpg",
+      "data": {
+        "imageAttribution": "\u591a\u591a123 (CC BY 4.0)"
+      }
+    },
+    {
+      "startTime": 5764.48,
+      "endTime": 5769.04,
+      "type": "car",
+      "title": "Audi S5",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/AUDI_S5_COUPE_8T8_China.jpg/1200px-AUDI_S5_COUPE_8T8_China.jpg",
+      "data": {
+        "imageAttribution": "Dinkun Chen (CC BY-SA 4.0)"
+      }
+    },
+    {
+      "startTime": 5820.8,
+      "endTime": 5824.4,
+      "type": "car",
+      "title": "Alfa Romeo Giulia",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/Alfa_Romeo_Giulia_%282015%29_GT_Junior_1X7A0336.jpg/1200px-Alfa_Romeo_Giulia_%282015%29_GT_Junior_1X7A0336.jpg",
+      "data": {
+        "imageAttribution": "Alexander Migl (CC BY-SA 4.0)"
+      }
+    }
+  ]
+}
