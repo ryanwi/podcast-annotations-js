@@ -17,14 +17,23 @@ Podcasts reference people, places, products, and concepts — but there is no st
 
 ## Prior Art & Inspiration
 
-Timestamped media annotation is a proven pattern across video and music:
+Timestamped annotation on media is a proven pattern. It works, it scales, and podcasting is the missing piece.
 
-- **Amazon Prime Video X-Ray** — surfaces cast, characters, and trivia synced to the current scene. The canonical modern implementation of entity annotation on media.
-- **VH1 Pop-Up Video** — the original mainstream example: timestamped contextual notes overlaid on music video playback.
+**Proven UX pattern:**
+- **VH1 Pop-Up Video** — the original mainstream example: timestamped contextual notes overlaid on media playback.
+- **Amazon Prime Video X-Ray** — surfaces cast, characters, and trivia synced to the current scene. The canonical modern implementation.
 - **YouTube Info Cards** — lightweight timed overlays linking to related content mid-video.
-- **Genius** — community annotation layer on lyrics, proving that entity-level annotation on media content is a viable product at scale.
+- **SoundCloud timed comments** — the earliest mainstream timestamped annotation on audio. Users drop comments at any `t=` position, proving listeners engage with moment-level audio annotation.
 
-Podcast audio has no equivalent. This is the data format that makes it possible.
+**Proven at scale:**
+- **Genius** — community annotation layer on lyrics, proving that entity-level annotation on media content is a viable product at scale. Structurally the closest analog: annotation body attached to a media anchor, with a URL for more context.
+- **BBC Linked Data** — around 2012–2016 the BBC built the most serious real-world deployment of entity annotation on broadcast content, tagging people, places, and topics against their audio and video archive using their `programmes` ontology. The closest institutional precedent.
+
+**Proven in podcasting:**
+- **Podcast chapters** (Podcasting 2.0, Podlove, MP4) — coarse timestamped metadata that podcast apps already implement, proving the ecosystem will adopt spec extensions that improve the listening experience.
+- **Overcast** — podcast-native precedent for structured metadata (Smart Speed, chapters, transcript sync) improving UX. Marco Arment's discussion of DAI transcript synchronization ([ATP #683](https://atp.fm/683)) informed this spec's approach to ad break alignment.
+
+Podcast audio has no equivalent for fine-grained entity annotation. This is the data format that makes it possible.
 
 ## Annotation Object
 
