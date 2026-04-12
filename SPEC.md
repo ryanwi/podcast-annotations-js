@@ -6,7 +6,11 @@ A minimal JSON format for timestamped entity annotations on podcast and spoken m
 
 ## Overview
 
-Podcasts reference people, places, products, and concepts — but there is no standard way to represent those references as structured, timed data. This spec defines a simple JSON format for attaching annotations to moments in audio, enabling players, apps, and tools to build rich experiences on top of spoken content.
+WebVTT tells you what was said. Podcast annotations tell you what was said *about*.
+
+Transcripts give you words and timestamps. But when a host mentions a 1969 Camaro at 0:45, a turbocharger at 2:00, or Carroll Shelby at 3:15, that meaning is buried in text — not structured, not linkable, and not reliable to extract later.
+
+The Podcast Annotation Format is a simple, open JSON spec for timestamped entity annotations on audio. Transcripts made podcasts searchable. Annotations make them understandable.
 
 ### Design Principles
 

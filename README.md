@@ -1,8 +1,10 @@
 # podcast-annotations
 
-Timed annotation overlays, live transcript sync, and annotation timelines for audio players. Framework-agnostic vanilla JavaScript — zero dependencies.
+Every podcast episode is full of references — cars, people, places, concepts — that exist only as sound. Transcripts capture the words, but not the structure. There's no way for apps or tools to know *what's being talked about* at any given moment.
 
-Built for [Car Curious](https://getcarcurious.com), the automotive podcast annotation platform.
+**podcast-annotations** is the reference implementation of the [Podcast Annotation Format](SPEC.md) — an open spec for timestamped, typed entity annotations on audio. Think X-Ray for podcasts, but open and format-level instead of locked inside one platform.
+
+Timed annotation overlays, live transcript sync, and annotation timelines for audio players. Framework-agnostic vanilla JavaScript — zero dependencies. Built for [Car Curious](https://getcarcurious.com).
 
 ## Features
 
