@@ -1,5 +1,16 @@
 # Changelog
 
+## 0.5.0 (2026-04-11)
+
+### Added
+- **Podcast Annotation Format spec** (`SPEC.md`) — open specification (v1.0.0) for timestamped entity annotations on podcast audio. Defines annotation objects, annotation sets, speakers, transcripts, ad breaks, recommended entity types, and W3C Web Annotation mapping.
+- Spec fields promoted to top-level on `Annotation` interface: `type`, `title`, `url`, `image`, `speaker`, `quote`, `tags`, `priority`, `canonicalId`, `confidence`, `source`. All optional, backwards-compatible — `data` is still accepted.
+- New types: `AnnotationSet`, `Speaker`, `Transcript`, `AdBreak`, `Episode`.
+- `AnnotationTimeline` reads top-level `type`/`title` first, falls back to `data.type`/`data.title`.
+
+### Changed
+- README updated with spec link, visual mental model, and examples using top-level annotation fields.
+
 ## 0.4.3 (2026-04-11)
 
 ### Fixed

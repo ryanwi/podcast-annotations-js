@@ -35,7 +35,7 @@ Timestamped annotation on media is a proven pattern. It works, it scales, and po
 
 **Proven in podcasting:**
 - **Podcast chapters** (Podcasting 2.0, Podlove, MP4) — coarse timestamped metadata that podcast apps already implement, proving the ecosystem will adopt spec extensions that improve the listening experience.
-- **Overcast** — podcast-native precedent for structured metadata (Smart Speed, chapters, transcript sync) improving UX. Marco Arment's discussion of DAI transcript synchronization ([ATP #683](https://atp.fm/683)) informed this spec's approach to ad break alignment.
+- **Overcast** — podcast-native precedent for structured metadata (Smart Speed, chapters, transcript sync) improving UX. Marco Arment's public discussion of DAI transcript synchronization informed this spec's approach to ad break alignment.
 - **Snipd** — a podcast app that lets listeners highlight and annotate moments for personal note-taking. Listener-side annotation on podcast audio, already in production. This spec makes the same capability possible as an open, shared layer rather than a closed, personal tool.
 
 Podcast audio already contains this information — what's missing is a way to represent it as structured data. This spec defines a format that makes it possible. While annotations can be derived from transcripts, precomputed annotations enable more accurate timing, higher-quality entity resolution, and consistent cross-platform behavior.
@@ -55,7 +55,7 @@ An annotation represents a single entity mention or topic reference in audio. An
 | `image` | `string` | No | URL to an image representing the entity |
 | `speaker` | `string` | No | Speaker ID (references an entry in `speakers`) |
 | `quote` | `string` | No | The exact words from the transcript that triggered this annotation |
-| `tags` | `string[]` | No | Freeform labels for search, clustering, and filtering |
+| `tags` | `array of strings` | No | Freeform labels for search, clustering, and filtering |
 | `priority` | `number` | No | Editorial importance from 0.0 to 1.0, for UI display ordering |
 | `canonicalId` | `string` | No | Stable entity identifier for cross-episode deduplication |
 | `confidence` | `number` | No | Confidence score from 0.0 to 1.0 |
@@ -316,7 +316,7 @@ All type values use **lowercase**. Producers SHOULD use recommended types when a
   ],
   "annotations": [
     {
-      "id": 1,
+      "id": "annotation-1",
       "startTime": 45.2,
       "endTime": 75.0,
       "type": "car",
@@ -332,7 +332,7 @@ All type values use **lowercase**. Producers SHOULD use recommended types when a
       }
     },
     {
-      "id": 2,
+      "id": "annotation-2",
       "startTime": 160.0,
       "endTime": 190.0,
       "type": "part",
@@ -344,7 +344,7 @@ All type values use **lowercase**. Producers SHOULD use recommended types when a
       }
     },
     {
-      "id": 3,
+      "id": "annotation-3",
       "startTime": 220.0,
       "endTime": 250.0,
       "type": "person",
@@ -352,7 +352,7 @@ All type values use **lowercase**. Producers SHOULD use recommended types when a
       "speaker": "matt"
     },
     {
-      "id": 4,
+      "id": "annotation-4",
       "startTime": 280.5,
       "endTime": 310.0,
       "type": "term",
@@ -482,7 +482,7 @@ Maps to this W3C Web Annotation:
 
 **Podcasting 2.0 `<podcast:person>`** — Tags people at the episode level (hosts, guests). Podcast annotations with `type: "person"` tag people at the moment level (when they're discussed, not just who's on the show).
 
-**RSS Distribution** — An episode's annotation file MAY be referenced from the RSS feed (e.g., via a `<podcast:annotations>` link element) or linked from the episode web page. This spec defines the format, not the delivery mechanism — integration with RSS and Podcasting 2.0 namespace is a natural next step.
+**RSS Distribution** — An episode's annotation file MAY be referenced from the RSS feed or episode web page. A future `<podcast:annotations>` namespace element could formalize this — see the Podcasting 2.0 namespace for the proposal process.
 
 **Wikidata / DBpedia** — The `url` field on annotations can reference Wikidata entities (e.g., `https://www.wikidata.org/wiki/Q5300`) for canonical, language-independent entity identification. This enables linked data use cases without adding complexity to the core format.
 
