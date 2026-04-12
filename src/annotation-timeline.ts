@@ -73,11 +73,13 @@ export class AnnotationTimeline {
       marker.className = this.options.markerClass
       marker.style.left = `${(annotation.startTime / dur * 100).toFixed(2)}%`
 
-      if (annotation.data?.type) {
-        marker.dataset.type = annotation.data.type as string
+      const type = annotation.type ?? annotation.data?.type as string | undefined
+      const title = annotation.title ?? annotation.data?.title as string | undefined
+      if (type) {
+        marker.dataset.type = type
       }
-      if (annotation.data?.title) {
-        marker.title = annotation.data.title as string
+      if (title) {
+        marker.title = title
       }
 
       this.options.renderMarker?.(annotation, marker)

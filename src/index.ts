@@ -20,5 +20,6 @@ export type { AlignedSegment } from './aligned-transcript.js'
 export type {
   Annotation, EnrichedAnnotation, TimingOptions, VTTCue,
   Chapter, ChaptersJSON,
-  AlignmentRange, AlignmentGap, AlignmentMapping
+  AlignmentRange, AlignmentGap, AlignmentMapping,
+  Speaker, Transcript, AdBreak, Episode, AnnotationSet
 } from './types.js'

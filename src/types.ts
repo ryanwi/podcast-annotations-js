@@ -1,8 +1,76 @@
+/** Speaker definition for the annotation set. */
+export interface Speaker {
+  id: string
+  name: string
+  /** Role in the episode (e.g., "host", "guest", "narrator"). */
+  role?: string
+  url?: string
+}
+
+/** A transcript file reference. */
+export interface Transcript {
+  url: string
+  /** File format: "vtt", "srt", or "json". */
+  format: string
+  /** BCP 47 language tag (e.g., "en", "es"). */
+  language?: string
+}
+
+/** An ad break or insertion point. */
+export interface AdBreak {
+  startTime: number
+  endTime: number
+  /** Type of insertion (e.g., "ad", "promo", "sponsorship"). */
+  label?: string
+  /** Placement: "pre-roll", "mid-roll", or "post-roll". */
+  position?: string
+}
+
+/** Episode metadata within an annotation set. */
+export interface Episode {
+  title?: string
+  url?: string
+  audioUrl?: string
+}
+
+/** Container format for a collection of annotations. */
+export interface AnnotationSet {
+  version: string
+  episode?: Episode
+  transcripts?: Transcript[]
+  speakers?: Speaker[]
+  adBreaks?: AdBreak[]
+  annotations: Annotation[]
+}
+
 /** Base annotation shape accepted by all modules. */
 export interface Annotation {
   id?: string | number
   startTime: number
   endTime: number
+  /** Entity type (e.g., "car", "person", "term"). */
+  type?: string
+  /** Human-readable display label. */
+  title?: string
+  /** URL to more information about the entity. */
+  url?: string
+  /** URL to an image representing the entity. */
+  image?: string
+  /** Speaker ID (references a Speaker.id). */
+  speaker?: string
+  /** Exact words from the transcript that triggered this annotation. */
+  quote?: string
+  /** Freeform labels for search, clustering, and filtering. */
+  tags?: string[]
+  /** Editorial importance from 0.0 to 1.0. */
+  priority?: number
+  /** Stable entity identifier for cross-episode deduplication. */
+  canonicalId?: string
+  /** Confidence score from 0.0 to 1.0. */
+  confidence?: number
+  /** How the annotation was produced (e.g., "human", "ai", "hybrid"). */
+  source?: string
+  /** Arbitrary extension metadata. */
   data?: Record<string, unknown>
 }
 
