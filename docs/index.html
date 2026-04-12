@@ -76,31 +76,23 @@
     strong { font-weight: 600; }
     em { font-style: italic; }
     hr { border: none; border-top: 1px solid var(--border); margin: 2rem 0; }
-    .version { color: var(--muted); font-size: 0.9rem; margin-bottom: 2rem; }
     footer { margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid var(--border); color: var(--muted); font-size: 0.85rem; }
   </style>
 </head>
 <body>
-  <div id="spec"></div>
+  <article id="spec"></article>
   <footer>
     Developed by <a href="https://getcarcurious.com">Car Curious</a> &middot;
     <a href="https://github.com/ryanwi/podcast-annotations-js">GitHub</a> &middot;
     <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>
   </footer>
-  <script type="module">
-    import zeroMd from 'https://cdn.jsdelivr.net/npm/zero-md@3/+esm'
-    // zero-md auto-registers as <zero-md> custom element
-
-    const el = document.createElement('zero-md')
-    el.setAttribute('no-shadow', '')
-    el.setAttribute('src', 'https://raw.githubusercontent.com/ryanwi/podcast-annotations-js/main/SPEC.md')
-
-    // Suppress zero-md's default styles so our own CSS applies
-    const tpl = document.createElement('template')
-    tpl.setAttribute('data-merge', 'replace')
-    el.appendChild(tpl)
-
-    document.getElementById('spec').appendChild(el)
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <script>
+    fetch('https://raw.githubusercontent.com/ryanwi/podcast-annotations-js/main/SPEC.md')
+      .then(r => r.text())
+      .then(md => {
+        document.getElementById('spec').innerHTML = marked.parse(md)
+      })
   </script>
 </body>
 </html>
