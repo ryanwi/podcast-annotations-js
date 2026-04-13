@@ -41,8 +41,9 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/ryanwi/podcast-annotations-js.git"
+    "url": "git+https://github.com/ryanwi/podcast-annotations-js.git"
   },
+  "homepage": "https://github.com/ryanwi/podcast-annotations-js",
   "devDependencies": {
     "jsdom": "^26.1.0",
     "marked": "^18.0.0",
