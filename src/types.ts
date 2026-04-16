@@ -31,6 +31,8 @@ export interface Episode {
   title?: string
   url?: string
   audioUrl?: string
+  /** Episode summary or show notes (plain text). */
+  description?: string
 }
 
 /** Container format for a collection of annotations. */

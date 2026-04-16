@@ -189,12 +189,13 @@ An annotation set is the container format for a collection of annotations associ
 | `episode.title` | `string` | No | Episode title |
 | `episode.url` | `string` | No | Episode web page |
 | `episode.audioUrl` | `string` | No | URL to the audio file |
+| `episode.description` | `string` | No | Episode summary or show notes (plain text) |
 | `transcripts` | `array` | No | Transcript files (see [Transcripts](#transcripts)) |
 | `speakers` | `array` | No | Speaker definitions (see [Speakers](#speakers)) |
 | `adBreaks` | `array` | No | Ad/insertion break ranges (see [Ad Breaks](#ad-breaks)) |
 | `annotations` | `array` | **Yes** | Array of annotation objects |
 
-The `episode` object is optional. When annotations are delivered alongside audio (e.g., via RSS or an API), episode metadata may be redundant. For episode-level prose metadata (show notes, descriptions), see Schema.org `PodcastEpisode`.
+The `episode` object is optional. When annotations are delivered alongside audio (e.g., via RSS or an API), episode metadata may be redundant. Short episode summaries or show notes can be included directly via `episode.description`. The recommended format is plain text. Producers MAY use markdown, but consumers SHOULD NOT assume markdown support. For richer episode-level metadata (publication date, series info, licensing), see Schema.org `PodcastEpisode`.
 
 ## Transcripts
 
@@ -473,6 +474,8 @@ Maps to this W3C Web Annotation:
 **WebVTT / SRT.** Subtitle formats carry the transcript text. This spec carries the entities and topics referenced in that text. A player might use WebVTT for the transcript and podcast annotations for contextual overlays.
 
 **Schema.org PodcastEpisode.** Schema.org defines episode-level metadata for search engines. This spec defines within-episode annotations. A `PodcastEpisode` might link to an `.annotations.json` file via a custom property.
+
+**Show Notes.** Show notes are the most common form of podcast annotation today: episode summaries, timestamps, guest info, and links published as freeform prose via RSS `<description>` or `<content:encoded>`. An annotation set is a structured, machine-readable representation of the same information. Show notes describe what was discussed; annotations make it addressable, linkable, and renderable in sync with playback. Producers can use annotation sets to generate show notes, or use existing show notes as a starting point for annotation.
 
 **Podcasting 2.0 `<podcast:person>`.** Tags people at the episode level (hosts, guests). Podcast annotations with `type: "person"` tag people at the moment level: when they're discussed, not just who's on the show.
 

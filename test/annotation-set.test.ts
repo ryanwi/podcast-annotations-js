@@ -19,6 +19,19 @@ describe('Real annotation set (Everyday Driver ep 1013)', () => {
     expect(exampleData.annotations.length).toBeGreaterThan(0)
   })
 
+  it('accepts episode.description as optional field', () => {
+    const withDescription: AnnotationSet = {
+      ...exampleData,
+      episode: {
+        ...exampleData.episode,
+        description: 'Paul and Todd discuss cars that need a comeback, starting with models A through M.'
+      }
+    }
+    expect(withDescription.episode!.description).toBe(
+      'Paul and Todd discuss cars that need a comeback, starting with models A through M.'
+    )
+  })
+
   it('speakers have required fields', () => {
     for (const speaker of exampleData.speakers!) {
       expect(speaker.id).toBeTruthy()

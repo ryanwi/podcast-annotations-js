@@ -1,5 +1,12 @@
 # Changelog
 
+## Unreleased
+
+### Added
+- `episode.description` field — optional plain text episode summary or show notes.
+- "Show Notes" entry in spec's "Relationship to Other Standards" section.
+- `show-notes` npm keyword.
+
 ## 0.5.1 (2026-04-12)
 
 ### Added

@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Podcast Annotation Format</title>
-  <meta name="description" content="An open spec for timestamped entity annotations on podcast and spoken media content.">
+  <meta name="description" content="An open format for structured podcast show notes — timestamped entities, topics, and links synced to audio playback.">
   <meta property="og:title" content="Podcast Annotation Format">
   <meta property="og:description" content="WebVTT tells you what was said. Podcast annotations tell you what was said about.">
   <meta property="og:type" content="website">
@@ -355,6 +355,12 @@
 <td>URL to the audio file</td>
 </tr>
 <tr>
+<td><code>episode.description</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Episode summary or show notes (plain text)</td>
+</tr>
+<tr>
 <td><code>transcripts</code></td>
 <td><code>array</code></td>
 <td>No</td>
@@ -379,7 +385,7 @@
 <td>Array of annotation objects</td>
 </tr>
 </tbody></table>
-<p>The <code>episode</code> object is optional. When annotations are delivered alongside audio (e.g., via RSS or an API), episode metadata may be redundant. For episode-level prose metadata (show notes, descriptions), see Schema.org <code>PodcastEpisode</code>.</p>
+<p>The <code>episode</code> object is optional. When annotations are delivered alongside audio (e.g., via RSS or an API), episode metadata may be redundant. Short episode summaries or show notes can be included directly via <code>episode.description</code>. The recommended format is plain text. Producers MAY use markdown, but consumers SHOULD NOT assume markdown support. For richer episode-level metadata (publication date, series info, licensing), see Schema.org <code>PodcastEpisode</code>.</p>
 <h2>Transcripts</h2>
 <p>The <code>transcripts</code> array links to transcript files associated with the audio. Multiple formats can be provided.</p>
 <table>
@@ -777,6 +783,7 @@
 <p><strong>Podcasting 2.0 Chapters.</strong> Chapters define coarse segments (intro, topic, outro) with titles and artwork. Podcast annotations are fine-grained entity references within those segments. They&#39;re complementary: an episode might have 5 chapters and 40 annotations.</p>
 <p><strong>WebVTT / SRT.</strong> Subtitle formats carry the transcript text. This spec carries the entities and topics referenced in that text. A player might use WebVTT for the transcript and podcast annotations for contextual overlays.</p>
 <p><strong>Schema.org PodcastEpisode.</strong> Schema.org defines episode-level metadata for search engines. This spec defines within-episode annotations. A <code>PodcastEpisode</code> might link to an <code>.annotations.json</code> file via a custom property.</p>
+<p><strong>Show Notes.</strong> Show notes are the most common form of podcast annotation today: episode summaries, timestamps, guest info, and links published as freeform prose via RSS <code>&lt;description&gt;</code> or <code>&lt;content:encoded&gt;</code>. An annotation set is a structured, machine-readable representation of the same information. Show notes describe what was discussed; annotations make it addressable, linkable, and renderable in sync with playback. Producers can use annotation sets to generate show notes, or use existing show notes as a starting point for annotation.</p>
 <p><strong>Podcasting 2.0 <code>&lt;podcast:person&gt;</code>.</strong> Tags people at the episode level (hosts, guests). Podcast annotations with <code>type: &quot;person&quot;</code> tag people at the moment level: when they&#39;re discussed, not just who&#39;s on the show.</p>
 <p><strong>RSS Distribution.</strong> An episode&#39;s annotation file MAY be referenced from the RSS feed or episode web page. A future <code>&lt;podcast:annotations&gt;</code> namespace element could formalize this. See the Podcasting 2.0 namespace for the proposal process.</p>
 <p><strong>Wikidata / DBpedia.</strong> The <code>url</code> field on annotations can reference Wikidata entities (e.g., <code>https://www.wikidata.org/wiki/Q5300</code>) for canonical, language-independent entity identification. This enables linked data use cases without adding complexity to the core format.</p>
