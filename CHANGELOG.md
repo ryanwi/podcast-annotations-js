@@ -1,6 +1,6 @@
 # Changelog
 
-## Unreleased
+## 0.6.0 (2026-04-16)
 
 ### Added
 - `episode.description` field — optional plain text episode summary or show notes.
