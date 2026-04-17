@@ -1,0 +1,275 @@
+{
+  "version": "1.0.0",
+  "episode": {
+    "title": "#770: Elizabeth Gilbert — How to Set Strong Boundaries, Overcome Purpose Anxiety, and Find Your Deep Inner Voice",
+    "url": "https://tim.blog/2024/08/01/elizabeth-gilbert/",
+    "description": "Elizabeth Gilbert is the author of Eat, Pray, Love and the host of the Letters from Love newsletter. In this conversation, she discusses self-compassionate ownership of responsibility, two-way prayer, setting boundaries, creativity guidance, and finding comfort in solitude and mortality."
+  },
+  "speakers": [
+    {
+      "id": "tim",
+      "name": "Tim Ferriss",
+      "role": "host"
+    },
+    {
+      "id": "elizabeth",
+      "name": "Elizabeth Gilbert",
+      "role": "guest"
+    }
+  ],
+  "annotations": [
+    {
+      "startTime": 434.0,
+      "endTime": 747.0,
+      "type": "concept",
+      "title": "No cherished outcomes",
+      "data": {
+        "endTimeEstimated": true,
+        "showNotesText": "[00:07:14] No cherished outcomes."
+      }
+    },
+    {
+      "startTime": 747.0,
+      "endTime": 1044.0,
+      "type": "concept",
+      "title": "Self-compassionate ownership of responsibility",
+      "data": {
+        "endTimeEstimated": true,
+        "showNotesText": "[00:12:27] Self-compassionate ownership of responsibility."
+      }
+    },
+    {
+      "startTime": 1044.0,
+      "endTime": 1434.0,
+      "type": "concept",
+      "title": "The daily practice of writing letters from love",
+      "data": {
+        "endTimeEstimated": true,
+        "showNotesText": "[00:17:24] The daily practice of writing letters from love."
+      }
+    },
+    {
+      "startTime": 1434.0,
+      "endTime": 1949.0,
+      "type": "concept",
+      "title": "Two-way prayer vs. one-way prayer",
+      "data": {
+        "endTimeEstimated": true,
+        "showNotesText": "[00:23:54] Two-way prayer vs. one-way prayer."
+      }
+    },
+    {
+      "startTime": 1949.0,
+      "endTime": 2159.0,
+      "type": "concept",
+      "title": "The male approach to this practice",
+      "data": {
+        "endTimeEstimated": true,
+        "showNotesText": "[00:32:29] The male approach to this practice."
+      }
+    },
+    {
+      "startTime": 2159.0,
+      "endTime": 2305.0,
+      "type": "concept",
+      "title": "How do you feel toward yourself vs. about yourself?",
+      "data": {
+        "endTimeEstimated": true,
+        "showNotesText": "[00:35:59] How do you feel toward yourself vs. about yourself?"
+      }
+    },
+    {
+      "startTime": 2305.0,
+      "endTime": 2692.0,
+      "type": "concept",
+      "title": "Understanding self-hatred to foster self-friendliness",
+      "data": {
+        "endTimeEstimated": true,
+        "showNotesText": "[00:38:25] Understanding self-hatred to foster self-friendliness."
+      }
+    },
+    {
+      "startTime": 2692.0,
+      "endTime": 3107.0,
+      "type": "concept",
+      "title": "Setting boundaries and dealing with those who refuse to honor them",
+      "data": {
+        "endTimeEstimated": true,
+        "showNotesText": "[00:44:52] Setting boundaries and dealing with those who refuse to honor them."
+      }
+    },
+    {
+      "startTime": 3107.0,
+      "endTime": 3227.0,
+      "type": "concept",
+      "title": "Why Elizabeth avoids big family holiday gatherings",
+      "data": {
+        "endTimeEstimated": true,
+        "showNotesText": "[00:51:47] Why (and how) Elizabeth avoids big family holiday gatherings."
+      }
+    },
+    {
+      "startTime": 3227.0,
+      "endTime": 3310.0,
+      "type": "concept",
+      "title": "Comfort in solitude",
+      "data": {
+        "endTimeEstimated": true,
+        "showNotesText": "[00:53:47] Comfort in solitude."
+      }
+    },
+    {
+      "startTime": 3310.0,
+      "endTime": 3564.0,
+      "type": "concept",
+      "title": "Much abuzz about Elizabeth's new 'do",
+      "data": {
+        "endTimeEstimated": true,
+        "showNotesText": "[00:55:10] Much abuzz about Elizabeth's new 'do."
+      }
+    },
+    {
+      "startTime": 3564.0,
+      "endTime": 3934.0,
+      "type": "concept",
+      "title": "Boundaries, priorities, and mysticism: a relaxed woman as a radical concept",
+      "data": {
+        "endTimeEstimated": true,
+        "showNotesText": "[00:59:24] Boundaries, priorities, and mysticism: a relaxed woman as a radical concept."
+      }
+    },
+    {
+      "startTime": 3934.0,
+      "endTime": 4138.0,
+      "type": "concept",
+      "title": "What mysticism brings to Elizabeth's reality",
+      "data": {
+        "endTimeEstimated": true,
+        "showNotesText": "[01:05:34] What mysticism brings to Elizabeth's reality."
+      }
+    },
+    {
+      "startTime": 4138.0,
+      "endTime": 4264.0,
+      "type": "concept",
+      "title": "A better question to ask than 'What do I want?'",
+      "data": {
+        "endTimeEstimated": true,
+        "showNotesText": "[01:08:58] A better question to ask than \"What do I want?\""
+      }
+    },
+    {
+      "startTime": 4264.0,
+      "endTime": 4692.0,
+      "type": "concept",
+      "title": "Elizabeth's hard-ass approach to project commitment",
+      "data": {
+        "endTimeEstimated": true,
+        "showNotesText": "[01:11:04] Elizabeth's hard-ass approach to project commitment."
+      }
+    },
+    {
+      "startTime": 4692.0,
+      "endTime": 4960.0,
+      "type": "concept",
+      "title": "Creativity guidance from Elizabeth's higher power",
+      "data": {
+        "endTimeEstimated": true,
+        "showNotesText": "[01:18:12] Creativity guidance from Elizabeth's higher power."
+      }
+    },
+    {
+      "startTime": 4960.0,
+      "endTime": 5159.0,
+      "type": "term",
+      "title": "The Morning Pages",
+      "data": {
+        "topic": "How The Morning Pages influenced Eat, Pray, Love",
+        "reference": "Julia Cameron's The Artist's Way",
+        "endTimeEstimated": true,
+        "showNotesText": "[01:22:40] How The Morning Pages influenced Eat, Pray, Love."
+      }
+    },
+    {
+      "startTime": 5159.0,
+      "endTime": 5268.0,
+      "type": "concept",
+      "title": "More productive questions to ask than 'Why?'",
+      "data": {
+        "endTimeEstimated": true,
+        "showNotesText": "[01:25:59] More productive questions to ask than \"Why?\""
+      }
+    },
+    {
+      "startTime": 5268.0,
+      "endTime": 5551.0,
+      "type": "concept",
+      "title": "The pointlessness of purpose anxiety",
+      "data": {
+        "endTimeEstimated": true,
+        "showNotesText": "[01:27:48] The pointlessness of purpose anxiety."
+      }
+    },
+    {
+      "startTime": 5551.0,
+      "endTime": 5869.0,
+      "type": "concept",
+      "title": "Balancing presence with other aspects of a well-lived life",
+      "data": {
+        "endTimeEstimated": true,
+        "showNotesText": "[01:32:31] Balancing presence with other aspects of a well-lived life."
+      }
+    },
+    {
+      "startTime": 5869.0,
+      "endTime": 6113.0,
+      "type": "concept",
+      "title": "Comfort with mortality",
+      "data": {
+        "endTimeEstimated": true,
+        "showNotesText": "[01:37:49] Comfort with mortality."
+      }
+    },
+    {
+      "startTime": 6113.0,
+      "endTime": 6181.0,
+      "type": "concept",
+      "title": "What motivates Elizabeth's Letters from Love newsletter?",
+      "data": {
+        "endTimeEstimated": true,
+        "showNotesText": "[01:41:53] What motivates Elizabeth's Letters from Love newsletter?"
+      }
+    },
+    {
+      "startTime": 6181.0,
+      "endTime": 6485.0,
+      "type": "concept",
+      "title": "What can potential readers expect from this newsletter?",
+      "data": {
+        "endTimeEstimated": true,
+        "showNotesText": "[01:43:01] What can potential readers expect from this newsletter?"
+      }
+    },
+    {
+      "startTime": 6485.0,
+      "endTime": 6661.0,
+      "type": "concept",
+      "title": "'Is the universe friendly?' — Frederic W. H. Myers",
+      "data": {
+        "people": ["Frederic W. H. Myers"],
+        "endTimeEstimated": true,
+        "showNotesText": "[01:48:05] \"Is the universe friendly?\" — Frederic W. H. Myers"
+      }
+    },
+    {
+      "startTime": 6661.0,
+      "endTime": 6721.0,
+      "type": "concept",
+      "title": "Parting thoughts",
+      "data": {
+        "endTimeEstimated": true,
+        "showNotesText": "[01:51:01] Parting thoughts."
+      }
+    }
+  ]
+}

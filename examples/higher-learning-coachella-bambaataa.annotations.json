@@ -1,0 +1,138 @@
+{
+  "version": "1.0.0",
+  "episode": {
+    "title": "Coachella, Afrika Bambaataa, and Their Lord and Savior Donald Trump",
+    "url": "https://www.theringer.com/higher-learning",
+    "audioUrl": "https://traffic.megaphone.fm/GLT2455520004.mp3",
+    "description": "Van and Rachel recap the first weekend of Coachella before examining Afrika Bambaataa's legacy and reported history of abuse. They also discuss Rep. Eric Swalwell suspending his campaign, Trump's Jesus post, Gucci Mane's Pooh Shiesty diss, Travis Scott and the church, and a mysterious death of an influencer."
+  },
+  "speakers": [
+    {
+      "id": "van",
+      "name": "Van Lathan",
+      "role": "host"
+    },
+    {
+      "id": "rachel",
+      "name": "Rachel Lindsay",
+      "role": "host"
+    }
+  ],
+  "annotations": [
+    {
+      "startTime": 0.0,
+      "endTime": 174.0,
+      "type": "concept",
+      "title": "Intro",
+      "data": {
+        "endTimeEstimated": true,
+        "showNotesText": "(0:00) Intro"
+      }
+    },
+    {
+      "startTime": 174.0,
+      "endTime": 707.0,
+      "type": "person",
+      "title": "Justin Bieber",
+      "data": {
+        "topic": "Coachella recap",
+        "event": "Coachella 2026",
+        "endTimeEstimated": true,
+        "showNotesText": "(2:54) Coachella recap: Justin Bieber"
+      }
+    },
+    {
+      "startTime": 707.0,
+      "endTime": 1374.0,
+      "type": "person",
+      "title": "Sabrina Carpenter",
+      "data": {
+        "topic": "Coachella recap",
+        "event": "Coachella 2026",
+        "endTimeEstimated": true,
+        "showNotesText": "(11:47) Coachella recap: Sabrina Carpenter"
+      }
+    },
+    {
+      "startTime": 1374.0,
+      "endTime": 2538.0,
+      "type": "person",
+      "title": "Afrika Bambaataa",
+      "data": {
+        "topic": "legacy and reported history of abuse",
+        "endTimeEstimated": true,
+        "showNotesText": "(22:54) The legacy of Afrika Bambaataa"
+      }
+    },
+    {
+      "startTime": 2538.0,
+      "endTime": 3119.0,
+      "type": "person",
+      "title": "Rep. Eric Swalwell",
+      "data": {
+        "topic": "suspends campaign",
+        "category": "politics",
+        "endTimeEstimated": true,
+        "showNotesText": "(42:18) Rep. Eric Swalwell suspends campaign"
+      }
+    },
+    {
+      "startTime": 3119.0,
+      "endTime": 3487.0,
+      "type": "concept",
+      "title": "Van's endorsement for Governor of CA",
+      "data": {
+        "category": "politics",
+        "endTimeEstimated": true,
+        "showNotesText": "(51:59) Van makes an endorsement for Governor of CA"
+      }
+    },
+    {
+      "startTime": 3487.0,
+      "endTime": 4267.0,
+      "type": "concept",
+      "title": "Trump's Jesus post",
+      "data": {
+        "people": ["Donald Trump"],
+        "category": "politics",
+        "endTimeEstimated": true,
+        "showNotesText": "(58:07) Trump's Jesus post"
+      }
+    },
+    {
+      "startTime": 4267.0,
+      "endTime": 5921.0,
+      "type": "concept",
+      "title": "Gucci Mane's Pooh Shiesty diss",
+      "data": {
+        "people": ["Gucci Mane", "Pooh Shiesty"],
+        "category": "hip-hop",
+        "endTimeEstimated": true,
+        "showNotesText": "(1:11:07) Gucci Mane's Pooh Shiesty diss"
+      }
+    },
+    {
+      "startTime": 5921.0,
+      "endTime": 6567.0,
+      "type": "concept",
+      "title": "Travis Scott's FEIN and the church",
+      "data": {
+        "people": ["Travis Scott"],
+        "category": "music/culture",
+        "endTimeEstimated": true,
+        "showNotesText": "(1:38:41) Travis Scott's FEIN and the church"
+      }
+    },
+    {
+      "startTime": 6567.0,
+      "endTime": 7075.0,
+      "type": "concept",
+      "title": "Mysterious death of influencer",
+      "data": {
+        "category": "news",
+        "endTimeEstimated": true,
+        "showNotesText": "(1:49:27) Mysterious death of influencer"
+      }
+    }
+  ]
+}
