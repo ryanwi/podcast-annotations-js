@@ -270,14 +270,14 @@ The following types are proven in production and recommended for interoperabilit
 
 | Type | Description | Example |
 |------|-------------|---------|
+| `concept` | A broader topic or idea | "Carbon capture", "IPO", "Electrification" |
+| `person` | A person referenced in the content | "Jensen Huang", "Enzo Ferrari" |
+| `place` | A location or venue | "Nurburgring", "Cape Canaveral" |
+| `company` | A company or organization | "NVIDIA", "General Motors" |
+| `brand` | A brand name | "Brembo", "Michelin" |
+| `term` | A technical or domain-specific term | "Helium-3", "Oversteer" |
 | `car` | A specific car, truck, or vehicle | "1967 Ford Mustang" |
 | `part` | A vehicle or mechanical component | "Turbocharger", "LS3 crate engine" |
-| `term` | A technical or domain-specific term | "Oversteer", "Forced induction" |
-| `concept` | A broader topic or idea | "Electrification", "Motorsport safety" |
-| `brand` | A brand name | "Brembo", "Michelin" |
-| `company` | A company or organization | "FCP Euro", "General Motors" |
-| `person` | A person referenced in the content | "Carroll Shelby", "Ayrton Senna" |
-| `place` | A location or venue | "Nurburgring", "Bonneville Salt Flats" |
 
 All type values use **lowercase**. Producers SHOULD use recommended types when applicable to maximize interoperability. Single words are preferred for common types. Custom types SHOULD be hyphenated (e.g., `"race-series"`, `"engine-code"`).
 
