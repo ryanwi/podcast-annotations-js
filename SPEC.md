@@ -277,6 +277,7 @@ The following types are proven in production and recommended for interoperabilit
 
 | Type | Description | Example |
 |------|-------------|---------|
+| `topic` | A discussion segment or subject | "Coachella recap", "Setting boundaries" |
 | `concept` | A broader topic or idea | "Carbon capture", "IPO", "Electrification" |
 | `person` | A person referenced in the content | "Jensen Huang", "Enzo Ferrari" |
 | `place` | A location or venue | "Nurburgring", "Cape Canaveral" |
