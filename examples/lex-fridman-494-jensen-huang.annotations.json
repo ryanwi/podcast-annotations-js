@@ -1,0 +1,237 @@
+{
+  "version": "1.0.0",
+  "episode": {
+    "title": "#494 Jensen Huang: NVIDIA - The $4 Trillion Company & the AI Revolution",
+    "url": "https://lexfridman.com/jensen-huang-2",
+    "audioUrl": "https://media.blubrry.com/takeituneasy/content.blubrry.com/takeituneasy/lex_ai_jensen_huang_2.mp3",
+    "description": "Jensen Huang is the co-founder and CEO of NVIDIA."
+  },
+  "speakers": [
+    {
+      "id": "lex",
+      "name": "Lex Fridman",
+      "role": "host"
+    },
+    {
+      "id": "jensen",
+      "name": "Jensen Huang",
+      "role": "guest"
+    }
+  ],
+  "annotations": [
+    {
+      "startTime": 0.0,
+      "endTime": 26.0,
+      "type": "concept",
+      "title": "Introduction",
+      "data": {
+        "endTimeEstimated": true,
+        "showNotesText": "(00:00) Introduction"
+      }
+    },
+    {
+      "startTime": 394.0,
+      "endTime": 560.0,
+      "type": "concept",
+      "title": "Extreme co-design and rack-scale engineering",
+      "data": {
+        "endTimeEstimated": true,
+        "showNotesText": "(06:34) Extreme co-design and rack-scale engineering"
+      }
+    },
+    {
+      "startTime": 560.0,
+      "endTime": 1721.0,
+      "type": "concept",
+      "title": "How Jensen runs NVIDIA",
+      "data": {
+        "endTimeEstimated": true,
+        "showNotesText": "(09:20) How Jensen runs NVIDIA"
+      }
+    },
+    {
+      "startTime": 1721.0,
+      "endTime": 2621.0,
+      "type": "concept",
+      "title": "AI scaling laws",
+      "data": {
+        "endTimeEstimated": true,
+        "showNotesText": "(28:41) AI scaling laws"
+      }
+    },
+    {
+      "startTime": 2621.0,
+      "endTime": 2725.0,
+      "type": "concept",
+      "title": "Biggest blockers to AI scaling laws",
+      "data": {
+        "endTimeEstimated": true,
+        "showNotesText": "(43:41) Biggest blockers to AI scaling laws"
+      }
+    },
+    {
+      "startTime": 2725.0,
+      "endTime": 2840.0,
+      "type": "concept",
+      "title": "Supply chain",
+      "data": {
+        "endTimeEstimated": true,
+        "showNotesText": "(45:25) Supply chain"
+      }
+    },
+    {
+      "startTime": 2840.0,
+      "endTime": 3205.0,
+      "type": "concept",
+      "title": "Memory",
+      "data": {
+        "endTimeEstimated": true,
+        "showNotesText": "(47:20) Memory"
+      }
+    },
+    {
+      "startTime": 3205.0,
+      "endTime": 3525.0,
+      "type": "concept",
+      "title": "Power",
+      "data": {
+        "endTimeEstimated": true,
+        "showNotesText": "(53:25) Power"
+      }
+    },
+    {
+      "startTime": 3525.0,
+      "endTime": 3733.0,
+      "type": "concept",
+      "title": "Elon and Colossus",
+      "data": {
+        "people": ["Elon Musk"],
+        "endTimeEstimated": true,
+        "showNotesText": "(58:45) Elon and Colossus"
+      }
+    },
+    {
+      "startTime": 3733.0,
+      "endTime": 4058.0,
+      "type": "concept",
+      "title": "Jensen's approach to engineering and leadership",
+      "data": {
+        "endTimeEstimated": true,
+        "showNotesText": "(1:02:13) Jensen's approach to engineering and leadership"
+      }
+    },
+    {
+      "startTime": 4058.0,
+      "endTime": 4551.0,
+      "type": "concept",
+      "title": "China",
+      "data": {
+        "endTimeEstimated": true,
+        "showNotesText": "(1:07:38) China"
+      }
+    },
+    {
+      "startTime": 4551.0,
+      "endTime": 4866.0,
+      "type": "concept",
+      "title": "TSMC and Taiwan",
+      "data": {
+        "companies": ["TSMC"],
+        "endTimeEstimated": true,
+        "showNotesText": "(1:15:51) TSMC and Taiwan"
+      }
+    },
+    {
+      "startTime": 4866.0,
+      "endTime": 5203.0,
+      "type": "concept",
+      "title": "NVIDIA's moat",
+      "data": {
+        "companies": ["NVIDIA"],
+        "endTimeEstimated": true,
+        "showNotesText": "(1:21:06) NVIDIA's moat"
+      }
+    },
+    {
+      "startTime": 5203.0,
+      "endTime": 5431.0,
+      "type": "concept",
+      "title": "AI data centers in space",
+      "data": {
+        "endTimeEstimated": true,
+        "showNotesText": "(1:26:43) AI data centers in space"
+      }
+    },
+    {
+      "startTime": 5431.0,
+      "endTime": 6040.0,
+      "type": "concept",
+      "title": "Will NVIDIA be worth $10 trillion?",
+      "data": {
+        "companies": ["NVIDIA"],
+        "endTimeEstimated": true,
+        "showNotesText": "(1:30:31) Will NVIDIA be worth $10 trillion?"
+      }
+    },
+    {
+      "startTime": 6040.0,
+      "endTime": 6866.0,
+      "type": "concept",
+      "title": "Leadership under pressure",
+      "data": {
+        "endTimeEstimated": true,
+        "showNotesText": "(1:40:40) Leadership under pressure"
+      }
+    },
+    {
+      "startTime": 6866.0,
+      "endTime": 7278.0,
+      "type": "concept",
+      "title": "Video games",
+      "data": {
+        "endTimeEstimated": true,
+        "showNotesText": "(1:54:26) Video games"
+      }
+    },
+    {
+      "startTime": 7278.0,
+      "endTime": 7411.0,
+      "type": "concept",
+      "title": "AGI timeline",
+      "data": {
+        "endTimeEstimated": true,
+        "showNotesText": "(2:01:18) AGI timeline"
+      }
+    },
+    {
+      "startTime": 7411.0,
+      "endTime": 8222.0,
+      "type": "concept",
+      "title": "Future of programming",
+      "data": {
+        "endTimeEstimated": true,
+        "showNotesText": "(2:03:31) Future of programming"
+      }
+    },
+    {
+      "startTime": 8222.0,
+      "endTime": 8603.0,
+      "type": "concept",
+      "title": "Consciousness",
+      "data": {
+        "endTimeEstimated": true,
+        "showNotesText": "(2:17:02) Consciousness"
+      }
+    },
+    {
+      "startTime": 8603.0,
+      "endTime": 8663.0,
+      "type": "concept",
+      "title": "Mortality",
+      "data": {
+        "endTimeEstimated": true,
+        "showNotesText": "(2:23:23) Mortality"
+      }
+    }
+  ]
+}
