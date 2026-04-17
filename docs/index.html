@@ -262,6 +262,10 @@
 <li>Rendering hints (color, icon, priority)</li>
 <li>Additional provenance or source metadata beyond <code>confidence</code> and <code>source</code></li>
 </ul>
+<p><strong>Recommended conventions:</strong></p>
+<ul>
+<li><code>data.endTimeEstimated</code> (<code>boolean</code>) — Set to <code>true</code> when <code>endTime</code> is approximate, such as annotations derived from show notes timestamps where only a start time is known. Consumers may use this to adjust display behavior (e.g., shorten display windows or avoid hard cuts).</li>
+</ul>
 <h3>Identifiers</h3>
 <p>If provided, <code>id</code> MUST be unique within the annotation set. IDs SHOULD be stable across revisions of the same annotation set to support diffing, syncing, and caching. IDs MAY be strings or numbers, but producers SHOULD prefer strings for consistency.</p>
 <h3>Ordering and Overlaps</h3>

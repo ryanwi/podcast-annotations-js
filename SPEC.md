@@ -116,6 +116,9 @@ Common uses:
 - Rendering hints (color, icon, priority)
 - Additional provenance or source metadata beyond `confidence` and `source`
 
+**Recommended conventions:**
+- `data.endTimeEstimated` (`boolean`) — Set to `true` when `endTime` is approximate, such as annotations derived from show notes timestamps where only a start time is known. Consumers may use this to adjust display behavior (e.g., shorten display windows or avoid hard cuts).
+
 ### Identifiers
 
 If provided, `id` MUST be unique within the annotation set. IDs SHOULD be stable across revisions of the same annotation set to support diffing, syncing, and caching. IDs MAY be strings or numbers, but producers SHOULD prefer strings for consistency.
