@@ -271,6 +271,8 @@
 <h3>Ordering and Overlaps</h3>
 <p>Annotations SHOULD be sorted by <code>startTime</code> in ascending order. Consumers MUST NOT rely on ordering and SHOULD sort if necessary.</p>
 <p>Annotations MAY overlap in time. Multiple annotations at the same timestamp are valid. A single moment might reference both a car and the person driving it. Implementations should define rendering behavior for overlapping annotations, such as stacking, prioritizing by type or confidence, or limiting simultaneous display.</p>
+<h3>Density</h3>
+<p>An annotation set might contain 5 chapter-like topic markers for a 3-hour episode or 100+ fine-grained entity references for a 90-minute episode — both are valid. Producers generating dense annotation sets SHOULD assign <code>priority</code> values so that consumers can filter to a manageable subset (e.g., showing only annotations with <code>priority &gt;= 0.7</code> in a minimal UI, or all annotations in a detailed entity view).</p>
 <h3>Validation Rules</h3>
 <ul>
 <li><code>startTime</code> MUST be &gt;= 0</li>
