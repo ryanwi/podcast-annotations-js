@@ -1,0 +1,327 @@
+{
+  "version": "1.0.0",
+  "episode": {
+    "title": "Just Back from Japan and Watching our Watchlists",
+    "url": "https://bringatrailer.com/2026/04/17/bat-podcast-just-back-from-japan-and-watching-our-watchlists/",
+    "audioUrl": "https://anchor.fm/s/4b0db308/podcast/play/118530484/https%3A%2F%2Fd3ctxlq1ktw2nl.cloudfront.net%2Fstaging%2F2026-3-16%2Fafcbcfb6-58ff-9917-a82a-8dbab9b4e534.mp3",
+    "description": "This week on our little podcast, Alex and Randy talk about the Jim Farley Pantera and great PR advice for other auto execs before moving on to Randy's recent trip to Japan. He describes the general automotive vibe there: multi-generational Skylines casually out in the wild, tiny Kei cars everywhere, the cultural norm of backing into one's parking space, Cal-look Beetles, multicolored license plates, Mitsuokas, Tokyo Drift lookalikes, a ride on the bullet train, a visit to the Tamiya model store, and a missed Fast & Furious-themed opportunity (to be remedied next time). Next up, the pair go over highlights from their watchlists, including a former resident of our very own BaT HQ, some early Subaru love, a Sabrina pull, a matched pair, an odd but compelling boat, and an odd but compelling Cord."
+  },
+  "speakers": [
+    {
+      "id": "alex",
+      "name": "Alex Porter",
+      "role": "host"
+    },
+    {
+      "id": "randy",
+      "name": "Randy Nonnenberg",
+      "role": "host"
+    }
+  ],
+  "annotations": [
+    {
+      "startTime": 25.0,
+      "endTime": 36.0,
+      "type": "car",
+      "title": "1972 DeTomaso Pantera",
+      "url": "https://bringatrailer.com/listing/1972-detomaso-pantera-134/",
+      "data": {
+        "make": "DeTomaso",
+        "model": "Pantera",
+        "year": 1972,
+        "endTimeEstimated": true,
+        "showNotesText": "0:25  Jim Farley's 1972 DeTomaso Pantera"
+      }
+    },
+    {
+      "startTime": 1314.0,
+      "endTime": 1334.0,
+      "type": "car",
+      "title": "1966 Bill Thomas Cheetah Coupe",
+      "url": "https://bringatrailer.com/listing/1966-cheetah-coupe/",
+      "data": {
+        "make": "Bill Thomas",
+        "model": "Cheetah Coupe",
+        "year": 1966,
+        "endTimeEstimated": true,
+        "showNotesText": "21:54  1966 Bill Thomas Cheetah Coupe"
+      }
+    },
+    {
+      "startTime": 1334.0,
+      "endTime": 1394.0,
+      "type": "car",
+      "title": "1964 Bill Thomas Cheetah Cro-Sal Special Roadster",
+      "url": "https://bringatrailer.com/listing/1964-chevrolet-cheetah-2/",
+      "data": {
+        "make": "Bill Thomas",
+        "model": "Cheetah Cro-Sal Special Roadster",
+        "year": 1964,
+        "endTimeEstimated": true,
+        "showNotesText": "22:14  1964 Bill Thomas Cheetah Cro-Sal Special Roadster"
+      }
+    },
+    {
+      "startTime": 1551.0,
+      "endTime": 1601.0,
+      "type": "car",
+      "title": "1990 BMW Z1",
+      "url": "https://bringatrailer.com/listing/1990-bmw-z1-16/",
+      "data": {
+        "make": "BMW",
+        "model": "Z1",
+        "year": 1990,
+        "mileage": "65 kilometers",
+        "endTimeEstimated": true,
+        "showNotesText": "25:51  65-Kilometer 1990 BMW Z1"
+      }
+    },
+    {
+      "startTime": 1601.0,
+      "endTime": 1624.0,
+      "type": "car",
+      "title": "Mazda Cosmo",
+      "data": {
+        "make": "Mazda",
+        "model": "Cosmo",
+        "generation": "second generation",
+        "endTimeEstimated": true,
+        "showNotesText": "26:41  second generation Cosmo"
+      }
+    },
+    {
+      "startTime": 1624.0,
+      "endTime": 1670.0,
+      "type": "car",
+      "title": "1971 Ferrari Dino 246 GT",
+      "url": "https://bringatrailer.com/listing/1971-ferrari-dino-246-gt-10/",
+      "data": {
+        "make": "Ferrari",
+        "model": "Dino 246 GT",
+        "year": 1971,
+        "endTimeEstimated": true,
+        "showNotesText": "27:04  1971 Ferrari Dino 246 GT"
+      }
+    },
+    {
+      "startTime": 1670.0,
+      "endTime": 1693.0,
+      "type": "concept",
+      "title": "Alps-Inspired Carrera Digital Slot Car Raceway",
+      "url": "https://bringatrailer.com/listing/slot-car-raceway-2/",
+      "data": {
+        "endTimeEstimated": true,
+        "showNotesText": "27:50 Alps-Inspired Carrera Digital Slot Car Raceway"
+      }
+    },
+    {
+      "startTime": 1693.0,
+      "endTime": 1753.0,
+      "type": "car",
+      "title": "1982 Subaru BRAT GL 4-Speed",
+      "url": "https://bringatrailer.com/listing/1982-subaru-brat-6/",
+      "data": {
+        "make": "Subaru",
+        "model": "BRAT GL",
+        "year": 1982,
+        "transmission": "4-Speed",
+        "provenance": "Original-Owner",
+        "endTimeEstimated": true,
+        "showNotesText": "28:13  Original-Owner 1982 Subaru BRAT GL 4-Speed"
+      }
+    },
+    {
+      "startTime": 1792.0,
+      "endTime": 1848.0,
+      "type": "concept",
+      "title": "2007 Frauscher 686 Lido",
+      "url": "https://bringatrailer.com/listing/2007-frauscher-686-lido/",
+      "data": {
+        "category": "boat",
+        "make": "Frauscher",
+        "model": "686 Lido",
+        "year": 2007,
+        "endTimeEstimated": true,
+        "showNotesText": "29:52  2007 Frauscher 686 Lido"
+      }
+    },
+    {
+      "startTime": 1848.0,
+      "endTime": 1874.0,
+      "type": "car",
+      "title": "1947 Healey Elliott Saloon",
+      "url": "https://bringatrailer.com/listing/1947-healey-elliott-saloon-2/",
+      "data": {
+        "make": "Healey",
+        "model": "Elliott Saloon",
+        "year": 1947,
+        "provenance": "Ex-Mille Miglia Storica",
+        "endTimeEstimated": true,
+        "showNotesText": "30:48  Ex\u2013Mille Miglia Storica 1947 Healey Elliott Saloon"
+      }
+    },
+    {
+      "startTime": 1874.0,
+      "endTime": 1900.0,
+      "type": "car",
+      "title": "1977 Lotus Esprit S1",
+      "url": "https://bringatrailer.com/listing/1977-lotus-esprit-s1-7/",
+      "data": {
+        "make": "Lotus",
+        "model": "Esprit S1",
+        "year": 1977,
+        "endTimeEstimated": true,
+        "showNotesText": "31:14  1977 Lotus Esprit S1"
+      }
+    },
+    {
+      "startTime": 1900.0,
+      "endTime": 1960.0,
+      "type": "car",
+      "title": "1953 Nash-Healey Le Mans Coupe",
+      "url": "https://bringatrailer.com/listing/1953-nash-healey-lemans-coupe-4/",
+      "data": {
+        "make": "Nash-Healey",
+        "model": "Le Mans Coupe",
+        "year": 1953,
+        "modification": "Rambler Rebel V8",
+        "endTimeEstimated": true,
+        "showNotesText": "31:40  1953 Nash-Healey Le Mans Coupe w/Rambler Rebel V8"
+      }
+    },
+    {
+      "startTime": 1965.0,
+      "endTime": 2020.0,
+      "type": "car",
+      "title": "1982 Renault 5 Alpine Turbo",
+      "url": "https://bringatrailer.com/listing/1982-renault-5-alpine-turbo/",
+      "data": {
+        "make": "Renault",
+        "model": "5 Alpine Turbo",
+        "year": 1982,
+        "endTimeEstimated": true,
+        "showNotesText": "32:45  1982 Renault 5 Alpine Turbo"
+      }
+    },
+    {
+      "startTime": 2020.0,
+      "endTime": 2069.0,
+      "type": "car",
+      "title": "1976 Porsche 934 Race Car",
+      "url": "https://bringatrailer.com/listing/1976-porsche-934-2-2/",
+      "data": {
+        "make": "Porsche",
+        "model": "934",
+        "year": 1976,
+        "provenance": "Le Mans Class-Winning",
+        "endTimeEstimated": true,
+        "showNotesText": "33:40  Le Mans\u2013Class-Winning 1976 Porsche 934 Race Car"
+      }
+    },
+    {
+      "startTime": 2069.0,
+      "endTime": 2129.0,
+      "type": "car",
+      "title": "1965 Porsche 911 Coupes",
+      "url": "https://bringatrailer.com/listing/pair-of-swb-911-coupes/",
+      "data": {
+        "make": "Porsche",
+        "model": "911 Coupe",
+        "year": 1965,
+        "note": "Sequential-VIN pair",
+        "endTimeEstimated": true,
+        "showNotesText": "34:29 Sequential-VIN 1965 Porsche 911 Coupes"
+      }
+    },
+    {
+      "startTime": 2205.0,
+      "endTime": 2235.0,
+      "type": "car",
+      "title": "1992 BMW 325i Touring 5-Speed",
+      "url": "https://bringatrailer.com/listing/1992-bmw-325i-e30-4/",
+      "data": {
+        "make": "BMW",
+        "model": "325i Touring",
+        "year": 1992,
+        "chassis": "E30",
+        "transmission": "5-Speed",
+        "endTimeEstimated": true,
+        "showNotesText": "36:45  1992 BMW 325i Touring 5-Speed"
+      }
+    },
+    {
+      "startTime": 2207.0,
+      "endTime": 2237.0,
+      "type": "car",
+      "title": "1986 Suzuki GSX-R1100",
+      "url": "https://bringatrailer.com/listing/1986-suzuki-gsx-r1100-7/",
+      "data": {
+        "make": "Suzuki",
+        "model": "GSX-R1100",
+        "year": 1986,
+        "category": "motorcycle",
+        "endTimeEstimated": true,
+        "showNotesText": "36:47  1986 Suzuki GSX-R1100"
+      }
+    },
+    {
+      "startTime": 2213.0,
+      "endTime": 2273.0,
+      "type": "car",
+      "title": "1979 Porsche 930 Turbo",
+      "url": "https://bringatrailer.com/listing/1979-porsche-930-turbo-144/",
+      "data": {
+        "make": "Porsche",
+        "model": "930 Turbo",
+        "year": 1979,
+        "endTimeEstimated": true,
+        "showNotesText": "36:53  1979 Porsche 930 Turbo"
+      }
+    },
+    {
+      "startTime": 2300.0,
+      "endTime": 2360.0,
+      "type": "car",
+      "title": "1937 Cord 812 Westchester",
+      "url": "https://bringatrailer.com/listing/1937-cord-812-westchester-2/",
+      "data": {
+        "make": "Cord",
+        "model": "812 Westchester",
+        "year": 1937,
+        "modification": "Oldsmobile 307-Powered",
+        "endTimeEstimated": true,
+        "showNotesText": "38:20  Oldsmobile 307-Powered 1937 Cord 812 Westchester"
+      }
+    },
+    {
+      "startTime": 2449.0,
+      "endTime": 2509.0,
+      "type": "car",
+      "title": "2000 Chevrolet Corvette Fixed Roof Coupe 6-Speed",
+      "url": "https://bringatrailer.com/listing/2000-chevrolet-corvette-coupe-54/",
+      "data": {
+        "make": "Chevrolet",
+        "model": "Corvette Fixed Roof Coupe",
+        "year": 2000,
+        "transmission": "6-Speed",
+        "mileage": "35k miles",
+        "endTimeEstimated": true,
+        "showNotesText": "40:49  35k-Mile 2000 Chevrolet Corvette Fixed Roof Coupe 6-Speed"
+      }
+    },
+    {
+      "startTime": 2514.0,
+      "endTime": 2574.0,
+      "type": "car",
+      "title": "1958 Buick Century Riviera 2-Door Hardtop",
+      "url": "https://bringatrailer.com/listing/1958-buick-century-6/",
+      "data": {
+        "make": "Buick",
+        "model": "Century Riviera 2-Door Hardtop",
+        "year": 1958,
+        "endTimeEstimated": true,
+        "showNotesText": "41:54  1958 Buick Century Riviera 2-Door Hardtop"
+      }
+    }
+  ]
+}
