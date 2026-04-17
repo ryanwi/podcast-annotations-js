@@ -4,6 +4,9 @@ on:
     branches: [main]
     paths: [SPEC.md]
 
+permissions:
+  contents: write
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -16,9 +19,9 @@ jobs:
       - run: npm run build:site
       - name: Commit if changed
         run: |
-          git diff --quiet docs/index.html && exit 0
+          git diff --quiet docs/ && exit 0
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add docs/index.html
+          git add docs/index.html docs/sitemap.xml
           git commit -m "Rebuild site from SPEC.md"
           git push

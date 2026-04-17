@@ -14,7 +14,7 @@ const html = `<!DOCTYPE html>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Podcast Annotation Format</title>
-  <meta name="description" content="An open spec for timestamped entity annotations on podcast and spoken media content.">
+  <meta name="description" content="An open format for structured podcast show notes — timestamped entities, topics, and links synced to audio playback.">
   <meta property="og:title" content="Podcast Annotation Format">
   <meta property="og:description" content="WebVTT tells you what was said. Podcast annotations tell you what was said about.">
   <meta property="og:type" content="website">
