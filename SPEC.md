@@ -368,6 +368,21 @@ From [The Everyday Driver Podcast](https://getcarcurious.com), Episode 1,013 (11
 
 The full 113-annotation file is available at [`examples/everyday-driver-episode-1013.annotations.json`](examples/everyday-driver-episode-1013.annotations.json).
 
+### Additional Examples
+
+Real-world annotation sets from published podcast episodes, showing the format across genres and production methods:
+
+| Example | Genre | Annotations | Source |
+|---------|-------|-------------|--------|
+| [`everyday-driver-episode-1013`](examples/everyday-driver-episode-1013.annotations.json) | Automotive review | 113 | AI-generated from transcript |
+| [`bat-podcast-just-back-from-japan`](examples/bat-podcast-just-back-from-japan.annotations.json) | Automotive auction | 21 | Converted from timestamped show notes |
+| [`acquired-ferrari`](examples/acquired-ferrari.annotations.json) | Business history | 16 | Converted from timestamped show notes |
+| [`lex-fridman-494-jensen-huang`](examples/lex-fridman-494-jensen-huang.annotations.json) | Tech/AI interview | 21 | Converted from timestamped show notes |
+| [`science-vs-artemis-moon`](examples/science-vs-artemis-moon.annotations.json) | Science journalism | 6 | Converted from timestamped show notes |
+| [`science-vs-running`](examples/science-vs-running.annotations.json) | Health/fitness | 5 | Converted from timestamped show notes |
+| [`tim-ferriss-770-elizabeth-gilbert`](examples/tim-ferriss-770-elizabeth-gilbert.annotations.json) | Creativity/self-help | 19 | Converted from timestamped show notes |
+| [`higher-learning-coachella-bambaataa`](examples/higher-learning-coachella-bambaataa.annotations.json) | Culture/politics | 10 | Converted from timestamped show notes |
+
 ### General Podcast (Interview)
 
 ```json
