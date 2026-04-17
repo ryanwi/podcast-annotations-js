@@ -1,0 +1,72 @@
+{
+  "version": "1.0.0",
+  "episode": {
+    "title": "Running: Will It Wreck Your Body?",
+    "url": "https://open.spotify.com/episode/science-vs-running",
+    "audioUrl": "https://traffic.megaphone.fm/GLT7384672019.mp3",
+    "description": "Lots of us love — or love to hate — running. And we do it because it's supposed to be healthy, right?! But then we hear tons of stories about runners getting hurt — sometimes so badly that they have to hang up their sneakers. And there are people on social media going even further, claiming it's one of the worst things we can do for our bodies. So IS running secretly bad for us?"
+  },
+  "speakers": [
+    {
+      "id": "wendy",
+      "name": "Wendy Zukerman",
+      "role": "host"
+    }
+  ],
+  "annotations": [
+    {
+      "startTime": 108.0,
+      "endTime": 651.0,
+      "type": "concept",
+      "title": "What's the deal with running injuries?",
+      "data": {
+        "experts": ["Dr. Rasmus Østergaard Nielsen"],
+        "endTimeEstimated": true,
+        "showNotesText": "(01:48) What's the deal with running injuries?"
+      }
+    },
+    {
+      "startTime": 651.0,
+      "endTime": 903.0,
+      "type": "concept",
+      "title": "How to get hurt less",
+      "data": {
+        "endTimeEstimated": true,
+        "showNotesText": "(10:51) How to get hurt less"
+      }
+    },
+    {
+      "startTime": 903.0,
+      "endTime": 1174.0,
+      "type": "concept",
+      "title": "The secret to a longer life",
+      "data": {
+        "experts": ["Professor Duck-Chul Lee"],
+        "endTimeEstimated": true,
+        "showNotesText": "(15:03) The secret to a longer life"
+      }
+    },
+    {
+      "startTime": 1174.0,
+      "endTime": 1738.0,
+      "type": "term",
+      "title": "Runner's high",
+      "data": {
+        "experts": ["Dr. Michael Siebers"],
+        "topic": "neurochemistry of exercise euphoria",
+        "endTimeEstimated": true,
+        "showNotesText": "(19:34) What is the runner's high?"
+      }
+    },
+    {
+      "startTime": 1738.0,
+      "endTime": 1798.0,
+      "type": "concept",
+      "title": "How to get runner's high",
+      "data": {
+        "endTimeEstimated": true,
+        "showNotesText": "(28:58) How to get runner's high"
+      }
+    }
+  ]
+}

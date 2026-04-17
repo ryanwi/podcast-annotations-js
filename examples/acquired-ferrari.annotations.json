@@ -1,0 +1,208 @@
+{
+  "version": "1.0.0",
+  "episode": {
+    "title": "Ferrari",
+    "url": "https://www.acquired.fm/episodes/ferrari",
+    "audioUrl": "https://media.transistor.fm/9ca1df08/e400ba0d.mp3",
+    "description": "We tell the complete story of Ferrari: from Enzo's childhood obsession with racing, through the tragedies and triumphs that forged the most iconic brand in automotive history, to today's $80B+ market cap luxury powerhouse."
+  },
+  "speakers": [
+    {
+      "id": "ben",
+      "name": "Ben Gilbert",
+      "role": "host"
+    },
+    {
+      "id": "david",
+      "name": "David Rosenthal",
+      "role": "host"
+    }
+  ],
+  "annotations": [
+    {
+      "startTime": 68.0,
+      "endTime": 371.0,
+      "type": "concept",
+      "title": "Intro",
+      "data": {
+        "endTimeEstimated": true,
+        "showNotesText": "00:01:08 Intro"
+      }
+    },
+    {
+      "startTime": 371.0,
+      "endTime": 759.0,
+      "type": "person",
+      "title": "Enzo Ferrari",
+      "data": {
+        "born": 1898,
+        "died": 1988,
+        "topic": "Early Life & Tragedies (1898-1919)",
+        "endTimeEstimated": true,
+        "showNotesText": "00:06:11 Enzo Ferrari's Early Life & Tragedies (1898-1919)"
+      }
+    },
+    {
+      "startTime": 759.0,
+      "endTime": 1508.0,
+      "type": "brand",
+      "title": "Scuderia Ferrari",
+      "data": {
+        "topic": "Enzo's Racing Dream (1920-1933)",
+        "endTimeEstimated": true,
+        "showNotesText": "00:12:39 Scuderia Ferrari: Enzo's Racing Dream (1920-1933)"
+      }
+    },
+    {
+      "startTime": 1508.0,
+      "endTime": 2141.0,
+      "type": "concept",
+      "title": "The Prancing Horse & Ferrari's Branding",
+      "data": {
+        "endTimeEstimated": true,
+        "showNotesText": "00:25:08 The Prancing Horse & Ferrari's Branding"
+      }
+    },
+    {
+      "startTime": 2141.0,
+      "endTime": 3091.0,
+      "type": "concept",
+      "title": "First Ferrari Road Cars & Le Mans Victory",
+      "data": {
+        "era": "1947-1949",
+        "events": ["Le Mans"],
+        "endTimeEstimated": true,
+        "showNotesText": "00:35:41 First Ferrari Road Cars & Le Mans Victory (1947-1949)"
+      }
+    },
+    {
+      "startTime": 3091.0,
+      "endTime": 4443.0,
+      "type": "concept",
+      "title": "F1 & The Tragedies of Enzo's Life",
+      "data": {
+        "era": "1950s",
+        "events": ["Formula 1"],
+        "endTimeEstimated": true,
+        "showNotesText": "00:51:31 F1 & The Tragedies of Enzo's Life (1950s)"
+      }
+    },
+    {
+      "startTime": 4443.0,
+      "endTime": 4884.0,
+      "type": "concept",
+      "title": "Ford vs. Ferrari: The Le Mans Rivalry",
+      "data": {
+        "era": "1963-1966",
+        "companies": ["Ford", "Ferrari"],
+        "events": ["Le Mans"],
+        "endTimeEstimated": true,
+        "showNotesText": "01:14:03 Ford vs. Ferrari: The Le Mans Rivalry (1963-1966)"
+      }
+    },
+    {
+      "startTime": 4884.0,
+      "endTime": 5350.0,
+      "type": "concept",
+      "title": "Enzo Sells 50% to Fiat",
+      "data": {
+        "era": "1969",
+        "companies": ["Fiat"],
+        "endTimeEstimated": true,
+        "showNotesText": "01:21:24 Enzo Sells 50% to Fiat (1969)"
+      }
+    },
+    {
+      "startTime": 5350.0,
+      "endTime": 6760.0,
+      "type": "person",
+      "title": "Luca di Montezemolo",
+      "data": {
+        "topic": "Return to F1 Glory (1971-1976)",
+        "events": ["Formula 1"],
+        "endTimeEstimated": true,
+        "showNotesText": "01:29:10 Luca di Montezemolo's Return to F1 Glory (1971-1976)"
+      }
+    },
+    {
+      "startTime": 6760.0,
+      "endTime": 8861.0,
+      "type": "concept",
+      "title": "Ferrari's 'Pepsi Challenge' and how Luca rescued the company",
+      "data": {
+        "era": "1991",
+        "people": ["Luca di Montezemolo"],
+        "endTimeEstimated": true,
+        "showNotesText": "01:52:40 Ferrari's \"Pepsi Challenge\" and how Luca rescued the company (1991)"
+      }
+    },
+    {
+      "startTime": 8861.0,
+      "endTime": 10104.0,
+      "type": "concept",
+      "title": "Post-IPO Ferrari: New Models & Growth",
+      "data": {
+        "era": "2015-Present",
+        "endTimeEstimated": true,
+        "showNotesText": "02:27:41 Post-IPO Ferrari: New Models & Growth (2015-Present)"
+      }
+    },
+    {
+      "startTime": 10104.0,
+      "endTime": 11236.0,
+      "type": "car",
+      "title": "Ferrari Purosangue",
+      "data": {
+        "make": "Ferrari",
+        "model": "Purosangue",
+        "category": "FUV (Ferrari Utility Vehicle)",
+        "endTimeEstimated": true,
+        "showNotesText": "02:48:24 The FUV Purosangue & Model Range"
+      }
+    },
+    {
+      "startTime": 11236.0,
+      "endTime": 11557.0,
+      "type": "car",
+      "title": "Ferrari Luce",
+      "data": {
+        "make": "Ferrari",
+        "model": "Luce",
+        "category": "EV",
+        "people": ["Jony Ive"],
+        "endTimeEstimated": true,
+        "showNotesText": "03:07:16 Ferrari Luce: The EV Future with Jony Ive"
+      }
+    },
+    {
+      "startTime": 11557.0,
+      "endTime": 12579.0,
+      "type": "concept",
+      "title": "Ferrari Today by the Numbers",
+      "data": {
+        "endTimeEstimated": true,
+        "showNotesText": "03:12:37 Ferrari Today by the Numbers"
+      }
+    },
+    {
+      "startTime": 12579.0,
+      "endTime": 13804.0,
+      "type": "concept",
+      "title": "Analysis",
+      "data": {
+        "endTimeEstimated": true,
+        "showNotesText": "03:29:39 Analysis"
+      }
+    },
+    {
+      "startTime": 13804.0,
+      "endTime": 13864.0,
+      "type": "concept",
+      "title": "Carve-Outs + Thank Yous",
+      "data": {
+        "endTimeEstimated": true,
+        "showNotesText": "03:50:04 Carve-Outs + Thank Yous"
+      }
+    }
+  ]
+}

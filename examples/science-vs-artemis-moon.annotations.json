@@ -1,0 +1,85 @@
+{
+  "version": "1.0.0",
+  "episode": {
+    "title": "Artemis: Why Are We Really Going Back to the Moon?",
+    "url": "https://open.spotify.com/episode/science-vs-artemis",
+    "audioUrl": "https://traffic.megaphone.fm/GLT3112945016.mp3",
+    "description": "The moon race is back! NASA's Artemis II mission just sent four astronauts around the moon. And other countries — and billionaires — are lining up to take a crack at returning to the moon too. But why are we really going? Some say this is a lunar gold rush, that countries want to mine the moon for resources. Others are saying the real reason to go to the moon today is that it'll help us get to Mars."
+  },
+  "speakers": [
+    {
+      "id": "wendy",
+      "name": "Wendy Zukerman",
+      "role": "host"
+    }
+  ],
+  "annotations": [
+    {
+      "startTime": 0.0,
+      "endTime": 383.0,
+      "type": "concept",
+      "title": "We're going back to the moon!",
+      "data": {
+        "organizations": ["NASA"],
+        "programs": ["Artemis II"],
+        "endTimeEstimated": true,
+        "showNotesText": "(00:00) We're going back to the moon!"
+      }
+    },
+    {
+      "startTime": 383.0,
+      "endTime": 605.0,
+      "type": "concept",
+      "title": "Should we dig up rare earth elements on the moon?",
+      "data": {
+        "topic": "lunar mining",
+        "endTimeEstimated": true,
+        "showNotesText": "(06:23) Should we dig up rare earth elements on the moon?"
+      }
+    },
+    {
+      "startTime": 605.0,
+      "endTime": 894.0,
+      "type": "term",
+      "title": "Helium-3",
+      "data": {
+        "topic": "lunar Helium-3 mining as energy source",
+        "endTimeEstimated": true,
+        "showNotesText": "(10:05) Should we go back to the moon for Helium-3?"
+      }
+    },
+    {
+      "startTime": 894.0,
+      "endTime": 1195.0,
+      "type": "concept",
+      "title": "The moon as a training ground for Mars",
+      "data": {
+        "destinations": ["Moon", "Mars"],
+        "endTimeEstimated": true,
+        "showNotesText": "(14:54) The moon as a training ground for Mars"
+      }
+    },
+    {
+      "startTime": 1195.0,
+      "endTime": 1632.0,
+      "type": "concept",
+      "title": "The FARSIDE telescope",
+      "data": {
+        "topic": "a portal into the universe's history",
+        "instruments": ["FARSIDE telescope"],
+        "endTimeEstimated": true,
+        "showNotesText": "(19:55) The FARSIDE telescope: a portal into the universe's history"
+      }
+    },
+    {
+      "startTime": 1632.0,
+      "endTime": 1692.0,
+      "type": "concept",
+      "title": "So is it worth returning to the moon?",
+      "data": {
+        "endTimeEstimated": true,
+        "showNotesText": "(27:12) So is it worth returning to the moon?"
+      }
+    }
+  ]
+}
