@@ -287,6 +287,26 @@ The following types are proven in production and recommended for interoperabilit
 | `car` | A specific car, truck, or vehicle | "1967 Ford Mustang" |
 | `part` | A vehicle or mechanical component | "Turbocharger", "LS3 crate engine" |
 
+### Disambiguating `company` vs `brand`
+
+The `company` and `brand` types overlap in practice: most brands belong to a company, and many companies are referred to by their brand name. The following guidance is non-normative. Producers MAY disregard it. It is offered as a consistency tool to keep annotator judgment from drifting between coin flips, particularly for automated producers.
+
+The rule is a *role test*, not an *ontology test*. Tag based on how the name is being used in the surrounding utterance, not on what the entity ontologically is.
+
+- **`brand`** — the name as it appears on a product, in marketing, or as a consumer-facing identity. Signals: product ownership, design references, model lineups, marque or livery talk.
+- **`company`** — the entity as a corporate or market actor. Signals: M&A, financials, executives, hiring or layoffs, lawsuits, vendor or supplier relationships, headquarters references.
+
+Examples:
+
+- "I upgraded to Brembo calipers" — `brand` (product ownership)
+- "Cosworth tuned the rod ratio to 1.8" — `brand` (the name on the engine)
+- "The Stellantis lineup is mostly trucks and SUVs now" — `brand` (model lineup)
+- "Brembo acquired Marelli's suspension business" — `company` (M&A)
+- "Cosworth was sold to Engelhard in 1998" — `company` (M&A)
+- "Stellantis raised prices across the portfolio" — `company` (market actor)
+
+When both senses apply in the same mention, producers SHOULD prefer `brand`; consumer-facing podcast audio is more often product-focused than market-actor-focused. If the role cannot be decided from a 2-3 sentence window, default to `brand`.
+
 All type values use **lowercase**. Producers SHOULD use recommended types when applicable to maximize interoperability. Single words are preferred for common types. Custom types SHOULD be hyphenated (e.g., `"race-series"`, `"engine-code"`).
 
 ## File Extension and MIME Type

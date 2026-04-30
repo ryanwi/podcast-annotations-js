@@ -575,6 +575,23 @@
 <td>&quot;Turbocharger&quot;, &quot;LS3 crate engine&quot;</td>
 </tr>
 </tbody></table>
+<h3>Disambiguating <code>company</code> vs <code>brand</code></h3>
+<p>The <code>company</code> and <code>brand</code> types overlap in practice: most brands belong to a company, and many companies are referred to by their brand name. The following guidance is non-normative. Producers MAY disregard it. It is offered as a consistency tool to keep annotator judgment from drifting between coin flips, particularly for automated producers.</p>
+<p>The rule is a <em>role test</em>, not an <em>ontology test</em>. Tag based on how the name is being used in the surrounding utterance, not on what the entity ontologically is.</p>
+<ul>
+<li><strong><code>brand</code></strong> — the name as it appears on a product, in marketing, or as a consumer-facing identity. Signals: product ownership, design references, model lineups, marque or livery talk.</li>
+<li><strong><code>company</code></strong> — the entity as a corporate or market actor. Signals: M&amp;A, financials, executives, hiring or layoffs, lawsuits, vendor or supplier relationships, headquarters references.</li>
+</ul>
+<p>Examples:</p>
+<ul>
+<li>&quot;I upgraded to Brembo calipers&quot; — <code>brand</code> (product ownership)</li>
+<li>&quot;Cosworth tuned the rod ratio to 1.8&quot; — <code>brand</code> (the name on the engine)</li>
+<li>&quot;The Stellantis lineup is mostly trucks and SUVs now&quot; — <code>brand</code> (model lineup)</li>
+<li>&quot;Brembo acquired Marelli&#39;s suspension business&quot; — <code>company</code> (M&amp;A)</li>
+<li>&quot;Cosworth was sold to Engelhard in 1998&quot; — <code>company</code> (M&amp;A)</li>
+<li>&quot;Stellantis raised prices across the portfolio&quot; — <code>company</code> (market actor)</li>
+</ul>
+<p>When both senses apply in the same mention, producers SHOULD prefer <code>brand</code>; consumer-facing podcast audio is more often product-focused than market-actor-focused. If the role cannot be decided from a 2-3 sentence window, default to <code>brand</code>.</p>
 <p>All type values use <strong>lowercase</strong>. Producers SHOULD use recommended types when applicable to maximize interoperability. Single words are preferred for common types. Custom types SHOULD be hyphenated (e.g., <code>&quot;race-series&quot;</code>, <code>&quot;engine-code&quot;</code>).</p>
 <h2>File Extension and MIME Type</h2>
 <table>
