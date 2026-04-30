@@ -300,7 +300,7 @@ Examples:
 
 - "I upgraded to Brembo calipers" — `brand` (product ownership)
 - "Cosworth tuned the rod ratio to 1.8" — `brand` (the name on the engine)
-- "I've been a Ford guy my whole life" — `brand` (marque identity)
+- "The Stellantis lineup is mostly trucks and SUVs now" — `brand` (model lineup)
 - "Brembo acquired Marelli's suspension business" — `company` (M&A)
 - "Cosworth was sold to Engelhard in 1998" — `company` (M&A)
 - "Stellantis raised prices across the portfolio" — `company` (market actor)
