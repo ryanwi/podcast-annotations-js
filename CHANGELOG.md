@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.6.1 (2026-04-29)
+
+### Added
+- Non-normative guidance for disambiguating `company` vs `brand` entity types in `SPEC.md` — role-test framing with worked examples covering same-name reversals (Brembo, Cosworth, Stellantis). No data-model change; spec version remains 1.0.0.
+
 ## 0.6.0 (2026-04-16)
 
 ### Added
